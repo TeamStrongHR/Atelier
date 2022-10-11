@@ -1,0 +1,22 @@
+{
+  "name": "atelier",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TeamStrongHR/Atelier.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TeamStrongHR/Atelier/issues"
+  },
+  "homepage": "https://github.com/TeamStrongHR/Atelier#readme",
+  "dependencies": {
+    "create-react-app": "^5.0.1"
+  }
+}
