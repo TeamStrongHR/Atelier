@@ -1,16 +1,25 @@
 
 import axios from 'axios';
 import {useState, useEffect} from 'react';
-function Test() {
+function ImageGallery() {
 
   const [data, setData] = useState(null)
   useEffect(()=> {
-    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/HR-RFE/')
+    var options = {
+      url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews',
+      params: {
+        page: 2,
+        count: 6,
+        sort : "newest",
+        product_id: 37311
+      },
+      method: 'get',
+      headers: {"Authorization" : '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'}
+    }
+    axios(options)
     .then(result => {
       console.log(result)
-      setData(result.data[0]);
     })
-
   }, [])
 
 
@@ -21,4 +30,4 @@ function Test() {
   </h1>)
 }
 
-export default Test;
+export default ImageGallery;
