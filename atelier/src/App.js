@@ -1,6 +1,6 @@
-//import logo from './logo.svg';
+import Navbar from './components/Navbar.js'
+import Overview from './components/overview/Overview.js'
 import './App.css';
-import Overview from './components/overview/index.js'
 
 function App() {
 
@@ -9,7 +9,13 @@ function App() {
   return (
 
     <div className="App">
-      <Overview />
+      <ImageGallery />
+      <nav></nav>
+      <h4>some kind of discount</h4>
+      <section></section>
+      <aside></aside>
+      <section></section>
+      <aside></aside>
     </div>
   );
 }

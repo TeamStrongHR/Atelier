@@ -1,5 +1,7 @@
 
 export default function StarRating () {
   //average stars
-  return ()
+  return (
+    <div>ONE STARRR</div>
+  )
 }
