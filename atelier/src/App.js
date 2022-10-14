@@ -1,6 +1,6 @@
-//import logo from './logo.svg';
+import Navbar from './components/Navbar.js'
+import Overview from './components/overview/Overview.js'
 import './App.css';
-import ImageGallery from './components/carousel/ImageGallery.js'
 
 function App() {
 
@@ -9,9 +9,9 @@ function App() {
   return (
 
     <div className="App">
-      <ImageGallery />
-      <nav></nav>
-      <h4>some kind of discount</h4>
+      <Navbar/>
+      <Overview/>
+
       <section></section>
       <aside></aside>
       <section></section>
