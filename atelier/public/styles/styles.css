@@ -1,3 +1,15 @@
+.style-selector .style-selector1 {
+  display: flex;
+  justify-content: space-around;
+}
+.style-selector .style-selector2 {
+  display: flex;
+}
+
+h1 {
+  background-color: white;
+}
+
 .image-gallery {
   float: left;
 }

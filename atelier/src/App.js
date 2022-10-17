@@ -8,10 +8,11 @@ function App() {
 
   return (
 
+
     <div className="App">
-      <ImageGallery />
-      <nav></nav>
-      <h4>some kind of discount</h4>
+      <Navbar/>
+      <Overview/>
+
       <section></section>
       <aside></aside>
       <section></section>
