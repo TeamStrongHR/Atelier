@@ -1,0 +1,30 @@
+.image-gallery {
+  position: relative;
+  .thumbnails {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top:0;
+    left:0;
+    z-index: 9;
+  }
+  .main {
+    display:block;
+    position: relative;
+    .previous{
+      position:absolute;
+      top: 50%;
+      left:23%;
+      font-weight: bold;
+    }
+    .next {
+      position:absolute;
+      top: 50%;
+      right:7%;
+      font-weight: bold;
+    }
+    .main-image {
+      display: none;
+    }
+  }
+}
