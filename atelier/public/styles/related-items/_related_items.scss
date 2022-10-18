@@ -1,15 +1,136 @@
+.related-comparison{
+  display:block;
+}
+
+//related list component holds related title and related carosuel
 .related-list{
-  display: flex,
+  height:fit-content;
+  display:block;
+  position: relative;
+  justify-content: center;
+  align-items: center;
 }
 
+//related list title 'Related Product'
+.related-title{
+  text-align: left;
+}
+
+
+//left and right arrow
+.left-arrow{
+  display: inline-flex;
+  position: absolute;
+  top: 40%;
+  z-index: 10;
+  left: 32px;
+}
+
+.right-arrow{
+  display: inline-flex;
+  right: 32px;
+  position: absolute;
+  top: 40%;
+  z-index: 10;
+}
+
+.fa-solid {
+  color: gray;
+  font-size: 300%;
+}
+
+.fa-solid:hover {
+  color: black;
+  font-size: 400%;
+}
+
+//flex container
+.related-carousel{
+  display: block;
+  width: 100vw;
+  position: relative;
+  overflow-x: scroll;
+  white-space: nowrap;
+  //hide scrollbar in IE, Edge and Firefox
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+}
+//hide scrollbar in Chrome, safari and opera
+.related-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+//individual card
 .related-card{
-  display: flex,
+  display: inline-block;
+  position: relative;
+  width: 250px;
+  height: 400px;
+  border: 1px solid gray;
+  border-radius: 10px;
+  margin: 20px;
 }
 
+//star button on top right of card
+.fa-regular{
+  &.fa-star{
+    display: flex;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+  &.fa-star:hover{
+    font-size: 150%;
+  }
+}
+
+.card-image{
+  position:relative;
+  height: 300px;
+  width:250px;
+  top: 0px;
+  z-index: -1;
+  overflow: hidden;
+}
+
+//card info section contains category, product name, product price and product review stars
+.card-info{
+  height:100px;
+  position: absolute;
+  bottom: 0px;
+  text-align: left;
+  padding-left: 10px;
+  padding-top: 20px;
+  align-items: flex-end;
+}
+.card-category{
+  display: flex;
+  font-size: medium;
+}
+
+.card-name{
+  display: flex;
+  font-size: larger;
+
+}
+
+.card-price{
+  font-size: medium;
+  display: flex;
+
+}
+
+.card-stars{
+  display: flex;
+}
+
+//Your outfit list CSS below
 .outfit-list{
-  display: flex,
+  display: block;
+  height: 600px;
 }
 
 .outfit-card{
-  display: flex,
+  display: flex;
 }
