@@ -1,5 +1,6 @@
 import axios from 'axios';
 import {useState, useEffect} from 'react';
+import RelatedModal from './RelatedModal.js';
 
 const testDataInfo = {
   "id": 37319,
@@ -116,8 +117,10 @@ const testDataStyles = {
   ]
 };
 
+//In props
+//related product id
+//current product name, features
 export default function RelatedCard (props) {
-  console.log('RELATEDCARD PROPS ', testDataStyles.results[0].photos[0].url);
   //retrieve product info and styles axios.get()
 
   const [category, setCategory] = useState('');
@@ -126,15 +129,28 @@ export default function RelatedCard (props) {
   const [starRating, setStarRating] = useState('*****');
   //Make sure to show sales price
 
+  const [showModal, setShowModal] = useState(false);
+
   useEffect(()=> {
     setCategory(testDataInfo.category);
     setProductName(testDataInfo.name);
     setProductPrice(testDataStyles.results[0].original_price);
-  });
+  }, []);
+
+  const handleModal = () => {
+    if (showModal === true) {
+      setShowModal(false);
+    } else {
+      setShowModal(true);
+    }
+  }
 
   return (
     <div className='related-card'>
-      <i class="fa-regular fa-star"></i>
+      <div className='card-modal'>
+         <i class="fa-regular fa-star" onClick={handleModal}></i>
+         <RelatedModal showModal={showModal} onClose={handleModal} currentProduct={props.currentProduct} relatedProduct={testDataInfo}/>
+      </div>
       <img className='card-image' src={testDataStyles.results[0].photos[0].url} alt='NO IMG FOUND' ></img>
       <div className='card-info'>
         <i className='card-category'>{category}</i>

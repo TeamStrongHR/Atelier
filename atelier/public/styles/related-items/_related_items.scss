@@ -16,12 +16,11 @@
   text-align: left;
 }
 
-
 //left and right arrow
 .left-arrow{
   display: inline-flex;
   position: absolute;
-  top: 40%;
+  top: 45%;
   z-index: 10;
   left: 32px;
 }
@@ -30,10 +29,10 @@
   display: inline-flex;
   right: 32px;
   position: absolute;
-  top: 40%;
+  top: 45%;
   z-index: 10;
 }
-
+//arrow icons
 .fa-solid {
   color: gray;
   font-size: 300%;
@@ -72,7 +71,7 @@
   margin: 20px;
 }
 
-//star button on top right of card
+//star icon on top right of card
 .fa-regular{
   &.fa-star{
     display: flex;
@@ -125,6 +124,57 @@
   display: flex;
 }
 
+.related-modal{
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.related-modal-overlay{
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  display:flex;
+  background-color: #000;
+  opacity: 0.5;
+}
+
+.related-modal-title{
+  display: flex;
+  position: fixed;
+  left: 10px;
+  top: 10px;
+}
+
+.related-modal-content{
+  width: fit-content;
+  height: fit-content;
+  background-color: white;
+  display: flex;
+  z-index: 100;
+  border: 1px solid gray;
+  border-radius: 10px;
+  align-items: center;
+}
+
+.related-modal-content:after{
+  display: table;
+  clear: both;
+}
+
+.modal-column {
+  float: left;
+  padding: 10px;
+}
+
+//===============================================================
 //Your outfit list CSS below
 .outfit-list{
   display: block;
