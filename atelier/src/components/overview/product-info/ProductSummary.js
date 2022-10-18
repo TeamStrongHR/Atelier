@@ -12,6 +12,5 @@ export default function ProductSummary () {
     <StyleSelector />
     <ShoppingCart />
     </aside>
-
   )
 }

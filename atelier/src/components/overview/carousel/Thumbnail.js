@@ -2,7 +2,7 @@ import logo from '../../../images/logo.png'
 
 const Thumbnail= ()=>{
   return (
-    <img src={logo}></img>
+    <img className="thumbnail" src={logo}></img>
   )
 }
 

@@ -11,6 +11,9 @@
   left: 0;
   z-index: 9;
 }
+.image-gallery .thumbnails .thumbnail {
+  display: none;
+}
 .image-gallery .main {
   display: flex;
   position: relative;
