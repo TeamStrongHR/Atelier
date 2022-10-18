@@ -1,14 +1,15 @@
-.image-gallery {
-  float: left;
+@import './ratings-reviews/ratings_reviews';
+
+
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
 .product-summary {
   float: right;
 }
 
-.overview {
 
-}
 
 .navbar {
   display:flex;
