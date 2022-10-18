@@ -1,4 +1,4 @@
-import axios from 'axios';
+// import axios from 'axios';
 import {useState, useEffect} from 'react';
 import MainImage from './MainImage.js'
 import Thumbnail from './Thumbnail.js'
@@ -63,7 +63,7 @@ function ImageGallery() {
     showThumbnails(0);
   },[])
 
-  return (<section className="image-gallery">
+  return (<section className="image-gallery" id="image-gallery">
     <div className="thumbnails">
       {/*map through each image*/}
       <a className="thumbnail-previous" onClick={()=>{moveThumbnail(-1)}}>prev</a>
