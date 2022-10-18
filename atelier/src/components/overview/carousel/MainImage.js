@@ -1,9 +1,9 @@
 import main_image from '../../../images/main-image.jpeg'
 
-const MainImage = ({id}) => {
+const MainImage = ({id, image}) => {
   return (
     <div className="main-image">
-      <img src={main_image} id={id}></img>
+      <img src={image} id={id}></img>
     </div>
   )
 }

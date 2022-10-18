@@ -1,5 +1,7 @@
 .image-gallery {
   position: relative;
+  width: 50%;
+  height: auto;
 }
 .image-gallery .thumbnails {
   display: flex;
@@ -10,8 +12,9 @@
   z-index: 9;
 }
 .image-gallery .main {
-  display: block;
+  display: flex;
   position: relative;
+  width: 100%;
 }
 .image-gallery .main .previous {
   position: absolute;
@@ -27,6 +30,12 @@
 }
 .image-gallery .main .main-image {
   display: none;
+  -o-object-fit: fill;
+     object-fit: fill;
+  width: 100%;
+  overflow: hidden;
+  height: auto;
+  max-width: 100%;
 }
 
 .style-selector .style-selector1 {
@@ -39,6 +48,7 @@
 
 .image-gallery {
   float: left;
+  border-style: solid;
 }
 
 .product-summary {

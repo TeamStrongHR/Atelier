@@ -1,5 +1,7 @@
 .image-gallery {
   position: relative;
+  width: 50%;
+  height: auto;
   .thumbnails {
     display: flex;
     flex-direction: column;
@@ -9,8 +11,9 @@
     z-index: 9;
   }
   .main {
-    display:block;
+    display:flex;
     position: relative;
+    width: 100%;
     .previous{
       position:absolute;
       top: 50%;
@@ -25,6 +28,11 @@
     }
     .main-image {
       display: none;
+      object-fit:fill;
+      width: 100%;
+      overflow: hidden;
+      height: auto;
+      max-width: 100%;
     }
   }
 }
