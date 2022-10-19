@@ -14,8 +14,6 @@ app.use(express.static(path.join(__dirname, "../build")))
 
 
 
-
-
 app.all('/api/:endpoint', (req, res, next) => {
   var end = req.params.endpoint;
   switch (req.method) {

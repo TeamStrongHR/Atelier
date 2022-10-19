@@ -7,7 +7,7 @@ export default function Review () {
   return (
     <div className="review">
       <div className="star-user">
-      <StarRating/>
+      <StarRating rating={3.7}/>
       <span id="user-date"> Verified Purchaser, January 1, 2019</span>
       </div>
       <h4>REVIEW TITLE LONG TO TEST THE WRAPPPINGFS HASHDAHSDHAHSDHAHDSAHSADASDSADS</h4>

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .related-comparison {
   display: block;
 }
@@ -173,21 +174,7 @@
   display: flex;
 }
 
-.image-gallery {
-  float: left;
-}
-
-/*reset css from user agent stylesheet*/
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  word-break: break-word;
-}
-
 .ratings-reviews {
-  /*use Roboto Google Fonts*/
-  font-family: "Roboto", sans-serif;
   margin-top: 8%;
   display: flex;
   justify-content: center;
@@ -195,10 +182,14 @@
   /*for the Ratings Component*/
 }
 .ratings-reviews .reviews-list {
+  overflow: auto;
   text-align: left;
   width: 40%;
-  margin-left: 5%;
+  height: 100vh;
+  margin: auto 5%;
+  padding-right: 20px;
   font-size: 0.875rem;
+  position: relative;
   /*number of stars and the user*/
   /*review paragraph*/
   /*helpful prompt*/
@@ -223,6 +214,10 @@
 .ratings-reviews .reviews-list .break {
   margin: 5% auto;
   border-top: 2px solid gray;
+}
+.ratings-reviews .reviews-list button {
+  position: absolute;
+  display: inline-block;
 }
 .ratings-reviews .ratings {
   /*make the parent container relative so children can use absolute positioning*/
@@ -438,25 +433,42 @@ input:focus {
   width: 100px;
 }
 
-*, *::before, *::after {
+.star-rating {
+  position: relative;
+  vertical-align: middle;
+  display: inline-block;
+  color: #b1b1b1;
+  overflow: hidden;
+}
+
+.full-stars {
+  position: absolute;
+  left: 0;
+  top: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  color: #fde16d;
+}
+
+.empty-stars:before, .full-stars:before {
+  content: "★★★★★";
+  font-size: 14pt;
+}
+
+.empty-stars:before {
+  -webkit-text-stroke: 1px #848484;
+}
+
+.full-stars:before {
+  -webkit-text-stroke: 1px gray;
+}
+
+/*reset css from user agent stylesheet*/
+* {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
-}
-
-.product-summary {
-  float: right;
-}
-
-.navbar {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 30px;
-}
-
-.image-summary {
-  display: flex;
-  justify-content: center;
-}
-
-.slogan {
-  display: flex;
+  word-break: break-word;
+  /*use Roboto Google Fonts*/
+  font-family: "Roboto", sans-serif;
 }/*# sourceMappingURL=styles.css.map */

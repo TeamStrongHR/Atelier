@@ -9,7 +9,7 @@ export default function Ratings () {
       {/*RATING STARS*/}
       <div id="num-stars">
         <span id="num"><strong>3.5</strong></span>
-        <StarRating/>
+        <StarRating rating={2.7}/>
       </div>
       <p>100% of reviews recommend this product</p>
       {/*RATING BARS*/}
