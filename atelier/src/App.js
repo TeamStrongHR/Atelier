@@ -2,7 +2,7 @@ import Navbar from './components/Navbar.js';
 import Overview from './components/overview/Overview.js';
 import RelatedAndComparison from './components/related-items/RelatedAndComparison.js';
 import RatingsAndReviews from './components/ratings-reviews/RatingsAndReviews.js'
-
+import QuestionsAndAnswers from './components/question-answer/QuestionsAndAnswers.js';
 
 function App() {
 
@@ -18,6 +18,7 @@ function App() {
       <aside></aside>
       <section></section>
       <aside></aside>
+      <QuestionsAndAnswers/>
     </div>
   );
 }
