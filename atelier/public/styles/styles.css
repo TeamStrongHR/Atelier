@@ -1,7 +1,9 @@
-.image-gallery {
-  position: relative;
-  width: 50%;
-  height: auto;
+/*reset css from user agent stylesheet*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  word-break: break-word;
 }
 .image-gallery .thumbnails {
   display: flex;
@@ -49,9 +51,8 @@
   display: flex;
 }
 
-.image-gallery {
-  float: left;
-  border-style: solid;
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
 .product-summary {
