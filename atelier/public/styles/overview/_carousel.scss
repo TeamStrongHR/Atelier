@@ -1,0 +1,41 @@
+.image-gallery {
+  position: relative;
+  width: 50%;
+  height: auto;
+  .thumbnails {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top:0;
+    left:0;
+    z-index: 9;
+    .thumbnail {
+      display: none;
+    }
+  }
+  .main {
+    display:flex;
+    position: relative;
+    width: 100%;
+    .previous{
+      position:absolute;
+      top: 50%;
+      left:23%;
+      font-weight: bold;
+    }
+    .next {
+      position:absolute;
+      top: 50%;
+      right:7%;
+      font-weight: bold;
+    }
+    .main-image {
+      display: none;
+      object-fit:fill;
+      width: 100%;
+      overflow: hidden;
+      height: auto;
+      max-width: 100%;
+    }
+  }
+}

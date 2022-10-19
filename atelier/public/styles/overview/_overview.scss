@@ -1,0 +1,29 @@
+@import './carousel';
+@import './shopping-cart';
+@import './style-selector';
+
+.image-gallery {
+  float: left;
+  border-style: solid;
+}
+
+.product-summary {
+  float: right;
+}
+
+
+.navbar {
+  display:flex;
+  justify-content: space-around;
+  margin-top: 30px;
+}
+
+.image-summary {
+  display: flex;
+  justify-content: center;
+
+}
+
+.slogan {
+  display:flex;
+}
