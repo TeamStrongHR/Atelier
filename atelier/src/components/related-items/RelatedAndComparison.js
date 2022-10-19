@@ -10,7 +10,7 @@ export default function RelatedAndComparison (props) {
   return (
     <div className='related-comparison'>
       <RelatedList testProduct={testProduct} />
-      <YourOutfit />
+      <YourOutfit data-testid='YourOutfit'/>
     </div>
   )
 }
