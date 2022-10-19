@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .related-comparison {
   display: block;
 }
@@ -175,6 +176,126 @@
 
 .image-gallery {
   float: left;
+=======
+/*reset css from user agent stylesheet*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  word-break: break-word;
+}
+
+.ratings-reviews {
+  /*use Roboto Google Fonts*/
+  font-family: "Roboto", sans-serif;
+  margin-top: 8%;
+  display: flex;
+  justify-content: center;
+  /*for the ReviewsList component*/
+  /*for the Ratings Component*/
+}
+.ratings-reviews .reviews-list {
+  text-align: left;
+  width: 40%;
+  margin-left: 5%;
+  font-size: 0.875rem;
+  /*number of stars and the user*/
+  /*review paragraph*/
+  /*helpful prompt*/
+}
+.ratings-reviews .reviews-list .star-user {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2%;
+}
+.ratings-reviews .reviews-list .star-user #user-date {
+  font-size: 0.75rem;
+}
+.ratings-reviews .reviews-list p {
+  margin: 5% auto;
+  letter-spacing: -0.02rem;
+  word-spacing: -0.08rem;
+  line-height: 1rem;
+}
+.ratings-reviews .reviews-list #helpful {
+  font-size: 0.75rem;
+}
+.ratings-reviews .reviews-list .break {
+  margin: 5% auto;
+  border-top: 2px solid gray;
+}
+.ratings-reviews .ratings {
+  /*make the parent container relative so children can use absolute positioning*/
+  position: relative;
+  width: 35%;
+  /*100% of reviews recommend this product*/
+}
+.ratings-reviews .ratings h5 {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+.ratings-reviews .ratings #num-stars {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 10%;
+}
+.ratings-reviews .ratings #num-stars #num {
+  font-size: 3rem;
+  margin-right: 10%;
+}
+.ratings-reviews .ratings #num-stars #stars {
+  padding-top: 2%;
+}
+.ratings-reviews .ratings p {
+  margin: 4% auto;
+  font-size: 0.85rem;
+  text-align: left;
+}
+.ratings-reviews .ratings .progress-bar {
+  font-size: 0.75rem;
+  margin: 2% auto;
+  display: flex;
+  justify-content: space-between;
+}
+.ratings-reviews .ratings .progress-bar .whole-bar {
+  background-color: lightgray;
+  width: 83%;
+  height: 0.75rem;
+}
+.ratings-reviews .ratings .progress-bar .whole-bar .partial-bar {
+  background-color: gray;
+  height: 0.75rem;
+}
+.ratings-reviews .ratings .progress-bar .whole-bar .partial-bar.five {
+  width: 40%;
+}
+.ratings-reviews .ratings .progress-bar .whole-bar .partial-bar.four {
+  width: 50%;
+}
+.ratings-reviews .ratings .progress-bar .whole-bar .partial-bar.three {
+  width: 60%;
+}
+.ratings-reviews .ratings .progress-bar .whole-bar .partial-bar.two {
+  width: 70%;
+}
+.ratings-reviews .ratings .progress-bar .whole-bar .partial-bar.one {
+  width: 80%;
+}
+.ratings-reviews .range {
+  text-align: left;
+  margin: 8% auto;
+}
+.ratings-reviews .range .size input {
+  width: 100%;
+}
+.ratings-reviews .range .comfort input {
+  width: 100%;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+>>>>>>> 5463395e3aabd7363d19eb564481c606aad19e87
 }
 
 .product-summary {
