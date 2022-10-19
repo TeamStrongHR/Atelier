@@ -63,7 +63,7 @@ function ImageGallery() {
     showThumbnails(0);
   },[])
 
-  return (<section className="image-gallery" id="image-gallery">
+  return (<section className="image-gallery" data-testid="image-gallery">
     <div className="thumbnails">
       {/*map through each image*/}
       <a className="thumbnail-previous" onClick={()=>{moveThumbnail(-1)}}>prev</a>

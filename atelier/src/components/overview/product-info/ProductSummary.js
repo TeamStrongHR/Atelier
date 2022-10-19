@@ -4,7 +4,7 @@ import ShoppingCart from '../shopping-cart/ShoppingCart.js'
 
 export default function ProductSummary () {
   return (
-    <aside className="product-summary">
+    <aside className="product-summary" data-testid="product-summary">
     <StarRating/>
       <h1>Product Category</h1>
       <h1>Product Title</h1>
