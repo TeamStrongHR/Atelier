@@ -1,0 +1,300 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div
+  className="ratings-reviews"
+  data-testid="ratings-reviews-comp"
+>
+  <div
+    className="ratings"
+  >
+    <h5>
+      RATINGS & REVIEWS
+    </h5>
+    <div
+      id="num-stars"
+    >
+      <span
+        id="num"
+      >
+        <strong>
+          3.5
+        </strong>
+      </span>
+      <span
+        id="stars"
+      >
+        ☆☆☆☆☆
+      </span>
+    </div>
+    <p>
+      100% of reviews recommend this product
+    </p>
+    <div
+      className="progress-bar"
+    >
+      <div>
+        <u>
+          5 stars
+        </u>
+      </div>
+      <div
+        className="whole-bar"
+      >
+        <div
+          className="partial-bar five"
+        />
+      </div>
+    </div>
+    <div
+      className="progress-bar"
+    >
+      <div>
+        <u>
+          4 stars
+        </u>
+      </div>
+      <div
+        className="whole-bar"
+      >
+        <div
+          className="partial-bar four"
+        />
+      </div>
+    </div>
+    <div
+      className="progress-bar"
+    >
+      <div>
+        <u>
+          3 stars
+        </u>
+      </div>
+      <div
+        className="whole-bar"
+      >
+        <div
+          className="partial-bar three"
+        />
+      </div>
+    </div>
+    <div
+      className="progress-bar"
+    >
+      <div>
+        <u>
+          2 stars
+        </u>
+      </div>
+      <div
+        className="whole-bar"
+      >
+        <div
+          className="partial-bar two"
+        />
+      </div>
+    </div>
+    <div
+      className="progress-bar"
+    >
+      <div>
+        <u>
+          1 stars
+        </u>
+      </div>
+      <div
+        className="whole-bar"
+      >
+        <div
+          className="partial-bar one"
+        />
+      </div>
+    </div>
+    <div
+      className="range"
+    >
+      <h6>
+        Size
+      </h6>
+      <div
+        className="size"
+      >
+        <input
+          list="ticks-size"
+          max="100"
+          min="0"
+          type="range"
+          value="70"
+        />
+        <datalist
+          id="ticks-size"
+        >
+          <option
+            value="33"
+          />
+          <option
+            value="66"
+          />
+        </datalist>
+      </div>
+      <h6>
+        Comfort
+      </h6>
+      <div
+        className="comfort"
+      >
+        <input
+          list="ticks-comfort"
+          max="100"
+          min="0"
+          type="range"
+          value="30"
+        />
+        <datalist
+          id="ticks-comfort"
+        >
+          <option
+            value="25"
+          />
+          <option
+            value="75"
+          />
+        </datalist>
+      </div>
+    </div>
+  </div>
+  <div
+    className="reviews-list"
+  >
+    <div
+      className="sort-options"
+    />
+    <div
+      className="review"
+    >
+      <div
+        className="star-user"
+      >
+        <span
+          id="stars"
+        >
+          ☆☆☆☆☆
+        </span>
+        <span
+          id="user-date"
+        >
+           Verified Purchaser, January 1, 2019
+        </span>
+      </div>
+      <h4>
+        REVIEW TITLE LONG TO TEST THE WRAPPPINGFS HASHDAHSDHAHSDHAHDSAHSADASDSADS
+      </h4>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quis nibh cursus, dictum elit in, ultricies augue. Curabitur quis dui risus. Integer sed hendrerit enim. Sed sed lobortis nibh. Proin metus arcu, interdum ut massa a, elementum porta eros.
+      </p>
+      <div>
+        <span
+          id="helpful"
+        >
+           Helpful?  
+          <a>
+            Yes
+          </a>
+           (10) | 
+          <u>
+            Report
+          </u>
+           
+        </span>
+      </div>
+      <hr
+        className="break"
+      />
+    </div>
+    <div
+      className="review"
+    >
+      <div
+        className="star-user"
+      >
+        <span
+          id="stars"
+        >
+          ☆☆☆☆☆
+        </span>
+        <span
+          id="user-date"
+        >
+           Verified Purchaser, January 1, 2019
+        </span>
+      </div>
+      <h4>
+        REVIEW TITLE LONG TO TEST THE WRAPPPINGFS HASHDAHSDHAHSDHAHDSAHSADASDSADS
+      </h4>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quis nibh cursus, dictum elit in, ultricies augue. Curabitur quis dui risus. Integer sed hendrerit enim. Sed sed lobortis nibh. Proin metus arcu, interdum ut massa a, elementum porta eros.
+      </p>
+      <div>
+        <span
+          id="helpful"
+        >
+           Helpful?  
+          <a>
+            Yes
+          </a>
+           (10) | 
+          <u>
+            Report
+          </u>
+           
+        </span>
+      </div>
+      <hr
+        className="break"
+      />
+    </div>
+    <div
+      className="review"
+    >
+      <div
+        className="star-user"
+      >
+        <span
+          id="stars"
+        >
+          ☆☆☆☆☆
+        </span>
+        <span
+          id="user-date"
+        >
+           Verified Purchaser, January 1, 2019
+        </span>
+      </div>
+      <h4>
+        REVIEW TITLE LONG TO TEST THE WRAPPPINGFS HASHDAHSDHAHSDHAHDSAHSADASDSADS
+      </h4>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quis nibh cursus, dictum elit in, ultricies augue. Curabitur quis dui risus. Integer sed hendrerit enim. Sed sed lobortis nibh. Proin metus arcu, interdum ut massa a, elementum porta eros.
+      </p>
+      <div>
+        <span
+          id="helpful"
+        >
+           Helpful?  
+          <a>
+            Yes
+          </a>
+           (10) | 
+          <u>
+            Report
+          </u>
+           
+        </span>
+      </div>
+      <hr
+        className="break"
+      />
+    </div>
+  </div>
+</div>
+`;

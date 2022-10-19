@@ -1,10 +1,9 @@
 import Navbar from './components/Navbar.js'
 import Overview from './components/overview/Overview.js'
-import './App.css';
+import RatingsAndReviews from './components/ratings-reviews/RatingsAndReviews.js'
+
 
 function App() {
-
-
 
   return (
 
@@ -12,7 +11,7 @@ function App() {
     <div className="App">
       <Navbar/>
       <Overview/>
-
+      <RatingsAndReviews/>
       <section></section>
       <aside></aside>
       <section></section>
