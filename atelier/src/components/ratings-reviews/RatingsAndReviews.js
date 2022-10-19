@@ -1,6 +1,6 @@
 import ReviewsList from './components/ReviewsList.js';
 import Ratings from './components/Ratings.js';
-//import axios from 'axios';
+import axios from 'axios';
 import {useState, useEffect} from 'react';
 
 
