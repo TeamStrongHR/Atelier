@@ -95,23 +95,19 @@
   padding-top: 20px;
   align-items: flex-end;
 }
-
-.card-category {
+.card-info .card-category {
   display: flex;
   font-size: medium;
 }
-
-.card-name {
+.card-info .card-name {
   display: flex;
   font-size: larger;
 }
-
-.card-price {
+.card-info .card-price {
   font-size: medium;
   display: flex;
 }
-
-.card-stars {
+.card-info .card-stars {
   display: flex;
 }
 
@@ -137,13 +133,6 @@
   opacity: 0.5;
 }
 
-.related-modal-title {
-  display: flex;
-  position: fixed;
-  left: 10px;
-  top: 10px;
-}
-
 .related-modal-content {
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -157,6 +146,12 @@
   border: 1px solid gray;
   border-radius: 10px;
   align-items: center;
+}
+.related-modal-content .related-modal-title {
+  display: flex;
+  position: fixed;
+  left: 10px;
+  top: 10px;
 }
 
 .related-modal-content:after {
