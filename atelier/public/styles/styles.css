@@ -316,6 +316,11 @@
   width: 20%;
   transition: 2s;
 }
+.image-gallery .slider .slide img {
+  width: 800px;
+  height: 500px;
+}
+
 .style-selector .style-selector1 {
   display: flex;
   justify-content: space-around;
