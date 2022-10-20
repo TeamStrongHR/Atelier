@@ -14,6 +14,7 @@
 //related list title 'Related Product'
 .related-title{
   text-align: left;
+  margin-left: 20px;
 }
 
 //left and right arrow
@@ -64,11 +65,12 @@
 .related-card{
   display: inline-block;
   position: relative;
-  width: 250px;
+  width: fit-content;
   height: 400px;
   border: 1px solid gray;
-  border-radius: 10px;
+  border-radius: 2px;
   margin: 20px;
+
 }
 
 //star icon on top right of card
@@ -78,6 +80,7 @@
     position: absolute;
     right: 10px;
     top: 10px;
+    z-index: 10;
   }
   &.fa-star:hover{
     font-size: 150%;
@@ -87,10 +90,11 @@
 .card-image{
   position:relative;
   height: 300px;
-  width:250px;
+  width: 250px;
   top: 0px;
-  z-index: -1;
+  z-index: 1;
   overflow: hidden;
+  border-radius: 2px 2px 0px 0px;
 }
 
 //card info section contains category, product name, product price and product review stars
@@ -126,9 +130,6 @@
 
 }
 
-
-
-
 .related-modal{
   position: fixed;
   left: 0;
@@ -138,20 +139,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 100;
 }
-
-.related-modal-overlay{
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
-  display:flex;
-  background-color: #000;
-  opacity: 0.5;
-}
-
-
 
 .related-modal-content{
   width: fit-content;
@@ -160,14 +149,13 @@
   display: flex;
   z-index: 100;
   border: 1px solid gray;
-  border-radius: 10px;
+  border-radius: 2px;
   align-items: center;
 
   .related-modal-title{
     display: flex;
-    position: fixed;
-    left: 10px;
-    top: 10px;
+    position: relative;
+    margin: 10px;
   }
 }
 
@@ -178,16 +166,104 @@
 
 .modal-column {
   float: left;
-  padding: 10px;
+  padding: 20px;
 }
 
 //===============================================================
 //Your outfit list CSS below
 .outfit-list{
+  height:fit-content;
+  display:block;
+  position: relative;
+  justify-content: center;
+}
+
+.outfit{
+  display: inline-flex;
+}
+
+.outfit-add{
+  display: flex;
+  position: relative;
+  width: 250px;
+  height: 400px;
+  border: 1px solid white;
+  border-radius: 2px;
+  margin: 20px;
+  color: gray;
+
+  .outfit-add-icon{
+    position: absolute;
+    top: 45%;
+    left: 50px;
+
+  }
+
+
+}
+
+.fa {
+  &.fa-plus{
+    font-size: 110%;
+    z-index: 10;
+  }
+}
+.outfit-add:hover{
+  color: black;
+}
+
+//left and right arrow
+.outfit-left-arrow{
+  display: inline-flex;
+  position: absolute;
+  top: 45%;
+  z-index: 10;
+  left: 355px;
+}
+
+.outfit-right-arrow{
+  display: inline-flex;
+  right: 32px;
+  position: absolute;
+  top: 45%;
+  z-index: 10;
+}
+//flex container
+.outfit-carousel{
   display: block;
-  height: 600px;
+  position: relative;
+  overflow-x: scroll;
+  white-space: nowrap;
+  width:80vw;
+  //hide scrollbar in IE, Edge and Firefox
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+}
+//hide scrollbar in Chrome, safari and opera
+.outfit-carousel::-webkit-scrollbar {
+  display: none;
 }
 
 .outfit-card{
-  display: flex;
+  display: inline-block;
+  position: relative;
+  width: fit-content;
+  height: 400px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  margin: 20px;
+
+  .fa{
+    &.fa-times-circle-o{
+      display: flex;
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      z-index: 10;
+    }
+    &.fa-times-circle-o:hover{
+      font-size: 150%;
+    }
+  }
 }
