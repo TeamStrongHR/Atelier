@@ -36,10 +36,6 @@ app.all('/api/:endpoint', (req, res, next) => {
       }
       break;
 
-
-    case "POST":
-      break;
-
     default:
 
   }
