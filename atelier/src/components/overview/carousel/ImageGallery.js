@@ -63,27 +63,43 @@ function ImageGallery() {
   };
 
   useEffect(()=>{
-    showImage(0);
-    showThumbnails(0);
+    //  showImage(0);
+    //  showThumbnails(0);
   },[])
 
-  return (<section className="image-gallery" data-testid="image-gallery">
-    <div className="thumbnails">
-      {/*map through each image*/}
-      <a className="thumbnail-previous" onClick={()=>{moveThumbnail(-1)}}>prev</a>
-      {[1,2,3,4,5,6].map((ele, i)=>{
-        return <Thumbnail key={i}/>;
-      })}
-      <a className="thumbnail-next" onClick={()=>{moveThumbnail(1)}}>next</a>
-    </div>
-    <div className="main">
-    {imageArr.map((ele, i)=>{
+  return (
+  <section className="image-gallery" data-testid="image-gallery">
+    <div className="slider">
+      <div className="slides">
+      {imageArr.map((ele, i)=>{
       return <MainImage image={ele} id={i} key={i}/>;
     })}
-    <a className="previous" onClick={()=>{moveImage(-1)}}> prev </a>
-    <a className="next" onClick={()=>{moveImage(1)}}> next </a>
+      </div>
     </div>
   </section>)
 }
+// slides = main slider = image gallery main-imag = slide
+
+//<div className="thumbnails">
+      // {/*map through each image*/}
+      // <a className="thumbnail-previous" onClick={()=>{moveThumbnail(-1)}}>prev</a>
+
+      // {[1,2,3,4,5,6].map((ele, i)=>{
+      //   return <Thumbnail key={i}/>;
+      // })}
+
+      // <a className="thumbnail-next" onClick={()=>{moveThumbnail(1)}}>next</a>
+    // </div>
+
+    // <div className="main">
+    // {imageArr.map((ele, i)=>{
+    //   return <MainImage image={ele} id={i} key={i}/>;
+    // })}
+
+    // <a className="previous" onClick={()=>{moveImage(-1)}}> prev </a>
+
+    // <a className="next" onClick={()=>{moveImage(1)}}> next </a>
+
+    // </div>
 
 export default ImageGallery;
