@@ -1,44 +1,41 @@
 import Review from './Review.js';
+import WriteReview from './WriteReview.js';
 import {useState, useEffect} from 'react';
-export default function ReviewsList () {
+import axios from 'axios';
 
+export default function ReviewsList ({reviews}) {
 
-
-  var reviews = ["a", "b", "c", "d", "e", "f", "g", "h"];
-  var reviewsLength = reviews.length;
+  //show 2 initially
   const [showAmount, setShowAmount] = useState(2);
-
+  //edge case, if less than 2 reviews
+  if(reviews.length<2) {
+    setShowAmount(reviews.length);
+  }
   var handleClick = (e) => {
     //adds 2 to the previous show amount, caps at the length of reviews.
     e.preventDefault();
-    if(showAmount < reviewsLength-1) {
+    if(showAmount < reviews.length-1) {
       setShowAmount(prev => prev + 2);
     } else {
-      setShowAmount(reviewsLength);
+      setShowAmount(reviews.length);
     }
-    console.log(showAmount)
   }
 
-
   return (
-    <div className="reviews-list">
-      <div className="sort-options">
+    <div>
+      <div className="reviews-list">
+        <div className="sort-options">
+        </div>
+        {reviews.slice(0, showAmount).map((review, i) => {
+          return (<Review key={i} review={review}/>)
+        })}
       </div>
-      {/*MAP REVIEWS up to the showAmount*/}
-      <Review />
-      <Review />
-      <Review />
-      <Review />
-      <Review />
-      <Review />
-      <Review />
-      <Review />
-
-      {/*display more reviews if there are more than 2 reviews*/}
-      {reviews.length < 2 ? null: (<button onClick={(e)=> {
-        handleClick(e)
-      }
-      }>MORE REVIEWS</button>)}
+      {reviews.length > 2 ?
+      (<button className="more-reviews" onClick={function(e){handleClick(e);
+      }}>More Reviews</button>) : null}
+      <br></br>
+      <button className="write-reviews" onClick={function(){}}>Write Review</button>
+      <WriteReview/>
     </div>
   )
 }

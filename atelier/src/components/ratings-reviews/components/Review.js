@@ -1,19 +1,22 @@
 import {useState, useEffect} from 'react';
 import StarRating from '../../shared/StarRating.js';
-export default function Review () {
+import {format, parseISO} from 'date-fns'
 
+export default function Review ({review}) {
+  var date = format(parseISO(review.date), "MMMM dd, yyyy")
+  console.log(date)
 
 
   return (
     <div className="review">
       <div className="star-user">
-      <StarRating rating={3.7}/>
-      <span id="user-date"> Verified Purchaser, January 1, 2019</span>
+      <StarRating rating={review.rating}/>
+      <span id="user-date"> {review.reviewer_name}, {date}</span>
       </div>
-      <h4>REVIEW TITLE LONG TO TEST THE WRAPPPINGFS HASHDAHSDHAHSDHAHDSAHSADASDSADS</h4>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quis nibh cursus, dictum elit in, ultricies augue. Curabitur quis dui risus. Integer sed hendrerit enim. Sed sed lobortis nibh. Proin metus arcu, interdum ut massa a, elementum porta eros.</p>
+      <h4>{review.summary}</h4>
+      <p>{review.body}</p>
       <div>
-      <span id="helpful"> Helpful?  <a>Yes</a> (10) | <u>Report</u> </span>
+      <span id="helpful"> Helpful?  <a>Yes</a> ({review.helpfulness}) | <u>Report</u> </span>
       </div>
       <hr className="break"></hr>
     </div>

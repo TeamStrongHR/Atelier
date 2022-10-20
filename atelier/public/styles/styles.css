@@ -184,8 +184,7 @@
 .ratings-reviews .reviews-list {
   overflow: auto;
   text-align: left;
-  width: 40%;
-  height: 100vh;
+  width: 60%;
   margin: auto 5%;
   padding-right: 20px;
   font-size: 0.875rem;
@@ -214,10 +213,6 @@
 .ratings-reviews .reviews-list .break {
   margin: 5% auto;
   border-top: 2px solid gray;
-}
-.ratings-reviews .reviews-list button {
-  position: absolute;
-  display: inline-block;
 }
 .ratings-reviews .ratings {
   /*make the parent container relative so children can use absolute positioning*/
@@ -259,23 +254,8 @@
   height: 0.75rem;
 }
 .ratings-reviews .ratings .progress-bar .whole-bar .partial-bar {
-  background-color: gray;
+  background-color: green;
   height: 0.75rem;
-}
-.ratings-reviews .ratings .progress-bar .whole-bar .partial-bar.five {
-  width: 40%;
-}
-.ratings-reviews .ratings .progress-bar .whole-bar .partial-bar.four {
-  width: 50%;
-}
-.ratings-reviews .ratings .progress-bar .whole-bar .partial-bar.three {
-  width: 60%;
-}
-.ratings-reviews .ratings .progress-bar .whole-bar .partial-bar.two {
-  width: 70%;
-}
-.ratings-reviews .ratings .progress-bar .whole-bar .partial-bar.one {
-  width: 80%;
 }
 .ratings-reviews .range {
   text-align: left;
@@ -286,6 +266,9 @@
 }
 .ratings-reviews .range .comfort input {
   width: 100%;
+}
+.ratings-reviews .more-reviews {
+  position: absolute;
 }
 
 .image-gallery {
