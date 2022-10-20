@@ -1,37 +1,50 @@
 // import axios from 'axios';
 import {useState, useEffect} from 'react';
-import MainImage from './MainImage.js'
-import image1 from '../../../images/image1.jpeg'
-import image2 from '../../../images/image2.jpeg'
-import image3 from '../../../images/image3.jpeg'
-import image4 from '../../../images/image4.jpeg'
+import MainImage from './MainImage.js';
+import Thumbnail from './Thumbnail.js'
+import image1 from '../../../images/image1.jpeg';
+import image2 from '../../../images/image2.jpeg';
+import image3 from '../../../images/image3.jpeg';
+import image4 from '../../../images/image4.jpeg';
 function ImageGallery() {
-  const [index, setImageIndex] = useState([0,0]);
+  const [index, setIndex] = useState([0,0]);
 
   let imageArr = [image1, image2, image3, image4, image2, image3];
 
   // helper function for carousel
   const showImage = (num)=>{
     let imageArr = document.getElementsByClassName('main-image');
+    let slider = document.getElementsByClassName('slides');
     let thumbArr = document.getElementsByClassName('thumbnail');
+    let indexCopy = index
+    let distance = 0;
     // console.log(imageArr);
-    // if (num > imageArr.length -1) {imageIndex = 0;}
-    // else if (num < 0) {imageIndex = imageArr.length-1}
-    // else {imageIndex = num};
-    // for (let i = 0; i < imageArr.length; i++) {
-    //   if (i === imageIndex) {
-    //     imageArr[i].style.display ="flex";
-    //   } else {
-    //     imageArr[i].style.display="none";
-    //   }
-    // }
-    // for (let i = 0; i < thumbArr.length; i++) {
-    //   if (i === index) {
-    //     thumbArr[i].style.border = "thick solid";
-    //   } else {
-    //     thumbArr[i].style.border = "none";
-    //   }
-    // }
+    // set index according to num input
+    if (num > imageArr.length -1) {
+      indexCopy[0] = 0;
+      setIndex(indexCopy);}
+    else if (num < 0) {
+      indexCopy[0] = imageArr.length -1;
+      setIndex(indexCopy);}
+    else {
+      indexCopy[0] = num;
+      setIndex(indexCopy);
+    };
+    // getting distance from first image to the current index
+    for (let i = 0; i < index[0]; i++) {
+      distance+=imageArr[i].clientWidth;
+    }
+    console.log(index[0]);
+    slider[0].style.transition = "transform 0.4s ease-in-out";
+    slider[0].style.transform =`translateX(${-distance}px)`;
+
+    for (let i = 0; i < thumbArr.length; i++) {
+      if (i === index) {
+        thumbArr[i].style.border = "thick solid";
+      } else {
+        thumbArr[i].style.border = "none";
+      }
+    }
   };
 
   const showThumbnails = (num) => {
@@ -58,7 +71,7 @@ function ImageGallery() {
   };
 
   const moveImage = (num)=> {
-
+    showImage(index[0]+num);
   };
 
   useEffect(()=>{
@@ -69,13 +82,18 @@ function ImageGallery() {
   return (
   <section className="image-gallery" data-testid="image-gallery">
     <div className="slider">
+      <div className="thumbnails">
+        {imageArr.map((ele, i)=>{
+          return <Thumbnail thumbnail={ele}/>;
+        })}
+      </div>
       <div className="slides">
       {imageArr.map((ele, i)=>{
       return <MainImage image={ele} id={i} key={i}/>;
       })}
       </div>
-      <a className="main-previous">&#10094;</a>
-      <a className="main-next" >&#10095;</a>
+      <a className="main-previous" onClick={()=>{moveImage(-1)}}>&#10094;</a>
+      <a className="main-next" onClick={()=>{moveImage(1)}}>&#10095;</a>
     </div>
   </section>)
 }

@@ -8,6 +8,9 @@
 # testing
 /coverage
 
+# CSS
+/public/styles/styles.css
+/public/styles/styles.css
 # production
 /build
 

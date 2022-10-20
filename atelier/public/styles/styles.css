@@ -304,6 +304,15 @@
   height: auto;
   overflow: hidden;
 }
+.image-gallery .slider .thumbnails {
+  width: 10%;
+}
+.image-gallery .slider .thumbnails .thumbnail {
+  width: 100%;
+  height: 100%;
+  max-width: 200px;
+  max-height: 200px;
+}
 .image-gallery .slider .main-previous {
   top: 50%;
   left: 7%;
@@ -319,9 +328,6 @@
   height: auto;
   display: flex;
 }
-.image-gallery .slider .slides input {
-  display: none;
-}
 .image-gallery .slider .main-image {
   width: 14.28%;
   transition: 2s;
@@ -330,6 +336,7 @@
   width: 100%;
   max-width: 800px;
   height: auto;
+  z-index: 8;
 }
 
 .style-selector .style-selector1 {

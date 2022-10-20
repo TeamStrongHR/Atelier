@@ -7,11 +7,27 @@
   height: auto;
   background: gray;
   width: 45%;
+
+
+  // main image slider
   .slider {
     width: 100%;
     height: auto;
     overflow: hidden;
 
+    // Thumbnails
+    .thumbnails {
+      width : 10%;
+      .thumbnail {
+        width: 100%;
+        height: 100%;
+        max-width: 200px;
+        max-height: 200px;
+      }
+    }
+
+
+    // main image navigation arrows
     .main-previous {
       // position: absolute;
       top: 50%;
@@ -24,13 +40,13 @@
       left: 75%;
       z-index: 9;
     }
+
+
+    // main image slides
     .slides {
       width: 700%;
       height:auto;
       display: flex;
-    }
-    .slides input{
-      display: none;
     }
     .main-image {
       width: 14.28%;
@@ -39,6 +55,7 @@
         width: 100%;
         max-width: 800px;
         height: auto;
+        z-index: 8;
       }
     }
   }
