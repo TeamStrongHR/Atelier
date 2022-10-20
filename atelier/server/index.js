@@ -16,34 +16,33 @@ app.use(express.static(path.join(__dirname, "../build")))
 
 
 
-// app.all('/api/:endpoint', (req, res, next) => {
-//   var end = req.params.endpoint;
-//   switch (req.method) {
-//     // case "GET":
-//     //   if(end === "reviews") {
-//     //     var options = {
-//     //       url: "https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews",
-//     //       params: {
-//     //         page: parseInt(req.query.page),
-//     //         count: parseInt(req.query.count),
-//     //         sort: req.query.sort,
-//     //         product_id: parseInt(req.query.product_id)
-//     //       },
-//     //       method: "get",
-//     //       headers: {"Authorization": process.env.AUTH}
-//     //     }
-//     //     axios(options)Í
-//     //     .then(result => {
-//     //       res.send(result.data)
-//     //     })
-
-//     //   }
-//       // break;
-//   }
-// })
+app.all('/api/:endpoint', (req, res, next) => {
+  var end = req.params.endpoint;
+  switch (req.method) {
+    case "GET":
+      if (end === "reviews") {
+        var options = {
+          url: "https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews",
+          params: {
+            page: parseInt(req.query.page),
+            count: parseInt(req.query.count),
+            sort: req.query.sort,
+            product_id: parseInt(req.query.product_id)
+          },
+          method: "get",
+          headers: { "Authorization": process.env.AUTH }
+        }
+        axios(options)
+          .then(result => {
+            res.send(result.data)
+          })
+      }
+      break;
+  }
+})
 
 
 //listen at environment PORT 3000 (see .env)
-app.listen(process.env.PORT, ()=>{
+app.listen(process.env.PORT, () => {
   console.log('LISTENING AT PORT', process.env.PORT);
 });

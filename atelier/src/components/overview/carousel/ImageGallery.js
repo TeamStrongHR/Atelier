@@ -73,8 +73,10 @@ function ImageGallery() {
       <div className="slides">
       {imageArr.map((ele, i)=>{
       return <MainImage image={ele} id={i} key={i}/>;
-    })}
+      })}
       </div>
+      <a className="main-previous">&#10094;</a>
+      <a className="main-next" >&#10095;</a>
     </div>
   </section>)
 }

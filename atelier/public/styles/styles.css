@@ -292,33 +292,44 @@
 .image-gallery {
   margin: 0;
   padding: 0;
-  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: auto;
   background: gray;
+  width: 45%;
 }
 .image-gallery .slider {
-  width: 800px;
-  height: 500px;
+  width: 100%;
+  height: auto;
   overflow: hidden;
 }
+.image-gallery .slider .main-previous {
+  top: 50%;
+  left: 7%;
+  z-index: 9;
+}
+.image-gallery .slider .main-next {
+  top: 50%;
+  left: 75%;
+  z-index: 9;
+}
 .image-gallery .slider .slides {
-  width: 500%;
-  height: 500px;
+  width: 700%;
+  height: auto;
   display: flex;
 }
 .image-gallery .slider .slides input {
   display: none;
 }
-.image-gallery .slider .slide {
-  width: 20%;
+.image-gallery .slider .main-image {
+  width: 14.28%;
   transition: 2s;
 }
-.image-gallery .slider .slide img {
-  width: 800px;
-  height: 500px;
+.image-gallery .slider .main-image img {
+  width: 100%;
+  max-width: 800px;
+  height: auto;
 }
 
 .style-selector .style-selector1 {
