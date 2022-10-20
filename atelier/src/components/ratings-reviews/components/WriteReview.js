@@ -3,5 +3,5 @@ import axios from 'axios';
 
 
 export default function WriteReview () {
-  return (<div>MY MODAL</div>)
+  return (<div className="modal">MY MODAL</div>)
 }
