@@ -19,7 +19,7 @@ export default function RatingsAndReviews () {
     }
     axios(options)
     .then(result => {
-      console.log(result);
+      // console.log(result);
     })
   })
 

@@ -15,7 +15,7 @@ function ImageGallery() {
   const showImage = (num)=>{
     let imageArr = document.getElementsByClassName('main-image');
     let thumbArr = document.getElementsByClassName('thumbnail');
-    console.log(imageArr);
+    // console.log(imageArr);
     if (num > imageArr.length -1) {imageIndex = 0;}
     else if (num < 0) {imageIndex = imageArr.length-1}
     else {imageIndex = num};
@@ -33,7 +33,8 @@ function ImageGallery() {
         thumbArr[i].style.border = "none";
       }
     }
-  }
+  };
+
   const showThumbnails = (num) => {
     let thumbArr = document.getElementsByClassName('thumbnail');
     if (num+3 > thumbArr.length-1) {
@@ -51,13 +52,16 @@ function ImageGallery() {
       }
     }
 
-  }
+  };
+
   const moveThumbnail = (num)=>{
     showThumbnails(thumbnailIndex+=num)
-  }
+  };
+
   const moveImage = (num)=> {
     showImage(imageIndex+=num);
   };
+
   useEffect(()=>{
     showImage(0);
     showThumbnails(0);

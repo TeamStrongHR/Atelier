@@ -173,10 +173,6 @@
   display: flex;
 }
 
-.image-gallery {
-  float: left;
-}
-
 /*reset css from user agent stylesheet*/
 * {
   margin: 0;
@@ -294,9 +290,15 @@
 }
 
 .image-gallery {
+  margin: 0;
+  padding: 0;
+  display: flex;
   position: relative;
+  background: gray;
   width: 50%;
-  height: auto;
+  height: 50%;
+  overflow: hidden;
+  text-align: center;
 }
 .image-gallery .thumbnails {
   display: flex;
@@ -310,9 +312,8 @@
   display: none;
 }
 .image-gallery .main {
-  display: flex;
-  position: relative;
   width: 100%;
+  height: auto;
 }
 .image-gallery .main .previous {
   position: absolute;
@@ -327,13 +328,11 @@
   font-weight: bold;
 }
 .image-gallery .main .main-image {
-  display: none;
+  display: flex;
   -o-object-fit: fill;
      object-fit: fill;
   width: 100%;
-  overflow: hidden;
   height: auto;
-  max-width: 100%;
 }
 
 .style-selector .style-selector1 {
