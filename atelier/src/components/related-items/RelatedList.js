@@ -69,9 +69,9 @@ export default function RelatedList (props) {
       </i> : null}
       <div className='related-carousel' id='slider'>
         {//relatedProduct is product_id
-          relatedProductArr.map((((relatedProduct, index) => {
+          relatedProductArr.map((relatedProduct, index) => {
             return <RelatedCard currentProduct={testCurrentProductInfo} relatedProduct={relatedProduct} />
-          })))}
+          })}
       </div>
     </div>
   )

@@ -8,7 +8,7 @@ export default function RatingsAndReviews () {
 
   useEffect(()=> {
     var options = {
-      url: "http://localhost:3000/api/reviews",
+      url: `http://localhost:${process.env.PORT}/api/reviews`,
       params: {
         page: 1,
         count: 6,
@@ -21,6 +21,7 @@ export default function RatingsAndReviews () {
     .then(result => {
       console.log(result);
     })
+    .catch(err => console.log(err));
   })
 
   return (

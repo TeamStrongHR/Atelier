@@ -9,8 +9,8 @@ export default function RelatedAndComparison (props) {
 
   return (
     <div className='related-comparison'>
-      <RelatedList testProduct={testProduct} />
-      <YourOutfit data-testid='YourOutfit'/>
+      <RelatedList currentProduct={currProduct} />
+      <YourOutfit data-testid='YourOutfit' currentProduct={currProduct}/>
     </div>
   )
 }

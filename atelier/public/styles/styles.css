@@ -14,6 +14,7 @@
 
 .related-title {
   text-align: left;
+  margin-left: 20px;
 }
 
 .left-arrow {
@@ -60,10 +61,12 @@
 .related-card {
   display: inline-block;
   position: relative;
-  width: 250px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
   height: 400px;
   border: 1px solid gray;
-  border-radius: 10px;
+  border-radius: 2px;
   margin: 20px;
 }
 
@@ -72,6 +75,7 @@
   position: absolute;
   right: 10px;
   top: 10px;
+  z-index: 10;
 }
 .fa-regular.fa-star:hover {
   font-size: 150%;
@@ -82,8 +86,9 @@
   height: 300px;
   width: 250px;
   top: 0px;
-  z-index: -1;
+  z-index: 1;
   overflow: hidden;
+  border-radius: 2px 2px 0px 0px;
 }
 
 .card-info {
@@ -120,17 +125,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.related-modal-overlay {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  background-color: #000;
-  opacity: 0.5;
+  z-index: 100;
 }
 
 .related-modal-content {
@@ -144,7 +139,7 @@
   display: flex;
   z-index: 100;
   border: 1px solid gray;
-  border-radius: 10px;
+  border-radius: 2px;
   align-items: center;
 }
 .related-modal-content .related-modal-title {
@@ -165,12 +160,87 @@
 }
 
 .outfit-list {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   display: block;
-  height: 600px;
+  position: relative;
+  justify-content: center;
+}
+
+.outfit {
+  display: inline-flex;
+}
+
+.outfit-add {
+  display: flex;
+  position: relative;
+  width: 250px;
+  height: 400px;
+  border: 1px solid white;
+  border-radius: 2px;
+  margin: 20px;
+  color: gray;
+}
+.outfit-add .outfit-add-icon {
+  position: absolute;
+  top: 45%;
+  left: 50px;
+}
+
+.fa.fa-plus {
+  font-size: 110%;
+  z-index: 10;
+}
+
+.outfit-add:hover {
+  color: black;
+}
+
+.outfit-left-arrow {
+  display: inline-flex;
+  position: absolute;
+  top: 45%;
+  z-index: 10;
+  left: 355px;
+}
+
+.outfit-right-arrow {
+  display: inline-flex;
+  right: 32px;
+  position: absolute;
+  top: 45%;
+  z-index: 10;
+}
+
+.outfit-carousel {
+  display: block;
+  position: relative;
+  overflow-x: scroll;
+  white-space: nowrap;
+  width: 80vw;
 }
 
 .outfit-card {
+  display: inline-block;
+  position: relative;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 400px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  margin: 20px;
+}
+.outfit-card .fa.fa-times-circle-o {
   display: flex;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  z-index: 10;
+}
+.outfit-card .fa.fa-times-circle-o:hover {
+  font-size: 150%;
 }
 
 /*reset css from user agent stylesheet*/
