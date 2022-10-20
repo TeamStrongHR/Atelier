@@ -236,14 +236,14 @@
   white-space: nowrap;
   width:80vw;
   //hide scrollbar in IE, Edge and Firefox
-  // -ms-overflow-style: none;
-  // scrollbar-width: none;
-  // scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
 }
 //hide scrollbar in Chrome, safari and opera
-// .outfit-carousel::-webkit-scrollbar {
-//   display: none;
-// }
+.outfit-carousel::-webkit-scrollbar {
+  display: none;
+}
 
 .outfit-card{
   display: inline-block;

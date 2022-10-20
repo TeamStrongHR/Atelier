@@ -218,6 +218,13 @@
   overflow-x: scroll;
   white-space: nowrap;
   width: 80vw;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+}
+
+.outfit-carousel::-webkit-scrollbar {
+  display: none;
 }
 
 .outfit-card {
