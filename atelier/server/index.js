@@ -2,8 +2,7 @@ require("dotenv").config();
 const express = require('express');
 const path = require('path');
 const app = express();
-const axios = require('axios');
-
+const {reviews} = require('./controllers/reviews.js');
 
 //middleware
 app.use(express.json());
@@ -11,6 +10,7 @@ app.use(express.json());
 //serve up REACT static assets, static assets are created during build.
 app.use(express.static(path.join(__dirname, "../build")))
 
+<<<<<<< HEAD
 app.all('/api/:endpoint', (req, res, next) => {
   var end = req.params.endpoint;
   switch (req.method) {
@@ -40,6 +40,11 @@ app.all('/api/:endpoint', (req, res, next) => {
 
   }
 })
+=======
+app.all('/api/reviews/:endpoint', reviews)
+
+
+>>>>>>> 98fa2b37f61b227152af46dfd54fc5d138024fe3
 
 
 //listen at environment PORT 3000 (see .env)

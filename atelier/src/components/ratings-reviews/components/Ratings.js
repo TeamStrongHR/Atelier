@@ -1,6 +1,23 @@
 import {useState, useEffect} from 'react';
 import StarRating from '../../shared/StarRating.js';
-export default function Ratings () {
+import axios from 'axios';
+export default function Ratings ({ratings}) {
+
+  //math to determine average rating...
+  var totalNumOfRatings = 0;
+  var total = 0;
+  for(const num in ratings) {
+    var val = parseInt(num);
+    var count = parseInt(ratings[num]);
+    totalNumOfRatings+=count;
+    total+=(val*count)
+  }
+  var averageRating = Math.round(((total/parseFloat(totalNumOfRatings)) * 100)/100).toFixed(1);
+
+  //for use in printing out the progress bars
+  //reverse to start array from 5 stars...
+  var ratingsKeys = Object.keys(ratings).reverse();
+  var ratingsValues = Object.values(ratings).reverse();
 
   return (
     <div className="ratings">
@@ -8,44 +25,23 @@ export default function Ratings () {
 
       {/*RATING STARS*/}
       <div id="num-stars">
-        <span id="num"><strong>3.5</strong></span>
-        <StarRating/>
+        <span id="num"><strong>{averageRating}</strong></span>
+        <StarRating rating={averageRating}/>
       </div>
       <p>100% of reviews recommend this product</p>
+
       {/*RATING BARS*/}
-      <div className="progress-bar">
-        <div><u>5 stars</u></div>
+      {ratingsKeys.map((key, i) => {
+        return (
+        <div className="progress-bar">
+        <div><u>{key} stars</u></div>
         <div className="whole-bar">
-          <div className="partial-bar five"></div>
+          <div className="partial-bar" style={{width:`${Math.round((parseInt(ratingsValues[i])/parseFloat(totalNumOfRatings))*100)}%`}}></div>
         </div>
-      </div>
-      <div className="progress-bar">
-        <div><u>4 stars</u></div>
-        <div className="whole-bar">
-          <div className="partial-bar four"></div>
-        </div>
-      </div>
-      <div className="progress-bar">
-        <div><u>3 stars</u></div>
-        <div className="whole-bar">
-          <div className="partial-bar three"></div>
-        </div>
-      </div>
-      <div className="progress-bar">
-        <div><u>2 stars</u></div>
-        <div className="whole-bar">
-          <div className="partial-bar two"></div>
-        </div>
-      </div>
-      <div className="progress-bar">
-        <div><u>1 stars</u></div>
-        <div className="whole-bar">
-          <div className="partial-bar one"></div>
-        </div>
-      </div>
+      </div>)
+      })}
 
-    {/*RANGE BARS*/}
-
+    {/*COMFORT/SIZE RANGES*/}
     <div className="range">
 
       <h6>Size</h6>

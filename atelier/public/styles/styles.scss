@@ -2,29 +2,14 @@
 @import './ratings-reviews/ratings_reviews';
 @import './overview/overview';
 @import './question-answer/question_answer';
+@import './shared/star_rating';
 
-
-
-*, *::before, *::after {
+/*reset css from user agent stylesheet*/
+* {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
-}
-
-.product-summary {
-  float: right;
-}
-
-.navbar {
-  display:flex;
-  justify-content: space-around;
-  margin-top: 30px;
-}
-
-.image-summary {
-  display: flex;
-  justify-content: center;
-
-}
-
-.slogan {
-  display:flex;
+  word-break: break-word;
+  /*use Roboto Google Fonts*/
+  font-family: 'Roboto', sans-serif;
 }
