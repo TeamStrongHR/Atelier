@@ -2,12 +2,14 @@ import {useState, useEffect} from 'react';
 import axios from 'axios';
 
 
-export default function WriteReview ({modalOpen, handleModalClose}) {
+export default function WriteReview ({productName, modalOpen, handleModalClose}) {
 
   return (
   <div className="modal" style={{display:`${modalOpen}`}}>
     <div className="modal-content">
       <form>
+        <h4>Write Your Review</h4>
+        <h5>About the {productName}</h5>
         <span>Do you recommend this product?</span>
         <input type="radio" id="recommend-yes" name="recommend" value="Yes"></input>
         <label htmlFor="recommend-yes">Yes</label>
