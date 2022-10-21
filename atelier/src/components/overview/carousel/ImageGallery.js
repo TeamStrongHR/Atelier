@@ -121,7 +121,7 @@ return (
   <section className="image-gallery" data-testid="image-gallery">
     <div className="slider">
       <div className="thumbnails">
-         <a className="thumbnail-previous" onClick={()=>{moveThumbnail(-1)}}>&#8963;</a>
+        <a className="thumbnail-previous" onClick={()=>{moveThumbnail(-1)}}>&#8963;</a>
         {imageArr.map((ele, i) => {
           return <Thumbnail thumbnail={ele} />;
         })}
@@ -132,8 +132,8 @@ return (
           return <MainImage image={ele} id={i} key={i} />;
         })}
       </div>
-      <a className="main-previous" onClick={() => { moveImage(-1) }}>&#10094;</a>
-      <a className="main-next" onClick={() => { moveImage(1) }}>&#10095;</a>
+      <a className="main-previous" onClick={() => {moveImage(-1)}}>&#10094;</a>
+      <a className="main-next" onClick={() => {moveImage(1)}}>&#10095;</a>
     </div>
   </section>)
 }

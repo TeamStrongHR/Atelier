@@ -1,0 +1,17 @@
+.slogan {
+  display: flex;
+  width:70%;
+  margin: auto;
+  text-align: center;
+  .description {
+    float: left;
+    width: 64.3%;
+    text-align: left;
+  }
+  .characteristics{
+    float: right;
+    width: 35.7%;
+    border-left: 4px solid black;
+    padding: 10%;
+  }
+}
