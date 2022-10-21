@@ -9,7 +9,7 @@ import image4 from '../../../images/image4.jpeg';
 function ImageGallery() {
   const [index, setIndex] = useState([0, 0]);
 
-  let imageArr = [image1, image2, image3, image4, image2, image3];
+  let imageArr = [image1, image2, image3, image4, image2, image4];
 
   // helper function for carousel
   const showImage = (num) => {
@@ -38,6 +38,7 @@ function ImageGallery() {
     for (let i = 0; i < index[0]; i++) {
       distance += imageArr[i].clientWidth;
     }
+    // calculate percent index
     let percent = 100 *distance/ slides[0].clientWidth;
 
     console.log(index[0]);
@@ -55,13 +56,9 @@ function ImageGallery() {
 
   const showThumbnails = (num) => {
     let thumbArr = document.getElementsByClassName('thumbnail');
+    let thumbnails = document.getElementsByClassName('thumbnails');
+    thumbnails[0].style.height = "40%";
     let indexCopy = index;
-    // if (num+3 > thumbArr.length-1) {
-    //   num = thumbArr.length-4;
-    // }
-    // if (num < 0) {
-    //   num = 0;
-    // }
     if (num + 3 > thumbArr.length - 1) {
       indexCopy[1] = thumbArr.length - 4;
     } else if (num < 0) {
@@ -70,12 +67,45 @@ function ImageGallery() {
       indexCopy[1] = num;
     };
     setIndex(indexCopy);
-    // slider[0].style.transition = "transform 0.4s ease-in-out";
-    // slider[0].style.transform = `translateX(${-distance}px)`;
+    for (let i = 0; i < thumbArr.length; i++) {
+      if (num+4 > i) {
+        thumbArr[i].style.height= "100%";
+      } else {
+        thumbArr[i].style.height= "0%";
+      }
+    }
   };
 
-const moveThumbnail = (num) => {
-  showThumbnails(index[1] += num);
+const moveThumbnail = (num)=>{
+  let thumbArr = document.getElementsByClassName('thumbnail');
+  let indexCopy = index;
+  // when at the end of the array;
+  if (index[1] + num < 0) {
+    return
+  } else if (index[1] + num > thumbArr.length - 4) {
+    return
+  } else {
+    indexCopy[1] = index[1] + num;
+  }
+  setIndex(indexCopy);
+  if (num < 0) {
+    // when num is -1 (previous)
+    // the previous one gets rendered
+    // the one rendered at the end gets 0% height
+    thumbArr[index[1]].style.transition = "0.2s ease-in-out";
+    thumbArr[index[1]+4].style.transition = "0.2s ease-in-out";
+    thumbArr[index[1]].style.height= "100%";
+    thumbArr[index[1]+4].style.height="0%";
+  }
+  if (num > 0) {
+    // when num is +1 (next)
+    // the next one gets rendered
+    // the one rendered in front gets 0% height;
+    thumbArr[index[1]-1].style.transition = "0.2s ease-in-out";
+    thumbArr[index[1]+3].style.transition = "0.2s ease-in-out";
+    thumbArr[index[1]-1].style.height= "0%";
+    thumbArr[index[1]+3].style.height="100%";
+  }
 };
 
 const moveImage = (num) => {
@@ -91,11 +121,11 @@ return (
   <section className="image-gallery" data-testid="image-gallery">
     <div className="slider">
       <div className="thumbnails">
-        <a className="thumbnail-previous" onClick={() => { moveThumbnail(-1) }}>&#8963;</a>
+         <a className="thumbnail-previous" onClick={()=>{moveThumbnail(-1)}}>&#8963;</a>
         {imageArr.map((ele, i) => {
           return <Thumbnail thumbnail={ele} />;
         })}
-        <a className="thumbnail-next" onClick={() => { moveThumbnail(1) }}>&#8964;</a>
+        <a className="thumbnail-next" onClick={()=>{moveThumbnail(1)}}>&#8964;</a>
       </div>
       <div className="slides">
         {imageArr.map((ele, i) => {
@@ -107,28 +137,5 @@ return (
     </div>
   </section>)
 }
-// slides = main slider = image gallery main-imag = slide
-
-//<div className="thumbnails">
-// {/*map through each image*/}
-// <a className="thumbnail-previous" onClick={()=>{moveThumbnail(-1)}}>prev</a>
-
-// {[1,2,3,4,5,6].map((ele, i)=>{
-//   return <Thumbnail key={i}/>;
-// })}
-
-// <a className="thumbnail-next" onClick={()=>{moveThumbnail(1)}}>next</a>
-// </div>
-
-// <div className="main">
-// {imageArr.map((ele, i)=>{
-//   return <MainImage image={ele} id={i} key={i}/>;
-// })}
-
-// <a className="previous" onClick={()=>{moveImage(-1)}}> prev </a>
-
-// <a className="next" onClick={()=>{moveImage(1)}}> next </a>
-
-// </div>
 
 export default ImageGallery;
