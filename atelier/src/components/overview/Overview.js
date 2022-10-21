@@ -5,7 +5,7 @@ import axios from 'axios';
 import {useState, useEffect} from 'react';
 
 export default function Overview () {
-  const [data, setData] = useState({productInfo:{}, styles: {}})
+  const [data, setData] = useState(null)
   // helper function intiator
   const getProductInfo = () => {
     var option = {
@@ -14,11 +14,9 @@ export default function Overview () {
     }
     axios(option)
     .then((res)=>{
-      console.log('response data', res.data)
-      let dataCopy = data;
-      dataCopy.productInfo=res.data[0];
-      dataCopy.styles= res.data[1];
-      setData(dataCopy);
+      console.log('response data', res.data);
+
+      setData([res.data[0], res.data[1]]);
     })
     .catch((err)=>{
       console.log('error data',err)
@@ -30,10 +28,10 @@ export default function Overview () {
   return (
     <div className="overview" data-testid="overview">
       <div className="image-summary">
-      <ImageGallery data={data}/>
-      <ProductSummary data={data}/>
+      <ImageGallery />
+      {data && <ProductSummary data={data}/>}
       </div>
-      <Slogan/>
+      {data && <Slogan slogan={data[0].slogan} description={data[0].description}/>}
     </div>
   )
 }
