@@ -22,9 +22,6 @@ export default function RatingsAndReviews ({product_id}) {
     }
     axios(options1)
     .then(result => {
-<<<<<<< HEAD
-      // console.log(result);
-=======
       setReviews(result.data.results);
     })
     .catch(err => {
@@ -43,7 +40,6 @@ export default function RatingsAndReviews ({product_id}) {
     })
     .catch(err => {
       console.log(err);
->>>>>>> 09f218eb391b7e32e4e7a7fb7522e42cdd1fbba2
     })
   }, [])
 

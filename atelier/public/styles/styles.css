@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .related-comparison {
   display: block;
 }
@@ -14,6 +15,7 @@
 
 .related-title {
   text-align: left;
+  margin-left: 20px;
 }
 
 .left-arrow {
@@ -60,10 +62,12 @@
 .related-card {
   display: inline-block;
   position: relative;
-  width: 250px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
   height: 400px;
   border: 1px solid gray;
-  border-radius: 10px;
+  border-radius: 2px;
   margin: 20px;
 }
 
@@ -72,6 +76,7 @@
   position: absolute;
   right: 10px;
   top: 10px;
+  z-index: 10;
 }
 .fa-regular.fa-star:hover {
   font-size: 150%;
@@ -82,8 +87,9 @@
   height: 300px;
   width: 250px;
   top: 0px;
-  z-index: -1;
+  z-index: 1;
   overflow: hidden;
+  border-radius: 2px 2px 0px 0px;
 }
 
 .card-info {
@@ -120,17 +126,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.related-modal-overlay {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  background-color: #000;
-  opacity: 0.5;
+  z-index: 100;
 }
 
 .related-modal-content {
@@ -144,14 +140,13 @@
   display: flex;
   z-index: 100;
   border: 1px solid gray;
-  border-radius: 10px;
+  border-radius: 2px;
   align-items: center;
 }
 .related-modal-content .related-modal-title {
   display: flex;
-  position: fixed;
-  left: 10px;
-  top: 10px;
+  position: relative;
+  margin: 10px;
 }
 
 .related-modal-content:after {
@@ -161,29 +156,101 @@
 
 .modal-column {
   float: left;
-  padding: 10px;
+  padding: 20px;
 }
 
 .outfit-list {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   display: block;
-  height: 600px;
+  position: relative;
+  justify-content: center;
+}
+
+.outfit {
+  display: inline-flex;
+}
+
+.outfit-add {
+  display: flex;
+  position: relative;
+  width: 250px;
+  height: 400px;
+  border: 1px solid white;
+  border-radius: 2px;
+  margin: 20px;
+  color: gray;
+}
+.outfit-add .outfit-add-icon {
+  position: absolute;
+  top: 45%;
+  left: 50px;
+}
+
+.fa.fa-plus {
+  font-size: 110%;
+  z-index: 10;
+}
+
+.outfit-add:hover {
+  color: black;
+}
+
+.outfit-left-arrow {
+  display: inline-flex;
+  position: absolute;
+  top: 45%;
+  z-index: 10;
+  left: 355px;
+}
+
+.outfit-right-arrow {
+  display: inline-flex;
+  right: 32px;
+  position: absolute;
+  top: 45%;
+  z-index: 10;
+}
+
+.outfit-carousel {
+  display: block;
+  position: relative;
+  overflow-x: scroll;
+  white-space: nowrap;
+  width: 80vw;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+}
+
+.outfit-carousel::-webkit-scrollbar {
+  display: none;
 }
 
 .outfit-card {
-  display: flex;
+  display: inline-block;
+  position: relative;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 400px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  margin: 20px;
 }
-
-/*reset css from user agent stylesheet*/
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  word-break: break-word;
+.outfit-card .fa.fa-times-circle-o {
+  display: flex;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  z-index: 10;
+}
+.outfit-card .fa.fa-times-circle-o:hover {
+  font-size: 150%;
 }
 
 .ratings-reviews {
-  /*use Roboto Google Fonts*/
-  font-family: "Roboto", sans-serif;
   margin-top: 8%;
   display: flex;
   justify-content: center;
@@ -191,10 +258,13 @@
   /*for the Ratings Component*/
 }
 .ratings-reviews .reviews-list {
+  overflow: auto;
   text-align: left;
-  width: 40%;
-  margin-left: 5%;
+  width: 60%;
+  margin: auto 5%;
+  padding-right: 20px;
   font-size: 0.875rem;
+  position: relative;
   /*number of stars and the user*/
   /*review paragraph*/
   /*helpful prompt*/
@@ -260,23 +330,8 @@
   height: 0.75rem;
 }
 .ratings-reviews .ratings .progress-bar .whole-bar .partial-bar {
-  background-color: gray;
+  background-color: green;
   height: 0.75rem;
-}
-.ratings-reviews .ratings .progress-bar .whole-bar .partial-bar.five {
-  width: 40%;
-}
-.ratings-reviews .ratings .progress-bar .whole-bar .partial-bar.four {
-  width: 50%;
-}
-.ratings-reviews .ratings .progress-bar .whole-bar .partial-bar.three {
-  width: 60%;
-}
-.ratings-reviews .ratings .progress-bar .whole-bar .partial-bar.two {
-  width: 70%;
-}
-.ratings-reviews .ratings .progress-bar .whole-bar .partial-bar.one {
-  width: 80%;
 }
 .ratings-reviews .range {
   text-align: left;
@@ -287,6 +342,25 @@
 }
 .ratings-reviews .range .comfort input {
   width: 100%;
+}
+.ratings-reviews .more-reviews {
+  position: absolute;
+}
+.ratings-reviews .modal {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.ratings-reviews .modal-content {
+  background-color: #f4f4f4;
+  margin: 30% auto;
+  height: 30%;
+  width: 30%;
 }
 
 .image-gallery {
@@ -476,9 +550,42 @@ input:focus {
   width: 100px;
 }
 
-.navbar {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 30px;
-  margin: auto;
+.star-rating {
+  position: relative;
+  vertical-align: middle;
+  display: inline-block;
+  color: #b1b1b1;
+  overflow: hidden;
+}
+
+.full-stars {
+  position: absolute;
+  left: 0;
+  top: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  color: #fde16d;
+}
+
+.empty-stars:before, .full-stars:before {
+  content: "★★★★★";
+  font-size: 14pt;
+}
+
+.empty-stars:before {
+  -webkit-text-stroke: 1px #848484;
+}
+
+.full-stars:before {
+  -webkit-text-stroke: 1px gray;
+}
+
+/*reset css from user agent stylesheet*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  word-break: break-word;
+  /*use Roboto Google Fonts*/
+  font-family: "Roboto", sans-serif;
 }/*# sourceMappingURL=styles.css.map */

@@ -5,10 +5,6 @@ import {useEffect, useState} from 'react';
 //current product name and features
 //related product name and features
 export default function RelatedModal (props) {
-<<<<<<< HEAD
-  // console.log(props);
-=======
->>>>>>> 09f218eb391b7e32e4e7a7fb7522e42cdd1fbba2
   let comparison = {};
   props.currentProduct.features.forEach((feature) => {
     comparison[feature.feature] = [feature.value];

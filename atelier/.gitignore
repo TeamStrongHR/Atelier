@@ -17,16 +17,8 @@
 
 # misc
 .DS_Store
-<<<<<<< HEAD
 .env
-=======
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-.env
-/public/styles
->>>>>>> 09f218eb391b7e32e4e7a7fb7522e42cdd1fbba2
+.config
 
 npm-debug.log*
 yarn-debug.log*
