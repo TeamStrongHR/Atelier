@@ -4,7 +4,7 @@ import Slogan from './product-info/Slogan.js'
 
 export default function Overview () {
   return (
-    <div className="overview">
+    <div className="overview" data-testid="overview">
       <div className="image-summary">
       <ImageGallery/>
       <ProductSummary/>

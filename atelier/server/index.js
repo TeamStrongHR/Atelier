@@ -14,6 +14,6 @@ app.all('/api/reviews/:endpoint', reviews)
 
 
 //listen at environment PORT 3000 (see .env)
-app.listen(process.env.PORT, ()=>{
+app.listen(process.env.PORT, () => {
   console.log('LISTENING AT PORT', process.env.PORT);
 });

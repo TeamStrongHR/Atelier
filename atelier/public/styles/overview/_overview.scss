@@ -1,6 +1,8 @@
-@import './carousel';
+@import './image-gallery';
 @import './shopping-cart';
 @import './style-selector';
+@import './slogan';
+@import './product-summary';
 
 .image-gallery {
   float: left;
@@ -12,11 +14,6 @@
 }
 
 
-.navbar {
-  display:flex;
-  justify-content: space-around;
-  margin-top: 30px;
-}
 
 .image-summary {
   display: flex;
@@ -24,6 +21,3 @@
 
 }
 
-.slogan {
-  display:flex;
-}

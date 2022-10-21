@@ -55,4 +55,4 @@ function prep(arr1, arr2) {
   return comparison;
 }
 
-console.log(JSON.stringify(prep(featureA, featureB)));
+// console.log(JSON.stringify(prep(featureA, featureB)));
