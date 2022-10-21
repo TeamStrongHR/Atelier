@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import RelatedModal from './RelatedModal.js';
 import Price from './Price.js';
+import StarRating from '../shared/StarRating.js';
 //In props
 //related product id
 //current product name, features
@@ -12,6 +13,20 @@ export default function RelatedCard(props) {
     const [relatedProduct, setRelatedProduct] = useState(null);
     // const [url, setUrl] = useState('../images/no_url.jpg');
     const [showModal, setShowModal] = useState(false);
+    const [starRating, setStarRating] = useState(0);
+
+    const calStar = (ratings) => {
+        let totalNumOfRatings = 0;
+        let total = 0;
+        for (const num in ratings) {
+            var val = parseInt(num);
+            var count = parseInt(ratings[num]);
+            totalNumOfRatings += count;
+            total += (val * count);
+        }
+        let averageRating = ((total / parseFloat(totalNumOfRatings)) * 100) / 100;
+        return averageRating.toFixed(1);
+    };
 
     //Make sure to show sales price
     useEffect(() => {
@@ -21,9 +36,8 @@ export default function RelatedCard(props) {
         }
         axios(options)
             .then((data) => {
-                console.log('RELATED CARD PROPS', props.relatedProduct);
                 setRelatedProduct(data.data);
-                console.log('RELATED', data.data);
+                setStarRating(calStar(data.data.ratings));
                 setLoading(false);
 
             })
@@ -39,7 +53,7 @@ export default function RelatedCard(props) {
         }
     }
     if (isLoading) {
-        return (<div>Loading Production Information</div>)
+        return (<div className='related-card'>Loading Production Information</div>)
     }
 
     return (
@@ -52,10 +66,12 @@ export default function RelatedCard(props) {
             <div className='card-info'>
                 <i className='card-category'>{relatedProduct.category}</i>
                 <b className='card-name'>{relatedProduct.name}</b>
-                <Price original_price={relatedProduct.default_style.original_price} sale_price={relatedProduct.default_style.sale_price}/>
+                <Price original_price={relatedProduct.default_style.original_price} sale_price={relatedProduct.default_style.sale_price} />
                 {/* <small className='card-price'>{'$ ' + relatedProduct.default_style.original_price}</small>
                 <small className='card-sale-price'>{'$ ' + relatedProduct.default_style.sale_price}</small> */}
-                <small className='card-stars'>{'*****'}</small>
+                <small className='card-stars'>
+                    <StarRating rating={starRating}/>
+                </small>
             </div>
 
         </div>

@@ -70,7 +70,6 @@ return (
     </i> : null}
     <div className='related-carousel' id='slider'>
       {//relatedProduct is product_id
-
         props.currentProduct.relatedProducts.map((relatedProduct, index) => {
           return <RelatedCard currentProduct={props.currentProduct} relatedProduct={relatedProduct} />
         })}
