@@ -7,13 +7,11 @@ import QuestionsAndAnswers from './components/question-answer/QuestionsAndAnswer
 function App() {
 
   return (
-
-
     <div className="App">
       <Navbar/>
       <Overview/>
       <RelatedAndComparison />
-      <RatingsAndReviews/>
+      <RatingsAndReviews product_id={37316}/>
       <section></section>
       <aside></aside>
       <section></section>

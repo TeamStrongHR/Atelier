@@ -1,2 +1,6 @@
 node_modules
+<<<<<<< HEAD
 .env
+=======
+atelier/.env
+>>>>>>> 09f218eb391b7e32e4e7a7fb7522e42cdd1fbba2
