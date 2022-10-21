@@ -1,11 +1,11 @@
 .style-selector{
-  width:fit-content;
-  .style-selector1 {
-    display: flex;
-    justify-content: space-around;
+  width: 100%;
+  overflow:hidden;
+  .style-thumbnails{
+    .style-thumbnail{
+      width: 25%;
+      border-radius: 50%;
+    }
   }
 
-  .style-selector2 {
-    display: flex;
-  }
 }
