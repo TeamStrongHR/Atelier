@@ -12,7 +12,9 @@ export default function Ratings ({ratings}) {
     totalNumOfRatings+=count;
     total+=(val*count)
   }
-  var averageRating = Math.round(((total/parseFloat(totalNumOfRatings)) * 100)/100).toFixed(1);
+
+  var averageRating = (((total/parseFloat(totalNumOfRatings)) * 100)/100).toFixed(1)
+
 
   //for use in printing out the progress bars
   //reverse to start array from 5 stars...
