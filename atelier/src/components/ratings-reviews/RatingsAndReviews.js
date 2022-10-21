@@ -4,7 +4,7 @@ import {useState, useEffect} from 'react';
 import axios from 'axios';
 
 //this component should render based on the product_id provided
-export default function RatingsAndReviews ({product_id}) {
+export default function RatingsAndReviews ({productName, product_id}) {
   const [reviews, setReviews] = useState(null);
   const [ratings, setRatings] = useState(null);
 
@@ -22,6 +22,7 @@ export default function RatingsAndReviews ({product_id}) {
     }
     axios(options1)
     .then(result => {
+      console.log(result.data.results)
       setReviews(result.data.results);
     })
     .catch(err => {
@@ -36,6 +37,7 @@ export default function RatingsAndReviews ({product_id}) {
     }
     axios(options2)
     .then(result => {
+
       setRatings(result.data.ratings)
     })
     .catch(err => {
@@ -46,7 +48,7 @@ export default function RatingsAndReviews ({product_id}) {
   return (
     <div data-testid="ratings-reviews-comp" className="ratings-reviews">
       {ratings && <Ratings ratings={ratings}/>}
-      {reviews && <ReviewsList reviews={reviews}/>}
+      {reviews && <ReviewsList productName={"NICE"} reviews={reviews}/>}
     </div>
   )
 }

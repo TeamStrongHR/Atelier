@@ -5,18 +5,28 @@ import {useEffect, useState} from 'react';
 //current product name and features
 //related product name and features
 export default function RelatedModal (props) {
+  console.log('MODAL CARD ', props)
   let comparison = {};
-  props.currentProduct.features.forEach((feature) => {
-    comparison[feature.feature] = [feature.value];
-  })
+  let x_mark = 'x';
 
-  props.relatedProduct.features.forEach((feature) => {
-    if (comparison.hasOwnProperty(feature.feature)) {
-      comparison[feature.feature].push(feature.value);
+  props.currentProduct.features.forEach((feature) => {
+    comparison[feature.feature] = [feature.value, x_mark];
+  });
+  props.relatedProduct.features.forEach((relatedFeature) => {
+    if (!comparison.hasOwnProperty(relatedFeature.feature)) {
+      comparison[relatedFeature.feature] = [x_mark, relatedFeature.value]
     } else {
-      comparison[feature.feature] = ['', feature.value];
+      comparison[relatedFeature.feature][1] = relatedFeature.value;
     }
   })
+  console.log('SECOND PASS MODAL', comparison);
+  // props.relatedProduct.features.forEach((feature) => {
+  //   if (comparison.hasOwnProperty(feature.feature)) {
+  //     comparison[feature.feature].push(feature.value);
+  //   } else {
+  //     comparison[feature.feature] = [null, feature.value];
+  //   }
+  // })
 
   if (!props.showModal) {
     return null;
@@ -33,7 +43,7 @@ export default function RelatedModal (props) {
           <div className='modal-column current'>
             <h3>{props.currentProduct.name}</h3>
             {Object.keys(comparison).map((key) => {
-              return (
+                return (
                 <p>{comparison[key][0]}</p>
               )
             })}

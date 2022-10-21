@@ -3,7 +3,9 @@ const express = require('express');
 const path = require('path');
 const app = express();
 const {reviews} = require('./controllers/reviews.js');
-const {fetchProductInfo} = require('./controllers/overview.js')
+const {fetchProductInfo} = require('./controllers/overview.js');
+const {related} = require('./controllers/related.js');
+
 //middleware
 app.use(express.json());
 
@@ -14,6 +16,8 @@ app.all('/api/reviews/:endpoint', reviews)
 
 // overview
 app.get('/api/products/:product_id', fetchProductInfo)
+
+app.all('/api/related/:endpoint', related)
 
 //listen at environment PORT 3000 (see .env)
 app.listen(process.env.PORT, () => {
