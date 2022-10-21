@@ -132,8 +132,6 @@ export default function YourOutfit(props) {
   const [showLeftArrow, setLeftArrow] = useState(false);
   const [showRightArrow, setRightArrow] = useState(true);
 
-  console.log('IN YOUROUTFIT', props)
-
   //slide value in px
   const slideWindow = 280;
 
@@ -156,13 +154,13 @@ export default function YourOutfit(props) {
   }
 
   const handleAddOutfit = () => {
-    if (!outfitList.includes(testOutfit)){
-      setOutfitList(existing => [...existing, testOutfit])
+    if (!outfitList.includes(props.currentProduct)){
+      setOutfitList(existing => [...existing, props.currentProduct])
     }
   }
 
   useEffect(() => {
-    console.log('rendered', outfitList);
+    //console.log('rendered', outfitList);
   }, [outfitList])
 
   return (

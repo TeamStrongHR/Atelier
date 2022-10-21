@@ -65,7 +65,7 @@
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  height: 400px;
+  height: 420px;
   border: 1px solid gray;
   border-radius: 2px;
   margin: 20px;
@@ -83,6 +83,7 @@
 }
 
 .card-image {
+  display: inline-flex;
   position: relative;
   height: 300px;
   width: 250px;
@@ -95,7 +96,7 @@
 .card-info {
   height: 100px;
   position: absolute;
-  bottom: 0px;
+  bottom: 20px;
   text-align: left;
   padding-left: 10px;
   padding-top: 20px;
@@ -112,6 +113,18 @@
 .card-info .card-price {
   font-size: medium;
   display: flex;
+}
+.card-info .stroke-price {
+  font-size: medium;
+  display: inline-flex;
+  -webkit-text-decoration: line-through red;
+          text-decoration: line-through red;
+}
+.card-info .sale-price {
+  font-size: medium;
+  display: inline-flex;
+  margin: 5px;
+  color: red;
 }
 .card-info .card-stars {
   display: flex;
@@ -157,6 +170,7 @@
 .modal-column {
   float: left;
   padding: 20px;
+  text-align: center;
 }
 
 .outfit-list {
@@ -176,7 +190,7 @@
   display: flex;
   position: relative;
   width: 250px;
-  height: 400px;
+  height: 420px;
   border: 1px solid white;
   border-radius: 2px;
   margin: 20px;
@@ -185,7 +199,7 @@
 .outfit-add .outfit-add-icon {
   position: absolute;
   top: 45%;
-  left: 50px;
+  left: 52px;
 }
 
 .fa.fa-plus {
@@ -234,9 +248,9 @@
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  height: 400px;
+  height: 420px;
   border: 1px solid gray;
-  border-radius: 5px;
+  border-radius: 2px;
   margin: 20px;
 }
 .outfit-card .fa.fa-times-circle-o {

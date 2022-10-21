@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const app = express();
 const {reviews} = require('./controllers/reviews.js');
+const {related} = require('./controllers/related.js');
 
 //middleware
 app.use(express.json());
@@ -11,7 +12,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "../build")))
 
 app.all('/api/reviews/:endpoint', reviews)
-
+app.all('/api/related/:endpoint', related)
 
 //listen at environment PORT 3000 (see .env)
 app.listen(process.env.PORT, () => {

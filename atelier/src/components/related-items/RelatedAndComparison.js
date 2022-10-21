@@ -1,27 +1,37 @@
 import {useState, useEffect} from 'react';
 import RelatedList from './RelatedList.js';
 import YourOutfit from './YourOutfit.js';
-import {testProduct, testProductArr, testProductInfo, testProductStyles} from './testData.js';
 import axios from 'axios';
 
 export default function RelatedAndComparison (props) {
-  const [currProduct, setCurrProduct] = useState(testProduct);
+  const currProduct = '37319';
+  const [currentProduct, setCurrentProduct] = useState(null);
+  const [isLoading, setLoading] = useState(true);
 
-  useEffect(()=> {
-    var options = {
-      url: `http://localhost:${process.env.PORT}/api/related`,
-      method: "get",
-    }
+  useEffect(() => {
+    let options = {
+      url: `http://localhost:3000/api/related/${currProduct}`,
+      method: 'get',
+    };
     axios(options)
-    .then(result => {
-      console.log(result);
+    .then(data => {
+      setCurrentProduct(data.data);
+      setLoading(false);
     })
     .catch(err => console.log(err));
-  })
+  }, [])
+
+  if (isLoading) {
+    return <div>Retrieving Related Products</div>
+  }
+
   return (
     <div className='related-comparison'>
-      <RelatedList currentProduct={currProduct} />
-      <YourOutfit data-testid='YourOutfit' currentProduct={currProduct}/>
+      <RelatedList currentProduct={currentProduct} />
+      <YourOutfit data-testid='YourOutfit' currentProduct={currentProduct} />
     </div>
   )
+
+
+
 }
