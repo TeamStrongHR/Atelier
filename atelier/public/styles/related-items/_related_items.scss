@@ -88,6 +88,7 @@
 }
 
 .card-image{
+  display: inline-flex;
   position:relative;
   height: 300px;
   width: 250px;
@@ -121,9 +122,19 @@
   .card-price{
     font-size: medium;
     display: flex;
-
   }
 
+  .stroke-price{
+    font-size: medium;
+    display: inline-flex;
+    text-decoration: line-through red;
+  }
+  .sale-price{
+    font-size: medium;
+    display: inline-flex;
+    margin: 5px;
+    color: red
+  }
   .card-stars{
     display: flex;
   }
@@ -167,6 +178,7 @@
 .modal-column {
   float: left;
   padding: 20px;
+  text-align: center;
 }
 
 //===============================================================

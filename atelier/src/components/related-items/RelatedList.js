@@ -1,6 +1,6 @@
 import RelatedCard from './RelatedCard.js';
-import {testProductArr} from './testData.js';
 import {useState, useEffect} from 'react';
+import axios from 'axios';
 
 const testCurrentProductInfo = {
   "id": 37317,
@@ -28,15 +28,15 @@ const testCurrentProductInfo = {
   ]
 }
 //In props
-//current product id and features
+//current product id and features / related product arr
 export default function RelatedList (props) {
   //axios get related product array
   // const [relatedProductInfo, setRelatedProductInfo] = useState(testProductInfo);
   // const [relatedProductStyles, setRelatedProductStyles] = useState(testProductStyles);
-  const [relatedProductArr, setRelatedProductArr] = useState([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
-
+  console.log('RELATED LIST props', props);
   const [showLeftArrow, setLeftArrow] = useState(false);
   const [showRightArrow, setRightArrow] = useState(true);
+
   //slide value in px
   const slideWindow = 280;
 
@@ -58,21 +58,24 @@ export default function RelatedList (props) {
     }
   }
 
-  return (
-    <div className='related-list' >
-      <h1 className='related-title'> Related Products</h1>
-      {showLeftArrow ? <i className='left-arrow' onClick={prevHandler}>
-        <i className="fa-solid fa-chevron-left"></i>
-      </i> : null}
-      {showRightArrow ? <i className='right-arrow' >
-        <i className="fa-solid fa-chevron-right" onClick={nextHandler}></i>
-      </i> : null}
-      <div className='related-carousel' id='slider'>
-        {//relatedProduct is product_id
-          relatedProductArr.map((relatedProduct, index) => {
-            return <RelatedCard currentProduct={testCurrentProductInfo} relatedProduct={relatedProduct} />
-          })}
-      </div>
+  console.log(props.currentProduct.relatedProducts);
+return (
+  <div className='related-list' >
+    <h1 className='related-title'> Related Products</h1>
+    {showLeftArrow ? <i className='left-arrow' onClick={prevHandler}>
+      <i className="fa-solid fa-chevron-left"></i>
+    </i> : null}
+    {showRightArrow ? <i className='right-arrow' >
+      <i className="fa-solid fa-chevron-right" onClick={nextHandler}></i>
+    </i> : null}
+    <div className='related-carousel' id='slider'>
+      {//relatedProduct is product_id
+
+        props.currentProduct.relatedProducts.map((relatedProduct, index) => {
+          return <RelatedCard currentProduct={props.currentProduct} relatedProduct={relatedProduct} />
+        })}
     </div>
-  )
+  </div>
+)
+
 }

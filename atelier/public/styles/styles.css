@@ -83,6 +83,7 @@
 }
 
 .card-image {
+  display: inline-flex;
   position: relative;
   height: 300px;
   width: 250px;
@@ -112,6 +113,18 @@
 .card-info .card-price {
   font-size: medium;
   display: flex;
+}
+.card-info .stroke-price {
+  font-size: medium;
+  display: inline-flex;
+  -webkit-text-decoration: line-through red;
+          text-decoration: line-through red;
+}
+.card-info .sale-price {
+  font-size: medium;
+  display: inline-flex;
+  margin: 5px;
+  color: red;
 }
 .card-info .card-stars {
   display: flex;
@@ -157,6 +170,7 @@
 .modal-column {
   float: left;
   padding: 20px;
+  text-align: center;
 }
 
 .outfit-list {
