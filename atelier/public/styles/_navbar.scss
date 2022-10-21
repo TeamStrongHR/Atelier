@@ -1,6 +1,12 @@
 .navbar {
   display:flex;
-  justify-content: space-around;
   margin-top: 30px;
   margin: auto;
+  justify-content: space-around;
+  background-color: gray;
+  width: 70%
+}
+.banner {
+  display: flex;
+  justify-content: center;
 }
