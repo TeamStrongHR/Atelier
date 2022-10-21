@@ -20,7 +20,6 @@ const StyleSelector = ({}) =>{
       <span style={{width:50, height:50,borderRadius:'50%', backgroundColor:'green'}}></span>
       <span style={{width:50, height:50,borderRadius:'50%', backgroundColor:'green'}}></span>
       <span style={{width:50, height:50,borderRadius:'50%', backgroundColor:'green'}}></span>
-      <span style={{width:50, height:50,borderRadius:'50%', backgroundColor:'green'}}></span>
       </div>
       <div className="style-selector2">
       <span style={{width:50, height:50,borderRadius:'50%', backgroundColor:'green'}}></span>

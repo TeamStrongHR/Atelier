@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import ProductSummary from './product-info/ProductSummary.js'
-import DefaultStyle from './style-selector/DefaultStyle.js'
+
 
 const Overview = () => {
   const [currentItem, setCurrentItem] = useState({});
@@ -16,7 +16,6 @@ const Overview = () => {
       {/* this is where the product category, star rating, shopping cart etc,. */}
       <aside>
         <ProductSummary />
-        <DefaultStyle />
       </aside>
       {/* this is for the product slogan, details */}
       <section></section>
