@@ -39,7 +39,7 @@ function ImageGallery() {
       distance += imageArr[i].clientWidth;
     }
     // calculate percent index
-    let percent = 100 *distance/ slides[0].clientWidth;
+    let percent = 100 * distance / slides[0].clientWidth;
 
     console.log(index[0]);
     slides[0].style.transition = "transform 0.4s ease-in-out";
@@ -54,6 +54,7 @@ function ImageGallery() {
     }
   };
 
+  // thumbnail initiation;
   const showThumbnails = (num) => {
     let thumbArr = document.getElementsByClassName('thumbnail');
     let thumbnails = document.getElementsByClassName('thumbnails');
@@ -68,74 +69,74 @@ function ImageGallery() {
     };
     setIndex(indexCopy);
     for (let i = 0; i < thumbArr.length; i++) {
-      if (num+4 > i) {
-        thumbArr[i].style.height= "100%";
+      if (num + 4 > i) {
+        thumbArr[i].style.height = "100%";
       } else {
-        thumbArr[i].style.height= "0%";
+        thumbArr[i].style.height = "0%";
       }
     }
   };
 
-const moveThumbnail = (num)=>{
-  let thumbArr = document.getElementsByClassName('thumbnail');
-  let indexCopy = index;
-  // when at the end of the array;
-  if (index[1] + num < 0) {
-    return
-  } else if (index[1] + num > thumbArr.length - 4) {
-    return
-  } else {
-    indexCopy[1] = index[1] + num;
-  }
-  setIndex(indexCopy);
-  if (num < 0) {
-    // when num is -1 (previous)
-    // the previous one gets rendered
-    // the one rendered at the end gets 0% height
-    thumbArr[index[1]].style.transition = "0.2s ease-in-out";
-    thumbArr[index[1]+4].style.transition = "0.2s ease-in-out";
-    thumbArr[index[1]].style.height= "100%";
-    thumbArr[index[1]+4].style.height="0%";
-  }
-  if (num > 0) {
-    // when num is +1 (next)
-    // the next one gets rendered
-    // the one rendered in front gets 0% height;
-    thumbArr[index[1]-1].style.transition = "0.2s ease-in-out";
-    thumbArr[index[1]+3].style.transition = "0.2s ease-in-out";
-    thumbArr[index[1]-1].style.height= "0%";
-    thumbArr[index[1]+3].style.height="100%";
-  }
-};
+  const moveThumbnail = (num) => {
+    let thumbArr = document.getElementsByClassName('thumbnail');
+    let indexCopy = index;
+    // when at the end of the array;
+    if (index[1] + num < 0) {
+      return
+    } else if (index[1] + num > thumbArr.length - 4) {
+      return
+    } else {
+      indexCopy[1] = index[1] + num;
+    }
+    setIndex(indexCopy);
+    if (num < 0) {
+      // when num is -1 (previous)
+      // the previous one gets rendered
+      // the one rendered at the end gets 0% height
+      thumbArr[index[1]].style.transition = "0.2s ease-in-out";
+      thumbArr[index[1] + 4].style.transition = "0.2s ease-in-out";
+      thumbArr[index[1]].style.height = "100%";
+      thumbArr[index[1] + 4].style.height = "0%";
+    }
+    if (num > 0) {
+      // when num is +1 (next)
+      // the next one gets rendered
+      // the one rendered in front gets 0% height;
+      thumbArr[index[1] - 1].style.transition = "0.2s ease-in-out";
+      thumbArr[index[1] + 3].style.transition = "0.2s ease-in-out";
+      thumbArr[index[1] - 1].style.height = "0%";
+      thumbArr[index[1] + 3].style.height = "100%";
+    }
+  };
 
-const moveImage = (num) => {
-  showImage(index[0] + num);
-};
+  const moveImage = (num) => {
+    showImage(index[0] + num);
+  };
 
-useEffect(() => {
-  //  showImage(0);
-  showThumbnails(0);
-}, [])
+  useEffect(() => {
+    showImage(0);
+    showThumbnails(0);
+  }, [])
 
-return (
-  <section className="image-gallery" data-testid="image-gallery">
-    <div className="slider">
-      <div className="thumbnails">
-        <a className="thumbnail-previous" onClick={()=>{moveThumbnail(-1)}}>&#8963;</a>
-        {imageArr.map((ele, i) => {
-          return <Thumbnail thumbnail={ele} />;
-        })}
-        <a className="thumbnail-next" onClick={()=>{moveThumbnail(1)}}>&#8964;</a>
+  return (
+    <section className="image-gallery" data-testid="image-gallery">
+      <div className="slider">
+        <div className="thumbnails">
+          <a className="thumbnail-previous" onClick={() => { moveThumbnail(-1) }}>&#8963;</a>
+          {imageArr.map((ele, i) => {
+            return <Thumbnail thumbnail={ele} id={i} showImage={showImage}/>;
+          })}
+          <a className="thumbnail-next" onClick={() => { moveThumbnail(1) }}>&#8964;</a>
+        </div>
+        <div className="slides">
+          {imageArr.map((ele, i) => {
+            return <MainImage image={ele} id={i} key={i} />;
+          })}
+        </div>
+        <a className="main-previous" onClick={() => { moveImage(-1) }}>&#10094;</a>
+        <a className="main-next" onClick={() => { moveImage(1) }}>&#10095;</a>
       </div>
-      <div className="slides">
-        {imageArr.map((ele, i) => {
-          return <MainImage image={ele} id={i} key={i} />;
-        })}
-      </div>
-      <a className="main-previous" onClick={() => {moveImage(-1)}}>&#10094;</a>
-      <a className="main-next" onClick={() => {moveImage(1)}}>&#10095;</a>
-    </div>
-  </section>)
+    </section>)
 }
 
 export default ImageGallery;

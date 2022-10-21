@@ -1,8 +1,8 @@
 import logo from '../../../images/logo.png'
 
-const Thumbnail= ({thumbnail})=>{
+const Thumbnail= ({thumbnail, showImage, id})=>{
   return (
-    <img className="thumbnail" src={thumbnail}></img>
+    <img className="thumbnail" src={thumbnail} onClick={()=>{showImage(id)}}></img>
   )
 }
 
