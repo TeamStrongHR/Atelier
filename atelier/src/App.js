@@ -11,7 +11,7 @@ function App() {
       <Navbar/>
       <Overview/>
       <RelatedAndComparison />
-      <RatingsAndReviews product_id={37313}/>
+      <RatingsAndReviews product_id={37316}/>
       <section></section>
       <aside></aside>
       <section></section>

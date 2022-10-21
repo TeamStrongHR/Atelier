@@ -21,6 +21,15 @@ export default function ReviewsList ({reviews}) {
     }
   }
 
+  const [modalOpen, setModalOpen] = useState("none");
+  var handleModalOpen = () => {
+    setModalOpen("block");
+  }
+  var handleModalClose = ()=> {
+    setModalOpen("none");
+  }
+
+
   return (
     <div>
       <div className="reviews-list">
@@ -34,8 +43,8 @@ export default function ReviewsList ({reviews}) {
       (<button className="more-reviews" onClick={function(e){handleClick(e);
       }}>More Reviews</button>) : null}
       <br></br>
-      <button className="write-reviews" onClick={function(){}}>Write Review</button>
-      <WriteReview/>
+      <button className="write-reviews" onClick={handleModalOpen}>Write Review</button>
+      <WriteReview modalOpen={modalOpen} handleModalClose={handleModalClose}/>
     </div>
   )
 }

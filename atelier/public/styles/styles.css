@@ -346,6 +346,22 @@
 .ratings-reviews .more-reviews {
   position: absolute;
 }
+.ratings-reviews .modal {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.ratings-reviews .modal-content {
+  background-color: #f4f4f4;
+  margin: 30% auto;
+  height: 30%;
+  width: 30%;
+}
 
 .image-gallery {
   position: relative;
