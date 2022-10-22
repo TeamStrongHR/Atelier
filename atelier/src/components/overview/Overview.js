@@ -9,7 +9,7 @@ export default function Overview () {
   // helper function intiator
   const getProductInfo = () => {
     var option = {
-      url: "http://localhost:3000/api/products/37311",
+      url: "http://localhost:3000/api/products/37313",
       method: "get",
     }
     axios(option)
@@ -29,7 +29,7 @@ export default function Overview () {
   return (
     <div className="overview" data-testid="overview">
       <div className="image-summary">
-      <ImageGallery />
+      <ImageGallery data={data}/>
       <ProductSummary data={data} setData={setData}/>
       </div>
       <Slogan slogan={data[0].slogan} description={data[0].description} features={data[0].features}/>

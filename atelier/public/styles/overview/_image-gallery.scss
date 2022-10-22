@@ -4,16 +4,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: auto;
   background: gray;
-  width: 45%;
+  width: 60vh;
+  height: 40vh;
   position: relative;
 
 
   // main image slider
   .slider {
     width: 100%;
-    height: auto;
+    height: 100%;
     overflow: hidden;
 
     // Thumbnails
@@ -23,15 +23,15 @@
       flex-direction: column;
       // overflow: hidden;
       position: absolute;
-      top: 5%;
-      left: 1%;
-      padding: 8px;
+
+      left: 1vh;
+      padding: 1vh;
       z-index: 9;
       width: 13%;
 
       .thumbnail {
         width: 100%;
-        height: auto;
+        height: 5vh;
         padding: 5%;
         max-width: 300px;
         max-height: 300px;
@@ -66,22 +66,29 @@
 
     // main image slides
     .slides {
-      width: 700%;
-      height: auto;
+      width: 1000%;
+      height: 100%;
       display: flex;
     }
 
     .main-image {
-      width: 14.28%;
+      display: flex;
+      justify-content: center;
+      width: 60vh;
       transition: 2s;
+      height: 100%;
+      overflow: hidden;
 
       img {
-        width: 100%;
-        max-width: 800px;
+        width: auto;
+        max-height: 40vh;
         object-fit: cover;
-        height: auto;
+        height: 100%;
         z-index: 8;
       }
     }
   }
+
+
+
 }

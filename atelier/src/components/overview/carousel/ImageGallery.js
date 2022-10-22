@@ -6,10 +6,8 @@ import image1 from '../../../images/image1.jpeg';
 import image2 from '../../../images/image2.jpeg';
 import image3 from '../../../images/image3.jpeg';
 import image4 from '../../../images/image4.jpeg';
-function ImageGallery() {
+function ImageGallery({data}) {
   const [index, setIndex] = useState([0, 0]);
-
-  let imageArr = [image1, image2, image3, image4, image2, image4];
 
   // helper function for carousel
   const showImage = (num) => {
@@ -19,7 +17,7 @@ function ImageGallery() {
 
     console.log(thumbArr);
     let indexCopy = index
-    let distance = 0;
+    let count = 0;
     // console.log(imageArr);
     // set index according to num input
     if (num > imageArr.length - 1) {
@@ -34,16 +32,16 @@ function ImageGallery() {
       indexCopy[0] = num;
       setIndex(indexCopy);
     };
-    // getting distance from first image to the current index
+    // getting count from first image to the current index
     for (let i = 0; i < index[0]; i++) {
-      distance += imageArr[i].clientWidth;
+      count += 1;
     }
     // calculate percent index
-    let percent = 100 * distance / slides[0].clientWidth;
+    let distance = 60 * count
 
     console.log(index[0]);
     slides[0].style.transition = "transform 0.4s ease-in-out";
-    slides[0].style.transform = `translateX(${-percent}%)`;
+    slides[0].style.transform = `translateX(${-distance}vh)`;
 
     for (let i = 0; i < thumbArr.length; i++) {
       if (i === index[0]) {
@@ -123,15 +121,16 @@ function ImageGallery() {
       <div className="slider">
         <div className="thumbnails">
           <a className="thumbnail-previous" onClick={() => { moveThumbnail(-1) }}>&#8963;</a>
-          {imageArr.map((ele, i) => {
-            return <Thumbnail thumbnail={ele} id={i} showImage={showImage}/>;
-          })}
+          {typeof data[1][data[2]] === 'object' ? data[1][data[2]].photos.map((ele, i) => {
+            return <Thumbnail thumbnail={ele.thumbnail_url} id={i} showImage={showImage}/>;
+          }): null}
           <a className="thumbnail-next" onClick={() => { moveThumbnail(1) }}>&#8964;</a>
         </div>
         <div className="slides">
-          {imageArr.map((ele, i) => {
-            return <MainImage image={ele} id={i} key={i} />;
-          })}
+          {typeof data[1][data[2]] === 'object' ? data[1][data[2]].photos.map((ele, i) => {
+            console.log(ele);
+            return <MainImage image={ele.thumbnail_url} id={i} key={i} />;
+          }): null}
         </div>
         <a className="main-previous" onClick={() => { moveImage(-1) }}>&#10094;</a>
         <a className="main-next" onClick={() => { moveImage(1) }}>&#10095;</a>

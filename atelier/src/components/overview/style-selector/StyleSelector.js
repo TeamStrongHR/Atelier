@@ -13,10 +13,10 @@ const StyleSelector = ({data, setData}) =>{
     <div className="style-selector">
       <h4>STYLE> <span>SELECTED STYLE</span></h4>
       <div className="style-thumbnails">
-      {Array.isArray(data[1]) ? data[1].map((style)=>{
-        console.log(style.photos[0]['thumbnail_url'])
-        return <StyleThumbnail thumbnailURL={style.photos[0]['thumbnail_url']}/>
-      }): null}
+      {typeof data[1][data[2]] === 'object' ? data[1].map((ele, i) => {
+            console.log(ele);
+            return <StyleThumbnail data={data} thumbnailURL={ele.photos[0].thumbnail_url} id={i} key={i} setData={setData}/>;
+          }): null}
       </div>
       {/* <div className="style-selector1">
       <span style={{width:50, height:50,borderRadius:'50%', backgroundColor:'green'}}></span>

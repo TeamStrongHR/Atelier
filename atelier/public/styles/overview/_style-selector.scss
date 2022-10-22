@@ -1,12 +1,22 @@
 .style-selector{
+  display: inline-block;
   width: 100%;
   overflow:hidden;
   .style-thumbnails{
+    display: -webkit-box;
+    width:100%;
+    flex-wrap: wrap;
     .style-thumbnail{
-      width: 25%;
-      max-width: 60px;
-      max-height: 60px;
+      display: flex;
+      width: 6.5vh;
+      height: 6.5vh;
       border-radius: 50%;
+      overflow: hidden;
+      justify-content: center;
+      img{
+        width: 10vh;
+        height: auto;
+      }
     }
   }
 
