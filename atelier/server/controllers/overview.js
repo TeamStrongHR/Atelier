@@ -13,8 +13,19 @@ const fetchProductInfo = (req, res)=>{
     headers: {"Authorization": process.env.AUTH},
     method: 'get'
   }
+  var option2 = {
+    url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/meta',
+    headers: {"Authorization": process.env.AUTH},
+    params: {
+      product_id: productId
+    },
+    method: 'get'
+  }
 
-  Promise.all([axios(option).then((data)=> {return data.data;}), axios(option1).then((data)=>{
+  Promise.all([
+    axios(option).then((data)=> {return data.data;}),
+    axios(option1)
+    .then((data)=>{
     let styles = data.data.results;
     for (let i = 0; i < styles.length; i++) {
       if (styles[i]['default?'] === true) {
@@ -22,8 +33,21 @@ const fetchProductInfo = (req, res)=>{
       }
     }
     return styles;
-  })])
+  }),
+  axios(option2)
   .then((response)=>{
+    let count = 0;
+    let sum = 0;
+    for (let num in response.data.ratings) {
+      count+=parseInt(response.data.ratings[num]);
+      sum += parseInt(response.data.ratings[num])*parseInt(num);
+    }
+
+    return Math.round(100* sum /count)/100;
+  })
+])
+  .then((response)=>{
+    console.log('where', response)
     res.send(response)
   })
   .catch((err)=>{

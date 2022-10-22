@@ -5,7 +5,7 @@ import axios from 'axios';
 import {useState, useEffect} from 'react';
 
 export default function Overview () {
-  const [data, setData] = useState([{},{},0])
+  const [data, setData] = useState([{},[],0, 0])
   // helper function intiator
   const getProductInfo = () => {
     var option = {
@@ -16,7 +16,7 @@ export default function Overview () {
     .then((res)=>{
       console.log('response data', res.data);
 
-      setData([res.data[0], res.data[1], 0]);
+      setData([res.data[0], res.data[1], 0, res.data[2]]);
     })
     .catch((err)=>{
       console.log('error data',err)

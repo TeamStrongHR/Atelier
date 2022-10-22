@@ -54,7 +54,7 @@ module.exports.related = (req, res) => {
         }
         //calculating average rating
         result['ratings'] = data[3].data.ratings;
-        console.log(result);
+        // console.log(result);
         // send response
         res.json(result);
       })

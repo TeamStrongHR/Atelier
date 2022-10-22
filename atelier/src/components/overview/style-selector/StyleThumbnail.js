@@ -1,8 +1,9 @@
 import no_url from '../../../images/no_url.jpg';
 
-const StyleThumbnail = ({thumbnail}) => {
+const StyleThumbnail = ({thumbnailURL}) => {
+  console.log(thumbnailURL);
   return (
-      <img className="style-thumbnail" src={thumbnail} alt={no_url}></img>
+    <div className="style-thumbnail" style={{backgroundImage: 'url'+thumbnailURL+')'}}></div>
   )
 };
 
