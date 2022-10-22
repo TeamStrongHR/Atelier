@@ -1,6 +1,6 @@
-const SizeSelector = ()=>{
+const SizeSelector = ({size, sku, maxQuantity, setCartDetail})=>{
   return (
-    <option value={1}></option>
+    <option value={sku+','+maxQuantity}>{size}</option>
   )
 }
 

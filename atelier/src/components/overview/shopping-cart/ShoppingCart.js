@@ -1,26 +1,44 @@
-import {useState} from 'react';
+import { useState } from 'react';
 import SizeSelector from './SizeSelector.js'
-const ShoppingCart = ({}) => {
-  const [cartDetail, setCartDetail] = useState({});
+const ShoppingCart = ({ data }) => {
+  const [cartDetail, setCartDetail] = useState(['', "0"]);
+  // quantity array maker
+  const ArrayMaker = (str)=> {
+    if (str === undefined || str === '') {
+      return ['-'];
+    }
+    let num = parseInt(str);
+    if (num > 16) {num = 15;}
+    let result = [];
+    for (let i = 1; i <= num; i++) {result.push(i);}
+    return result;
+  }
+  // select onChange helper functions
+  const sizeOnChange = (e) => {
+    let cartDetailCopy = cartDetail.slice();
+    cartDetailCopy[0] = e.target.value;
+    cartDetailCopy[1] = "0";
+    setCartDetail(cartDetailCopy);
+  }
+  const quantityOnChange = (e) => {
+    let cartDetailCopy = cartDetail.slice();
+    cartDetailCopy[1] = e.target.value;
+    setCartDetail(cartDetailCopy);
+  }
   return (
     <div className="shopping-cart">
       <div className="size-quantity">
-        <select className="size">
+        <select className="size" value={cartDetail[0]} onChange={sizeOnChange}>
           <option value="">SELECT SIZE</option>
-          <option value="XS">XS</option>
-          <option value="S">S</option>
-          <option value="M">M</option>
-          <option value="L">L</option>
-          <option value="XL">XL</option>
-          {/*mapping over size options*/}
+          {typeof data[1][data[2]] === 'object' ? Object.entries(data[1][data[2]].skus).map((sku, i) => {
+            return <SizeSelector size={sku[1].size} sku={sku[0]}maxQuantity={sku[1].quantity} setCartDetail={setCartDetail} />
+          }) : null}
         </select>
-        <select className="quantity">
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          {/* mapping over quantity whenver size changes */}
+        <select className="quantity" value={cartDetail[2]} onChange={quantityOnChange}>
+          {typeof data[1][data[2]] === 'object' ? ArrayMaker(cartDetail[0].split(',')[1]).map((quantity)=>{
+            return <option value={quantity}>{quantity}</option>;
+          }): null}
+
         </select>
       </div>
       <div>
