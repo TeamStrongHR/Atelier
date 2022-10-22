@@ -1,8 +1,8 @@
 const axios = require('axios');
 
 const fetchProductInfo = (req, res)=>{
-  console.log(req.params);
   let productId = parseInt(req.params.product_id)
+  console.log(`Fetching info for product ID ${productId}`);
   var option = {
     url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${productId}`,
     headers: {"Authorization": process.env.AUTH},
@@ -13,11 +13,17 @@ const fetchProductInfo = (req, res)=>{
     headers: {"Authorization": process.env.AUTH},
     method: 'get'
   }
-  console.log(option)
-  console.log(option.url);
-  Promise.all([axios(option).then((data)=> {return data.data;}), axios(option1).then((data)=>{return data.data})])
+
+  Promise.all([axios(option).then((data)=> {return data.data;}), axios(option1).then((data)=>{
+    let styles = data.data.results;
+    for (let i = 0; i < styles.length; i++) {
+      if (styles[i]['default?'] === true) {
+        styles.unshift(styles.splice(i,1)[0]);
+      }
+    }
+    return styles;
+  })])
   .then((response)=>{
-    console.log('response', response);
     res.send(response)
   })
   .catch((err)=>{

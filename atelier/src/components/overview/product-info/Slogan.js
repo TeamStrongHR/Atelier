@@ -1,6 +1,6 @@
 
 
-export default function Slogan ({slogan, description}) {
+export default function Slogan ({slogan, description, features}) {
   console.log('here',slogan, description)
   return (
     <div className="slogan" data-testid="slogan">
@@ -10,9 +10,7 @@ export default function Slogan ({slogan, description}) {
       </section>
       <section className="characteristics">
         <ul>
-          <li>CHECK 1</li>
-          <li>CHECK 2</li>
-          <li>CHECK 2</li>
+          {Array.isArray(features) ? features.map((feature)=>{return <li>{feature.value} {feature.feature}</li>}): null}
         </ul>
       </section>
     </div>
