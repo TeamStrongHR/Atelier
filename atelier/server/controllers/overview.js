@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 const fetchProductInfo = (req, res)=>{
-  let productId = parseInt(req.params.product_id)
+  let productId = parseInt(req.params.product_id);
   console.log(`Fetching info for product ID ${productId}`);
   var option = {
     url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${productId}`,
@@ -56,8 +56,29 @@ const fetchProductInfo = (req, res)=>{
   })
 }
 
+const addToCart = (req, res) => {
+  let skuID = parseInt(req.params.sku_id);
+  console.log(`adding ${skuID} to cart`);
+  var option = {
+    url: "https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/cart/",
+    headers: {"Authorization": process.env.AUTH},
+    params: {
+      sku_id: skuID
+    },
+    method: 'post'
+  }
+  axios(option)
+  .then((response)=>{
+    res.status(201).end(response);
+  })
+  .catch((err)=>{
+    res.status(err.response.status).send(err);
+  })
+
+}
 
 
 module.exports = {
-  fetchProductInfo: fetchProductInfo
+  fetchProductInfo: fetchProductInfo,
+  addToCart: addToCart
 }
