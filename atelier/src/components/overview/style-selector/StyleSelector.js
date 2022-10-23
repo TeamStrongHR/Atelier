@@ -12,17 +12,6 @@ const StyleSelector = ({data, setData}) =>{
             return <StyleThumbnail data={data} thumbnailURL={ele.photos[0].thumbnail_url} id={i} key={i} setData={setData}/>;
           }): null}
       </div>
-      {/* <div className="style-selector1">
-      <span style={{width:50, height:50,borderRadius:'50%', backgroundColor:'green'}}></span>
-      <span style={{width:50, height:50,borderRadius:'50%', backgroundColor:'green'}}></span>
-      <span style={{width:50, height:50,borderRadius:'50%', backgroundColor:'green'}}></span>
-      </div>
-      <div className="style-selector2">
-      <span style={{width:50, height:50,borderRadius:'50%', backgroundColor:'green'}}></span>
-      <span style={{width:50, height:50,borderRadius:'50%', backgroundColor:'green'}}></span>
-      <span style={{width:50, height:50,borderRadius:'50%', backgroundColor:'green'}}></span>
-      <span style={{width:50, height:50,borderRadius:'50%', backgroundColor:'green'}}></span>
-      </div> */}
     </div>
   )
 }

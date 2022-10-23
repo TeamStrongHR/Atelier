@@ -1,7 +1,9 @@
 import StarRating from '../../shared/StarRating.js';
-import StyleSelector from '../style-selector/StyleSelector.js'
-import ShoppingCart from '../shopping-cart/ShoppingCart.js'
-import Price from '../../related-items/Price.js'
+import StyleSelector from '../style-selector/StyleSelector.js';
+import ShoppingCart from '../shopping-cart/ShoppingCart.js';
+import Price from '../../related-items/Price.js';
+
+
 export default function ProductSummary ({data, setData}) {
 
   return (
