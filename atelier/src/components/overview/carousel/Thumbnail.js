@@ -2,7 +2,9 @@ import no_url from '../../../images/no_url.jpg'
 
 const Thumbnail= ({thumbnail, showImage, id})=>{
   return (
-    <img className="thumbnail" src={thumbnail} onClick={()=>{showImage(id)}} alt={no_url}></img>
+    <div className="thumbnail" onClick={()=>{showImage(id)}}>
+      <img  src={thumbnail} alt={no_url}></img>
+    </div>
   )
 }
 

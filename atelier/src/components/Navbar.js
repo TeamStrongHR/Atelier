@@ -5,8 +5,8 @@ export default function Navbar () {
   <div>
   <header className="header">
     <nav className='navbar'>
-      <span>LOGO</span>
-      <span>SEARCH BAR</span>
+      <span className="logo">LOGO</span>
+      <span className="search-bar">SEARCH BAR</span>
     </nav>
   </header>
   <h4 className="banner">BANNER!! <a href="/">SALE SALE SALE!</a></h4>

@@ -7,9 +7,9 @@ import {useState, useEffect} from 'react';
 export default function Overview () {
   const [data, setData] = useState([{},[],0, 0])
   // helper function intiator
-  const getProductInfo = () => {
+  const getProductInfo = (id) => {
     var option = {
-      url: "http://localhost:3000/api/products/37313",
+      url: `http://localhost:3000/api/products/${id}`,
       method: "get",
     }
     axios(option)
@@ -23,7 +23,7 @@ export default function Overview () {
     })
   };
   useEffect(()=>{
-    getProductInfo()
+    getProductInfo(37311)
   },[]);
 
   return (
