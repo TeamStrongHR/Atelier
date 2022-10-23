@@ -1,6 +1,7 @@
-import ImageGallery from './carousel/ImageGallery.js'
-import ProductSummary from './product-info/ProductSummary.js'
-import Slogan from './product-info/Slogan.js'
+import ImageGallery from './carousel/ImageGallery.js';
+import ProductSummary from './product-info/ProductSummary.js';
+import Slogan from './product-info/Slogan.js';
+import Navbar from '../Navbar.js';
 import axios from 'axios';
 import {useState, useEffect} from 'react';
 
@@ -28,6 +29,7 @@ export default function Overview () {
 
   return (
     <div className="overview" data-testid="overview">
+      <Navbar getProductInfo={getProductInfo}/>
       <div className="image-summary">
       <ImageGallery data={data}/>
       <ProductSummary data={data} setData={setData}/>
