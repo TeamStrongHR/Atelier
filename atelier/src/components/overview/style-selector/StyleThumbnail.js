@@ -1,4 +1,4 @@
-import no_url from '../../../images/no_url.jpg';
+import {useEffect} from 'react';
 
 const StyleThumbnail = ({thumbnailURL, setData, id, data}) => {
   // on click helper to set the style
@@ -18,7 +18,7 @@ const StyleThumbnail = ({thumbnailURL, setData, id, data}) => {
   if (id === 0) {
     return (
       <div className="style-thumbnail" style={{border: "thick rgb(177, 150, 108) solid"}}>
-        <img src={thumbnailURL} onClick={styleOnClick} ></img>
+        <img src={thumbnailURL} onClick={styleOnClick}></img>
       </div>
     );
   }

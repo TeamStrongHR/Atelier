@@ -13,14 +13,13 @@ export default function Overview () {
       url: `http://localhost:3000/api/products/${id}`,
       method: "get",
     }
-    axios(option)
+    return axios(option)
     .then((res)=>{
       console.log('response data', res.data);
-
       setData([res.data[0], res.data[1], 0, res.data[2]]);
     })
     .catch((err)=>{
-      console.log('error data',err)
+      console.log('error data', err)
     })
   };
   useEffect(()=>{

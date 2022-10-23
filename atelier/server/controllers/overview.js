@@ -51,8 +51,8 @@ const fetchProductInfo = (req, res)=>{
     res.send(response)
   })
   .catch((err)=>{
-    console.log('err', err);
-    res.send(err);
+    console.log('err', err.response.status);
+    res.status(err.response.status).end();
   })
 }
 

@@ -52,10 +52,11 @@ function ImageGallery({ data }) {
   // thumbnail initiation;
   const showThumbnails = (num) => {
     let thumbArr = document.getElementsByClassName('thumbnail');
-    let thumbnails = document.getElementsByClassName('thumbnails');
+    let thumbnails = document.getElementsByClassName('thumbnails-container');
     let previous = document.getElementsByClassName('thumbnail-previous');
     let next = document.getElementsByClassName("thumbnail-next");
     let indexCopy = index;
+    console.log(thumbnails);
     if (thumbArr.length < 7) {
       next[0].style.opacity = "0";
       previous[0].style.opacity = "0";
@@ -63,8 +64,10 @@ function ImageGallery({ data }) {
     }
     if (num + 6 >= thumbArr.length - 1) {
       next[0].style.opacity = "0";
+      previous[0].style.opacity ="1";
       indexCopy[1] = thumbArr.length - 7;
     } else if (num <= 0) {
+      next[0].style.opacity = "1";
       previous[0].style.opacity ="0";
       indexCopy[1] = 0;
     } else {
@@ -96,9 +99,11 @@ function ImageGallery({ data }) {
       <div className="slider">
         <a className="thumbnail-previous" onClick={() => { moveThumbnail(-1) }}>&#8963;</a>
         <div className="thumbnails">
+        <div className="thumbnails-container">
           {typeof data[1][data[2]] === 'object' ? data[1][data[2]].photos.map((ele, i) => {
             return <Thumbnail thumbnail={ele.thumbnail_url} id={i} showImage={showImage} />;
           }) : null}
+        </div>
         </div>
         <a className="thumbnail-next" onClick={() => { moveThumbnail(1) }}>&#8964;</a>
         <div className="slides">
