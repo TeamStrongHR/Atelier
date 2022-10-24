@@ -1,11 +1,24 @@
 .style-selector{
-  width:fit-content;
-  .style-selector1 {
-    display: flex;
-    justify-content: space-around;
+  display: inline-block;
+  width: 100%;
+  overflow:hidden;
+  margin-bottom: 1vh;
+  .style-thumbnails{
+    display: -webkit-box;
+    width:100%;
+    flex-wrap: wrap;
+    .style-thumbnail{
+      display: flex;
+      width: 6.5vh;
+      height: 6.5vh;
+      border-radius: 50%;
+      overflow: hidden;
+      justify-content: center;
+      img{
+        width: 10vh;
+        height: auto;
+      }
+    }
   }
 
-  .style-selector2 {
-    display: flex;
-  }
 }

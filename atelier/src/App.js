@@ -11,7 +11,6 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar/>
       <Overview/>
       <RelatedAndComparison />
       <RatingsAndReviews product_id={37317}/>
