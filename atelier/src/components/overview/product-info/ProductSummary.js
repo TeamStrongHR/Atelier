@@ -14,6 +14,17 @@ export default function ProductSummary ({data, setData}) {
       <h5>{typeof data[1][data[2]] === 'object' ? <Price original_price={data[1][data[2]].original_price} sale_price={data[1][data[2]].sale_price}/>: null}</h5>
     <StyleSelector data={data} setData={setData}/>
     <ShoppingCart data={data}/>
+    <div className="share-buttons">
+      <a href="https://www.facebook.com/sharer.php?u=[post-url]"> share on
+        <i className="fab fa-facebook"></i>
+      </a>
+      <a href="https://twitter.com/share?url=[post-url]&text=[post-title]&via=[via]&hashtags=[hashtags]">
+        <i className="fab fa-twitter"></i>
+      </a>
+      <a href="https://pinterest.com/pin/create/bookmarklet/?media=[post-img]&url=[post-url]&is_video=[is_video]&description=[post-title]">
+        <i className="fab fa-pinterest"></i>
+      </a>
+    </div>
     </aside>
   )
 }

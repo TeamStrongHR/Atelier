@@ -29,21 +29,21 @@ export default function RelatedCard(props) {
     };
 
     //Make sure to show sales price
-    useEffect(() => {
-        let options = {
-            url: `http://localhost:3000/api/related/${props.relatedProduct}`,
-            method: 'get',
-        }
-        axios(options)
-            .then((data) => {
-                setRelatedProduct(data.data);
-                setStarRating(calStar(data.data.ratings));
-                setLoading(false);
+    // useEffect(() => {
+    //     let options = {
+    //         url: `http://localhost:3000/api/related/${props.relatedProduct}`,
+    //         method: 'get',
+    //     }
+    //     axios(options)
+    //         .then((data) => {
+    //             setRelatedProduct(data.data);
+    //             setStarRating(calStar(data.data.ratings));
+    //             setLoading(false);
 
-            })
-            .catch(err => { console.log(err) })
+    //         })
+    //         .catch(err => { console.log(err) })
 
-    }, []);
+    // }, []);
 
     const handleModal = () => {
         if (showModal === true) {
