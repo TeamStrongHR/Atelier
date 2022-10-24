@@ -119,3 +119,4 @@ function ImageGallery({ data }) {
 }
 
 export default ImageGallery;
+
