@@ -579,11 +579,13 @@ input:focus {
   white-space: nowrap;
   overflow: hidden;
   color: #fde16d;
+  letter-spacing: 5px;
 }
 
 .empty-stars:before, .full-stars:before {
   content: "★★★★★";
   font-size: 14pt;
+  letter-spacing: 3px;
 }
 
 .empty-stars:before {

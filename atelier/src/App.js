@@ -13,7 +13,7 @@ function App() {
     <div className="App">
       <Navbar/>
       <Overview/>
-      <RelatedAndComparison />
+      <RelatedAndComparison currentProduct={currentProduct} setCurrentProduct={setCurrentProduct}/>
       <RatingsAndReviews product_id={37317}/>
       <section></section>
       <aside></aside>
