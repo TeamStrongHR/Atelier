@@ -1,18 +1,19 @@
 .slogan {
+  padding: 2vh;
   display: flex;
-  width:70%;
+  width: 110vh;
   margin: auto;
   text-align: center;
   .description {
     float: left;
-    width: 64.3%;
+    width: 80vh;
     text-align: left;
-    padding: 5%;
+    border-right: 1px solid black;
+    padding: 2vh;
   }
   .characteristics{
     float: right;
-    width: 35.7%;
-    border-left: 4px solid black;
-    padding: 10%;
+    width: 30vh;
+    padding: 5vh;
   }
 }

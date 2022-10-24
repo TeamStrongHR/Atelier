@@ -11,7 +11,6 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar/>
       <Overview/>
       <RelatedAndComparison currentProduct={currentProduct} setCurrentProduct={setCurrentProduct}/>
       <RatingsAndReviews product_id={37317}/>
