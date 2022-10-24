@@ -1,7 +1,9 @@
-import StyleThumbnail from './StyleThumbnail.js'
+import StyleThumbnail from './StyleThumbnail.js';
+import {useEffect} from 'react';
 
 const StyleSelector = ({data, setData}) =>{
   // helper function
+
 
   return (
     <div className="style-selector">
