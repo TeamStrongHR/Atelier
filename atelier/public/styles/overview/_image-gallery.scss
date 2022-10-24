@@ -52,11 +52,6 @@
     width: 100%;
     height: 100%;
     overflow: hidden;
-    .thumbnail-container {
-      height: 3000%;
-      width: 100%;
-      display: flex;
-    }
     // Thumbnails
     .thumbnail-previous {
       position: absolute;
@@ -83,6 +78,9 @@
       z-index: 9;
       width: 9vh;
       height: 42vh;
+      .thumbnails-container {
+        width: 9vh;
+      }
       .thumbnail {
         margin-bottom: 0.5vh;
         display: flex;
