@@ -12,10 +12,15 @@
   white-space: nowrap;
   overflow: hidden;
   color: #fde16d;
+  reviews{
+  letter-spacing: 3px;
+  }
+
 }
 .empty-stars:before, .full-stars:before {
   content:"\2605\2605\2605\2605\2605";
   font-size: 14pt;
+  letter-spacing: 3px;
 }
 .empty-stars:before {
   -webkit-text-stroke: 1px #848484;

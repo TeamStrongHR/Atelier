@@ -92,12 +92,15 @@ export default function ReviewsList ({productName, reviews}) {
           return (<Review key={i} review={review}/>)
         })}
       </div>
+      <div className="more-write-buttons">
       {sortedReviews.length > 2 ?
-      (<button className="more-reviews" onClick={function(e){handleClick(e);
-      }}>More Reviews</button>) : null}
-      <br></br>
-      <button className="write-reviews" onClick={handleModalOpen}>Write Review</button>
-      <WriteReview productName={productName} modalOpen={modalOpen} handleModalClose={handleModalClose}/>
+        (<button className="more-reviews" onClick={function(e){handleClick(e);
+        }}>More Reviews</button>) : null}
+
+        <button className="write-reviews" onClick={handleModalOpen}>Write Review</button>
+        <WriteReview productName={productName} modalOpen={modalOpen} handleModalClose={handleModalClose}/>
+      </div>
+
     </div>
   )
 }
