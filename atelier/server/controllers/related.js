@@ -46,6 +46,8 @@ module.exports.related = (req, res) => {
           result['name'] = data[1].data.name;
           result['category'] = data[1].data.category;
           result['features'] = data[1].data.features;
+          result.slogan = data[1].data.slogan;
+          result.description = data[1].data.description;
           let default_style = data[2].data.results;
 
           for (let i = 0; i < default_style.length; i++) {
