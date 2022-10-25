@@ -88,6 +88,15 @@ function ImageGallery({data}) {
   const moveImage = (num) => {
     showImage(index[0] + num);
   };
+  useEffect(()=>{
+    let thumbnailContainer = document.getElementsByClassName('thumbnails-container');
+    if (thumbnailContainer.length !== 0) {
+      thumbnailContainer[0].style.transform = 'translateY(0vh)';
+    }
+    setIndex([0,0])
+    showImage(0);
+    showThumbnails(0)
+  },[data[0]])
 
   return (
     <section className="image-gallery" data-testid="image-gallery">
