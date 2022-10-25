@@ -7,43 +7,43 @@ import StarRating from '../shared/StarRating.js';
 //related product id
 //current product name, features
 export default function RelatedCard(props) {
-    //retrieve product info and styles axios.get()
-
     const [isLoading, setLoading] = useState(true);
     const [relatedProduct, setRelatedProduct] = useState(null);
     // const [url, setUrl] = useState('../images/no_url.jpg');
     const [showModal, setShowModal] = useState(false);
-    const [starRating, setStarRating] = useState(0);
+    // const [starRating, setStarRating] = useState(0);
 
-    const calStar = (ratings) => {
-        let totalNumOfRatings = 0;
-        let total = 0;
-        for (const num in ratings) {
-            var val = parseInt(num);
-            var count = parseInt(ratings[num]);
-            totalNumOfRatings += count;
-            total += (val * count);
-        }
-        let averageRating = ((total / parseFloat(totalNumOfRatings)) * 100) / 100;
-        return averageRating.toFixed(1);
-    };
+    // const calStar = (ratings) => {
+    //     let totalNumOfRatings = 0;
+    //     let total = 0;
+    //     for (const num in ratings) {
+    //         var val = parseInt(num);
+    //         var count = parseInt(ratings[num]);
+    //         totalNumOfRatings += count;
+    //         total += (val * count);
+    //     }
+    //     let averageRating = ((total / parseFloat(totalNumOfRatings)) * 100) / 100;
+    //     return averageRating.toFixed(1);
+    // };
 
     //Make sure to show sales price
-    // useEffect(() => {
-    //     let options = {
-    //         url: `http://localhost:3000/api/related/${props.relatedProduct}`,
-    //         method: 'get',
-    //     }
-    //     axios(options)
-    //         .then((data) => {
-    //             setRelatedProduct(data.data);
-    //             setStarRating(calStar(data.data.ratings));
-    //             setLoading(false);
+    useEffect(() => {
+        let options = {
+            url: `http://localhost:3000/api/related/${props.relatedProduct}`,
+            method: 'get',
+        }
+        axios(options)
+        .then((data) => {
+                setRelatedProduct(data.data);
+                // setStarRating(calStar(data.data.ratings));
+                setLoading(false);
+                console.log(data);
 
-    //         })
-    //         .catch(err => { console.log(err) })
+        })
+        .catch(err => { console.log('RELATED CARD JS ', err) });
 
-    // }, []);
+        // return setLoading(true);
+    },[props.relatedProduct]);
 
     const handleModal = () => {
         if (showModal === true) {
@@ -52,27 +52,37 @@ export default function RelatedCard(props) {
             setShowModal(true);
         }
     }
+
+    const cardHandler = () => {
+        // console.log('card clicked');
+        // console.log(relatedProduct);
+        props.setCurrentProduct(relatedProduct.product_id);
+    }
+
     if (isLoading) {
         return (<div className='related-card'>Loading Production Information</div>)
     }
 
     return (
-        <div className='related-card'>
+        <div className='related-card' >
             <div className='card-modal'>
                 <i class="fa-regular fa-star" onClick={handleModal}></i>
-                <RelatedModal showModal={showModal} onClose={handleModal} currentProduct={props.currentProduct} relatedProduct={relatedProduct} />
+                <RelatedModal showModal={showModal} onClose={handleModal} currentData={props.currentData} relatedProduct={relatedProduct} />
             </div>
-            <img className='card-image' src={relatedProduct.default_style.photos[0].url} alt={relatedProduct.name} ></img>
-            <div className='card-info'>
-                <i className='card-category'>{relatedProduct.category}</i>
-                <b className='card-name'>{relatedProduct.name}</b>
-                <Price original_price={relatedProduct.default_style.original_price} sale_price={relatedProduct.default_style.sale_price} />
-                {/* <small className='card-price'>{'$ ' + relatedProduct.default_style.original_price}</small>
+            <div onClick={cardHandler}>
+                <img className='card-image' src={relatedProduct.default_style[0].photos[0].url} alt={relatedProduct.name} ></img>
+                <div className='card-info'>
+                    <i className='card-category'>{relatedProduct.category}</i>
+                    <b className='card-name'>{relatedProduct.name}</b>
+                    <Price original_price={relatedProduct.default_style[0].original_price} sale_price={relatedProduct.default_style[0].sale_price} />
+                    {/* <small className='card-price'>{'$ ' + relatedProduct.default_style.original_price}</small>
                 <small className='card-sale-price'>{'$ ' + relatedProduct.default_style.sale_price}</small> */}
-                <small className='card-stars'>
-                    <StarRating rating={starRating}/>
-                </small>
+                    <small className='card-stars'>
+                        <StarRating rating={relatedProduct.ratings} />
+                    </small>
+                </div>
             </div>
+
 
         </div>
     )
