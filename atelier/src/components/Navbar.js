@@ -1,13 +1,13 @@
 import {useState} from 'react';
 
-export default function Navbar ({getProductInfo}) {
+export default function Navbar ({setCurrentProduct}) {
   const [term, setTerm] = useState('');
   // event helper function
   const searchBarOnChange = (e)=>{
     setTerm(e.target.value);
   };
   const searchButtonOnClick = (e)=>{
-    getProductInfo(parseInt(term))
+    setCurrentProduct(parseInt(term))
     setTerm('');
   }
   return (

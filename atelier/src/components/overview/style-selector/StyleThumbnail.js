@@ -1,32 +1,46 @@
-import { useEffect } from 'react';
 
-const StyleThumbnail = ({ thumbnailURL, setData, id, data }) => {
-  // on click helper to set the style
-  let style;
+const StyleThumbnail = ({ thumbnailURL, setData, id, data, name}) => {
+
+  let imageContainerStyle, checkboxStyle;
   if(id === data[2]){
-    style ={
+    imageContainerStyle ={
       border: "thick rgb(177, 150, 108) solid"
     };
+    checkboxStyle ={
+      display: "flex"
+    }
   } else {
-    style ={border: 'none'};
+    imageContainerStyle ={border: 'none'};
+    checkboxStyle = {display: 'none'};
   }
+  // on click helper to set the style
   const styleOnClick = (e) => {
     let dataCopy = data.slice();
     dataCopy[2] = id;
     setData(dataCopy);
-    let thumbnail = document.getElementsByClassName("style-thumbnail");
+    let thumbnail = document.getElementsByClassName("style-thumbnail-container");
+    let checkbox = document.getElementsByClassName("style-check-box");
     for (let i = 0; i < thumbnail.length; i++) {
       if (i === id) {
         thumbnail[i].style.border = "thick rgb(177, 150, 108) solid";
+        checkbox[i].style.display = "flex"
       } else {
         thumbnail[i].style.border = "none";
+        checkbox[i].style.display = "none";
       }
     }
   }
-  return (
-    <div className="style-thumbnail" onClick={styleOnClick} style={style}>
+  return (<div className="style-thumbnail">
+    <div className="style-name">
+      {name}
+    </div>
+    <div className="style-check-box" style={checkboxStyle}>
+      <i class="fa-regular fa-square-check"></i>
+    </div>
+    <div className="style-thumbnail-container" onClick={styleOnClick} style={imageContainerStyle}>
       <img src={thumbnailURL} ></img>
     </div>
+  </div>
   );
 };
 

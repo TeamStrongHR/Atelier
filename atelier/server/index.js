@@ -15,8 +15,6 @@ app.use(express.static(path.join(__dirname, "../build")))
 app.all('/api/reviews/:endpoint', reviews);
 
 // overview
-app.get('/api/products/:product_id', fetchProductInfo);
-
 app.post('/api/cart/:sku_id', addToCart);
 
 app.all('/api/related/:endpoint', related);
