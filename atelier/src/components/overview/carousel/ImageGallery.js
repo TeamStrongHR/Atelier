@@ -32,7 +32,7 @@ function ImageGallery({data}) {
     // calculate percent index
     let distance = 80 * count
 
-    console.log(index[0]);
+    // console.log(index[0]);
     slides[0].style.transition = "transform 0.4s ease-in-out";
     slides[0].style.transform = `translateX(${-distance}vh)`;
 
@@ -101,18 +101,18 @@ function ImageGallery({data}) {
   return (
     <section className="image-gallery" data-testid="image-gallery">
       <div className="slider">
-        <a className="thumbnail-previous" onClick={() => { moveThumbnail(-1) }}>&#8963;</a>
+        <a data-testid="thumbnail-previous" className="thumbnail-previous" onClick={() => { moveThumbnail(-1) }}>&#8963;</a>
         <div className="thumbnails">
         <div className="thumbnails-container">
           {typeof data[1][data[2]] === 'object' ? data[1][data[2]].photos.map((ele, i) => {
-            return <Thumbnail thumbnail={ele.thumbnail_url}  index={index[0]} id={i} showImage={showImage} />;
+            return <Thumbnail thumbnail={ele.thumbnail_url}  index={index[0]} id={i} showImage={showImage} key={i}/>;
           }) : null}
         </div>
         </div>
-        <a className="thumbnail-next" onClick={() => { moveThumbnail(1) }}>&#8964;</a>
+        <a data-testid="thumbnail-next" className="thumbnail-next" onClick={() => { moveThumbnail(1) }}>&#8964;</a>
         <div className="slides">
           {typeof data[1][data[2]] === 'object' ? data[1][data[2]].photos.map((ele, i) => {
-            console.log(ele);
+            // console.log(ele);
             return <MainImage image={ele.thumbnail_url} id={i} key={i} />;
           }) : null}
         </div>

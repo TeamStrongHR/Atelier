@@ -12,7 +12,7 @@ const Thumbnail= ({thumbnail, showImage, id, index})=>{
     }
   }
   return (
-    <div className="thumbnail" onClick={()=>{showImage(id)}} style={thumbnailStyle}>
+    <div className="thumbnail" onClick={()=>{showImage(id)}} style={thumbnailStyle} data-testid="thumbnail">
       <img  src={thumbnail} alt={no_url}></img>
     </div>
   )

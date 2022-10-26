@@ -11,9 +11,9 @@ export default function Navbar ({setCurrentProduct}) {
     setTerm('');
   }
   return (
-  <div>
+  <div >
   <header className="header">
-    <nav className='navbar'>
+    <nav className='navbar' data-testid="navbar">
       <span className="logo">LOGO</span>
       <span className="search-bar">
         <input placeholder="search product id" type="text" value={term} onChange={searchBarOnChange}></input>

@@ -1,7 +1,7 @@
 
 
 export default function Slogan ({slogan, description, features}) {
-  console.log('here',slogan, description)
+  // console.log('here',slogan, description)
   return (
     <div className="slogan" data-testid="slogan">
       <section className="description">
