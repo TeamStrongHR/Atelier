@@ -9,44 +9,6 @@
   height: 50vh;
   position: relative;
 
-  .checkmark {
-    display:inline-block;
-    width: 22vh;
-    height:22vh;
-    -ms-transform: rotate(45deg); /* IE 9 */
-    -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
-    transform: rotate(45deg);
-    z-index: 9;
-}
-
-.checkmark_circle {
-    position: absolute;
-    width:22vh;
-    height:22vh;
-    background-color: white;
-    border-radius:5vh;
-    border: solid 4vh red;
-    z-index: 9;
-}
-
-.checkmark_stem {
-    position: absolute;
-    width:5vh;
-    height:28vh;
-    background-color: red;
-    left:11vh;
-    bottom:5vh;
-}
-
-.checkmark_kick {
-    position: absolute;
-    width:14vh;
-    height:5vh;
-    background-color: red;
-    left:0vh;
-    top:12vh;
-}
-
   // main image slider
   .slider {
     width: 100%;

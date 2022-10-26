@@ -48,7 +48,7 @@ const related = (req, res) => {
           result['category'] = data[1].data.category;
           result['features'] = data[1].data.features;
           let default_style = data[2].data.results;
-          console.log('PRINT HERE ',data[2].headers['x-ratelimit-remaining']);
+          console.log('PRINT HERE ', data[2].headers['x-ratelimit-remaining']);
           for (let i = 0; i < default_style.length; i++) {
             if (default_style[i]['default?'] === true) {
               default_style.unshift(default_style.splice(i, 1)[0]);
@@ -80,12 +80,16 @@ const related = (req, res) => {
           // }
           res.json(result);
         })
+        .catch((err) => {
+          console.log('err', err.response.status);
+          res.status(err.response.status).end();
+        })
       break
 
     default:
   }
 }
 
-module.exports ={
-  related : related
+module.exports = {
+  related: related
 }

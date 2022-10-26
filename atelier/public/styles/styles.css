@@ -487,38 +487,6 @@
   height: 50vh;
   position: relative;
 }
-.image-gallery .checkmark {
-  display: inline-block;
-  width: 22vh;
-  height: 22vh; /* IE 9 */ /* Chrome, Safari, Opera */
-  transform: rotate(45deg);
-  z-index: 9;
-}
-.image-gallery .checkmark_circle {
-  position: absolute;
-  width: 22vh;
-  height: 22vh;
-  background-color: white;
-  border-radius: 5vh;
-  border: solid 4vh red;
-  z-index: 9;
-}
-.image-gallery .checkmark_stem {
-  position: absolute;
-  width: 5vh;
-  height: 28vh;
-  background-color: red;
-  left: 11vh;
-  bottom: 5vh;
-}
-.image-gallery .checkmark_kick {
-  position: absolute;
-  width: 14vh;
-  height: 5vh;
-  background-color: red;
-  left: 0vh;
-  top: 12vh;
-}
 .image-gallery .slider {
   width: 100%;
   height: 100%;
@@ -615,14 +583,28 @@
   flex-wrap: wrap;
 }
 .style-selector .style-thumbnails .style-thumbnail {
+  width: 25%;
+}
+.style-selector .style-thumbnails .style-thumbnail .style-name {
+  font-size: 0.1vh;
+  width: 100%;
+}
+.style-selector .style-thumbnails .style-thumbnail .style-check-box {
+  position: absolute;
+  background: white;
+  width: 1.5vh;
+  color: rgb(177, 150, 108);
+  display: none;
+}
+.style-selector .style-thumbnails .style-thumbnail .style-thumbnail-container {
   display: flex;
-  width: 6.5vh;
-  height: 6.5vh;
+  width: 100%;
+  aspect-ratio: 1/1;
   border-radius: 50%;
   overflow: hidden;
   justify-content: center;
 }
-.style-selector .style-thumbnails .style-thumbnail img {
+.style-selector .style-thumbnails .style-thumbnail .style-thumbnail-container img {
   width: 10vh;
   height: auto;
 }
