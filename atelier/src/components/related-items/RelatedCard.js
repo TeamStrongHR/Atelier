@@ -37,7 +37,7 @@ export default function RelatedCard(props) {
                 setRelatedProduct(data.data);
                 // setStarRating(calStar(data.data.ratings));
                 setLoading(false);
-                console.log(data);
+                // console.log(data);
 
         })
         .catch(err => { console.log('RELATED CARD JS ', err) });

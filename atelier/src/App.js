@@ -31,7 +31,7 @@ function App() {
 }, [currentProduct]);
 
 if (isLoading) {
-  return <div>Retrieving Related Products</div>
+  return <div>Retrieving Product </div>
 }
   return (
     <div className="App">
