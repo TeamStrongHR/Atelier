@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react';
 import StarRating from '../../shared/StarRating.js';
 import {format, parseISO} from 'date-fns'
 
-export default function Review ({review}) {
+export default function Review ({handleHelpful, review}) {
   var date = format(parseISO(review.date), "MMMM dd, yyyy")
   console.log(date)
 
@@ -17,6 +17,7 @@ export default function Review ({review}) {
   var handleCloseImg = () => {
     setImgOpen("none");
   }
+
 
 
   return (
@@ -40,7 +41,9 @@ export default function Review ({review}) {
       </div>
       </p>
       <div>
-      <span id="helpful"> Helpful?  <a>Yes</a> ({review.helpfulness}) | <u>Report</u> </span>
+      <span id="helpful"> Helpful?  <a onClick={function() {
+        handleHelpful(review.review_id)}
+        }>Yes</a> ({review.helpfulness}) | <u>Report</u> </span>
       </div>
       {review.recommend ? (<span id="recommend-product">I recommend this product ✓</span>): null}
       <hr className="break"></hr>
