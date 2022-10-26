@@ -15,7 +15,7 @@ function App() {
       url: `http://localhost:3000/api/related/${currentProduct}`,
       method: 'get'
     }
-    axios(options)
+    axios.default.get(options.url)
       .then((data) => {
         setCurrentData(data.data);
       })
@@ -23,7 +23,7 @@ function App() {
   }, [currentProduct]);
 
   return (
-    <div className="App">
+    <div className="App" data-testid="App">
       <Overview setCurrentProduct={setCurrentProduct} currentData={currentData} />
       <RelatedAndComparison />
       <RatingsAndReviews product_id={37317} />
