@@ -1,14 +1,14 @@
 import {useState, useEffect} from 'react';
 import StarRating from '../../shared/StarRating.js';
 import axios from 'axios';
-export default function Ratings ({ratings}) {
+export default function Ratings ({breakdown}) {
 
   //math to determine average rating...
   var totalNumOfRatings = 0;
   var total = 0;
-  for(const num in ratings) {
+  for(const num in breakdown.ratings) {
     var val = parseInt(num);
-    var count = parseInt(ratings[num]);
+    var count = parseInt(breakdown.ratings[num]);
     totalNumOfRatings+=count;
     total+=(val*count)
   }
@@ -18,8 +18,10 @@ export default function Ratings ({ratings}) {
 
   //for use in printing out the progress bars
   //reverse to start array from 5 stars...
-  var ratingsKeys = Object.keys(ratings).reverse();
-  var ratingsValues = Object.values(ratings).reverse();
+  var ratingsKeys = Object.keys(breakdown.ratings).reverse();
+  var ratingsValues = Object.values(breakdown.ratings).reverse();
+  var recommended = Math.round(parseInt(breakdown.recommended.true)/parseFloat((parseInt(breakdown.recommended.true)+ parseInt(breakdown.recommended.false)))*100);
+
 
   return (
     <div className="ratings">
@@ -30,7 +32,7 @@ export default function Ratings ({ratings}) {
         <span id="num"><strong>{averageRating}</strong></span>
         <StarRating rating={averageRating}/>
       </div>
-      <p>100% of reviews recommend this product</p>
+      <p>{recommended}% of reviews recommend this product</p>
 
       {/*RATING BARS*/}
       {ratingsKeys.map((key, i) => {
@@ -43,27 +45,19 @@ export default function Ratings ({ratings}) {
       </div>)
       })}
 
-    {/*COMFORT/SIZE RANGES*/}
+    {/*RANGES*/}
     <div className="range">
-
-      <h6>Size</h6>
-      <div className="size">
-      <input type="range" min="0" max="100" value="70" list="ticks-size"/>
-      <datalist id="ticks-size">
-        <option value="33"></option>
-        <option value="66"></option>
-      </datalist>
-      </div>
-
-      <h6>Comfort</h6>
-      <div className="comfort">
-      <input type="range" min="0" max="100" value="30" list="ticks-comfort"/>
-      <datalist id="ticks-comfort">
-        <option value="25"></option>
-        <option value="75"></option>
-      </datalist>
-      </div>
-
+      {Object.keys(breakdown.characteristics).map(key => {
+        console.log(breakdown.characteristics, key, ((breakdown.characteristics[key].value)/parseFloat(5))*100);
+        return (<div className="characteristics">
+          <h6>{key}</h6>
+          <input type="range" min="0" max="100" value={((breakdown.characteristics[key].value)/parseFloat(5))*100} list="ticks-size"/>
+          <datalist id="ticks-size">
+            <option value="33"></option>
+            <option value="66"></option>
+          </datalist>
+        </div>)
+      })}
     </div>
     </div>
   )
