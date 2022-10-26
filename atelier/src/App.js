@@ -10,7 +10,7 @@ import { useState, useEffect } from 'react';
 function App() {
 
   const [currentProduct, setCurrentProduct] = useState('37313');
-  const [currentData, setCurrentData] = useState([]);
+  const [currentData, setCurrentData] = useState(null);
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -18,7 +18,7 @@ function App() {
       url: `http://localhost:3000/api/related/${currentProduct}`,
       method: 'get',
     }
-    axios.default.get(options.url)
+    axios.get(options.url)
       .then((data) => {
         setCurrentData(data.data);
       })
@@ -28,8 +28,8 @@ function App() {
   return (
     <div className="App" data-testid="App">
       {currentData && <Overview setCurrentProduct={setCurrentProduct} currentData={currentData} />}
-      <RelatedAndComparison />
-      <RatingsAndReviews product_id={currentProduct} />
+      {currentData && currentProduct && <RelatedAndComparison currentData={currentData} currentProduct={currentProduct} setCurrentProduct={setCurrentProduct}/>}
+      {currentProduct && <RatingsAndReviews product_id={currentProduct} />}
       <section></section>
       <aside></aside>
       <section></section>
