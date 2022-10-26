@@ -35,7 +35,7 @@ const StyleThumbnail = ({ thumbnailURL, setData, id, data, name}) => {
       {name}
     </div>
     <div className="style-check-box" style={checkboxStyle}>
-      <i class="fa-regular fa-square-check"></i>
+      <i className="fa-regular fa-square-check"></i>
     </div>
     <div className="style-thumbnail-container" onClick={styleOnClick} style={imageContainerStyle}>
       <img src={thumbnailURL} ></img>

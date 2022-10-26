@@ -1,12 +1,18 @@
-import { useState } from 'react';
+import { useState, useEffect} from 'react';
 import SizeSelector from './SizeSelector.js'
 import axios from 'axios';
 
 const ShoppingCart = ({ data }) => {
   const [cartDetail, setCartDetail] = useState(['', "0"]);
+  const [stock, setStock] = useState('OUT OF STOCK');
+
+  // useEffect to reset stock
+  useEffect(()=>{
+    setStock('OUT OF STOCK');
+  },[data[0]])
   // quantity array maker
   const ArrayMaker = (str)=> {
-    if (str === undefined || str === '') {
+    if (str === undefined || str === '' || str === '0') {
       return ['-'];
     }
     let num = parseInt(str);
@@ -48,15 +54,21 @@ const ShoppingCart = ({ data }) => {
     <div className="shopping-cart">
       <div className="size-quantity">
         <select className="size" value={cartDetail[0]} onChange={sizeOnChange}>
-          <option value="">SELECT SIZE</option>
+          <option value="">{stock}</option>
           {typeof data[1][data[2]] === 'object' ? Object.entries(data[1][data[2]].skus).map((sku, i) => {
-            return <SizeSelector size={sku[1].size} sku={sku[0]}maxQuantity={sku[1].quantity} setCartDetail={setCartDetail} />
+            if (sku[1].quantity === 0 || !sku[1].quantity) {
+              return;
+            }
+            if (stock === 'OUT OF STOCK') {
+              setStock('SELECT SIZE');
+            }
+            return <SizeSelector size={sku[1].size} sku={sku[0]} maxQuantity={sku[1].quantity} setCartDetail={setCartDetail} key={i}/>
           }) : null}
         </select>
 
         <select className="quantity" value={cartDetail[2]} onChange={quantityOnChange}>
-          {typeof data[1][data[2]] === 'object' ? ArrayMaker(cartDetail[0].split(',')[1]).map((quantity)=>{
-            return <option value={quantity}>{quantity}</option>;
+          {typeof data[1][data[2]] === 'object' ? ArrayMaker(cartDetail[0].split(',')[1]).map((quantity, i)=>{
+            return <option value={quantity} key={i}>{quantity}</option>;
           }): null}
         </select>
       </div>

@@ -10,7 +10,7 @@ export default function Slogan ({slogan, description, features}) {
       </section>
       <section className="characteristics">
         <ul>
-          {Array.isArray(features) ? features.map((feature)=>{return <li>{feature.value} {feature.feature}</li>}): null}
+          {Array.isArray(features) ? features.map((feature, i)=>{return <li key={i}>{feature.value} {feature.feature}</li>}): null}
         </ul>
       </section>
     </div>

@@ -49,7 +49,7 @@ export default function Overview ({setCurrentProduct, currentData}) {
     <div className="overview" data-testid="overview">
       <Navbar setCurrentProduct={setCurrentProduct}/>
       <div className="image-summary">
-      <ImageGallery data={data} currentData={currentData}/>
+      <ImageGallery data={data}/>
       <ProductSummary data={data} setData={setData}/>
       </div>
       <Slogan slogan={data[0].slogan} description={data[0].description} features={data[0].features}/>

@@ -103,21 +103,21 @@ function ImageGallery({data}) {
       <div className="slider">
         <a data-testid="thumbnail-previous" className="thumbnail-previous" onClick={() => { moveThumbnail(-1) }}>&#8963;</a>
         <div className="thumbnails">
-        <div className="thumbnails-container">
+        <div className="thumbnails-container" data-testid="thumbnails-container">
           {typeof data[1][data[2]] === 'object' ? data[1][data[2]].photos.map((ele, i) => {
             return <Thumbnail thumbnail={ele.thumbnail_url}  index={index[0]} id={i} showImage={showImage} key={i}/>;
           }) : null}
         </div>
         </div>
         <a data-testid="thumbnail-next" className="thumbnail-next" onClick={() => { moveThumbnail(1) }}>&#8964;</a>
-        <div className="slides">
+        <div className="slides" data-testid="slides">
           {typeof data[1][data[2]] === 'object' ? data[1][data[2]].photos.map((ele, i) => {
             // console.log(ele);
             return <MainImage image={ele.thumbnail_url} id={i} key={i} />;
           }) : null}
         </div>
-        <a className="main-previous" onClick={() => { moveImage(-1) }}>&#10094;</a>
-        <a className="main-next" onClick={() => { moveImage(1) }}>&#10095;</a>
+        <a className="main-previous" data-testid="main-previous" onClick={() => { moveImage(-1) }}>&#10094;</a>
+        <a className="main-next" data-testid="main-next" onClick={() => { moveImage(1) }}>&#10095;</a>
       </div>
     </section>)
 }
