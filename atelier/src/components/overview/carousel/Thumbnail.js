@@ -1,11 +1,21 @@
 import no_url from '../../../images/no_url.jpg'
 
-const Thumbnail= ({thumbnail, showImage, id})=>{
+const Thumbnail= ({thumbnail, showImage, id, index})=>{
+  let thumbnailStyle;
+  if (id === index) {
+    thumbnailStyle = {
+      border: "thick rgb(177, 150, 108) solid"
+    }
+  } else {
+    thumbnailStyle = {
+      border: "none"
+    }
+  }
   return (
-    <div className="thumbnail" onClick={()=>{showImage(id)}}>
+    <div className="thumbnail" onClick={()=>{showImage(id)}} style={thumbnailStyle}>
       <img  src={thumbnail} alt={no_url}></img>
     </div>
   )
 }
 
-export default Thumbnail
+export default Thumbnail;

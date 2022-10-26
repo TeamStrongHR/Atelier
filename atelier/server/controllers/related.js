@@ -1,6 +1,7 @@
 const axios = require('axios');
+// import axios from 'axios';
 
-module.exports.related = (req, res) => {
+const related = (req, res) => {
   console.log('RECEVIED', typeof parseInt(req.params.endpoint));
 
   switch (req.method) {
@@ -83,4 +84,8 @@ module.exports.related = (req, res) => {
 
     default:
   }
+}
+
+module.exports ={
+  related : related
 }

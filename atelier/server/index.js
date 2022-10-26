@@ -1,10 +1,12 @@
-require("dotenv").config();
+
+require('dotenv').config()
 const express = require('express');
 const path = require('path');
 const app = express();
 const {reviews} = require('./controllers/reviews.js');
 const {fetchProductInfo, addToCart} = require('./controllers/overview.js');
 const {related} = require('./controllers/related.js');
+
 
 //middleware
 app.use(express.json());

@@ -39,5 +39,35 @@ module.exports.reviews = (req, res) => {
         })
       }
       break;
+    case "POST":
+      if(end === "post") {
+        console.log('INSIDE POST WRITING REVIEW', JSON.stringify(req.body))
+        var options = {
+          url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews',
+          data: req.body,
+          method: "post",
+          headers: {"Authorization": process.env.AUTH}
+        }
+        axios(options)
+        .then(result => {
+          res.send(result);
+        })
+        .catch(err => {
+          res.send(err);
+        })
+      }
+    case "PUT":
+      if(end === "helpful") {
+        console.log('REVIEW ID', req.query.review_id)
+        var options = {
+          url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/${req.query.review_id}/helpful`,
+          method: "put",
+          headers: {"Authorization": process.env.AUTH}
+        }
+        axios(options)
+        .then(result => {
+          res.send(result.data)
+        })
+      }
   }
 }
