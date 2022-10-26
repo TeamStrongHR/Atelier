@@ -3,9 +3,7 @@ import WriteReview from './WriteReview.js';
 import {useState, useEffect} from 'react';
 import axios from 'axios';
 
-export default function ReviewsList ({productName, reviews}) {
-
-
+export default function ReviewsList ({handleHelpful, rerender, productName, reviews, breakdown}) {
   //show 2 initially
   const [showAmount, setShowAmount] = useState(2);
   //edge case, if less than 2 reviews
@@ -30,16 +28,24 @@ export default function ReviewsList ({productName, reviews}) {
   var handleModalClose = ()=> {
     setModalOpen("none");
   }
-  var sortByRelevance = reviews.sort((a, b) => {
-    var dateA=new Date(a.date);
-    var dateB=new Date(b.date);
-    return dateB-dateA;
-  }).sort((a, b) => {
-    return a.helpfulness - b.helpfulness
-    })
 
-  console.log(sortByRelevance);
-  const [sortedReviews, setSortedReviews] = useState(sortByRelevance)
+  const [sortedReviews, setSortedReviews] = useState(null);
+  useEffect(()=> {
+    var sortByRelevance = reviews.sort((a, b) => {
+      var dateA=new Date(a.date);
+      var dateB=new Date(b.date);
+      return dateB-dateA;
+    }).sort((a, b) => {
+      return a.helpfulness - b.helpfulness
+      })
+    setSortedReviews(sortByRelevance);
+  }, [reviews])
+
+
+
+  console.log('THIS IS RERENDERING')
+
+
 
 
   //handles sorting the reviews
@@ -73,10 +79,9 @@ export default function ReviewsList ({productName, reviews}) {
     }
   }
 
-
   return (
     <div>
-      <div className="reviews-list">
+      <div data-testid="ratings-reviews-comp" className="reviews-list">
         <div className="sort-options">
           <span>{reviews.length} reviews, sorted by
             <select onChange={function(e) {
@@ -84,21 +89,21 @@ export default function ReviewsList ({productName, reviews}) {
             }} className="sort-dropdown">
               <option value="Helpful" >Helpful</option>
               <option value="Newest" >Newest</option>
-              <option value="Relevant" selected>Relevant</option>
+              <option value="Relevant" defaultValue>Relevant</option>
             </select>
           </span>
         </div>
-        {sortedReviews.slice(0, showAmount).map((review, i) => {
-          return (<Review key={i} review={review}/>)
+        {sortedReviews && sortedReviews.slice(0, showAmount).map((review, i) => {
+          return (<Review handleHelpful={handleHelpful} key={i} review={review}/>)
         })}
       </div>
       <div className="more-write-buttons">
-      {sortedReviews.length > 2 ?
+      {sortedReviews && sortedReviews.length > 2 ?
         (<button className="more-reviews" onClick={function(e){handleClick(e);
         }}>More Reviews</button>) : null}
 
         <button className="write-reviews" onClick={handleModalOpen}>Write Review</button>
-        <WriteReview productName={productName} modalOpen={modalOpen} handleModalClose={handleModalClose}/>
+        <WriteReview rerender={rerender} productName={productName} breakdown={breakdown} modalOpen={modalOpen} handleModalClose={handleModalClose}/>
       </div>
 
     </div>

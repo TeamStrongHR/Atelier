@@ -1,21 +1,22 @@
-import {render, screen, cleanup} from '@testing-library/react';
-import RatingsAndReviews from '../RatingsAndReviews.js';
-import renderer from 'react-test-renderer';
+import { render, screen, waitFor, cleanup } from '@testing-library/react';
+import React from 'react';
+import axios from 'axios';
+jest.mock('axios');
 
-afterEach(()=> {
-  cleanup();
-})
 
-test('Should render RatingsAndReviews component', ()=> {
-  render(<RatingsAndReviews/>)
-  const rrComp = screen.getByTestId('ratings-reviews-comp')
-  expect(rrComp).toBeInTheDocument();
-  expect(rrComp).toHaveTextContent("recommend")
-  expect(rrComp).toContainHTML('div')
+describe('Overall Question Component and Functionality', () => {
+  beforeAll(() => {
+      axios.mockResolvedValue({ data: null });
+    });
+    afterEach(() => {
+      cleanup()
+    });
 
-})
 
-test('matches snapshot', ()=> {
-  const tree = renderer.create(<RatingsAndReviews/>).toJSON();
-  expect(tree).toMatchSnapshot();
-})
+    it("Should render all the component in App", async () => {
+      render(<RatingsAndReviews/>)
+      const rrComp = screen.getByTestId('ratings-reviews-comp')
+      expect(rrComp).toBeInTheDocument();
+      expect(rrComp).toContainHTML('div')
+    });
+  });

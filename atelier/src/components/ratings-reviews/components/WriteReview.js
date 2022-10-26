@@ -4,8 +4,9 @@ import { fetchPhotos, openUploadWidget } from "../../../CloudinaryService.js";
 import axios from 'axios';
 
 
-export default function WriteReview ({product_id=37311, productName, modalOpen, handleModalClose}) {
+export default function WriteReview ({rerender, breakdown, productName, modalOpen, handleModalClose}) {
 
+  var product_id = parseInt(breakdown.product_id);
   //for collecting uploaded images
   const [images, setImages] = useState([]);
   //functions to handle upload onClick
@@ -59,7 +60,36 @@ export default function WriteReview ({product_id=37311, productName, modalOpen, 
     setRating(parseInt(e.target.value));
   }
 
+  console.log("REVIEW CHARACTERISTISCS", breakdown)
+
+  var characteristics = Object.keys(breakdown.characteristics);
+
+
   var handleSubmit = (e) => {
+    var obj = {}
+    for(var characteristic of characteristics) {
+      var id = breakdown.characteristics[characteristic]["id"];
+      console.log('THIS IS ID', characteristic, id)
+      switch (characteristic) {
+        case "Size":
+          obj[id]=size;
+          break;
+        case "Quality":
+          obj[id]=quality;
+          break;
+        case "Width":
+          obj[id]=width;
+          break;
+        case "Comfort":
+          obj[id]=comfort;
+          break;
+        case "Fit":
+          obj[id]=fit;
+          break;
+        default:
+          break;
+      }
+    }
     var data = {
       product_id: product_id,
       rating: rating,
@@ -69,16 +99,15 @@ export default function WriteReview ({product_id=37311, productName, modalOpen, 
       name: name,
       email: email,
       photos: images,
-      characteristics: {
-        "1" : size,
-        "2": width,
-        "3" :comfort,
-        "4" :quality,
-        "5": fit
-    }
+      characteristics: obj,
     }
     e.preventDefault();
-    axios.post('localhost:3000/post')
+    axios.post('http://localhost:3000/api/reviews/post', data)
+    .then(result => {
+      console.log(result);
+      handleModalClose();
+      rerender();
+    })
     console.log('SUBMITTED', data)
   }
 
@@ -103,17 +132,17 @@ export default function WriteReview ({product_id=37311, productName, modalOpen, 
 
 
         {/*star rating*/}
-        <div onChange={handleRating} class="write-rating">
+        <div onChange={handleRating} className="write-rating">
           <input id="rating1" type="radio" name="rating" value="1"/>
-          <label for="rating1">1</label>
+          <label htmlFor="rating1">1</label>
           <input id="rating2" type="radio" name="rating" value="2"/>
-          <label for="rating2">2</label>
+          <label htmlFor="rating2">2</label>
           <input id="rating3" type="radio" name="rating" value="3"/>
-          <label for="rating3">3</label>
+          <label htmlFor="rating3">3</label>
           <input id="rating4" type="radio" name="rating" value="4"/>
-          <label for="rating4">4</label>
+          <label htmlFor="rating4">4</label>
           <input id="rating5" type="radio" name="rating" value="5"/>
-          <label for="rating5">5</label>
+          <label htmlFor="rating5">5</label>
         </div>
 
         <br></br>
@@ -123,7 +152,7 @@ export default function WriteReview ({product_id=37311, productName, modalOpen, 
         <textarea onChange={(e)=> {
           e.preventDefault();
           setSummary(e.target.value);
-        }} value={summary} id="review-summary" placeholder="Example: Best purchase ever!" maxlength="60"></textarea>
+        }} value={summary} id="review-summary" placeholder="Example: Best purchase ever!" maxLength="60"></textarea>
         <br></br>
 
         {/*Review Body*/}
@@ -151,90 +180,105 @@ export default function WriteReview ({product_id=37311, productName, modalOpen, 
 
         {/*Characteristics Table*/}
         <table>
-          <tr>
-            <td>SIZE</td>
-            <formfield onChange={(e)=>{
-              setSize(parseInt(e.target.value));
-            }}>
-            <input id="s1" type="radio" name="size" value="1"/>
-            <label htmlFor="s1">A size too small<br/></label>
-            <input id="s2" type="radio" name="size" value="2"/>
-            <label htmlFor="s2">1/2 size too small<br/></label>
-            <input id="s3" type="radio" name="size" value="3"/>
-            <label htmlFor="s3">Perfect<br/></label>
-            <input id="s4" type="radio" name="size" value="4"/>
-            <label htmlFor="s4">1/2 size too big<br/></label>
-            <input id="s5" type="radio" name="size" value="5"/>
-            <label htmlFor="s5">A size too wide<br/></label>
-            </formfield>
-          </tr>
-          <tr>
-            <td>WIDTH</td>
-            <formfield onChange={(e)=> {
-              setWidth(parseInt(e.target.value));
-            }}>
-            <input id="w1" type="radio" name="width" value="1"/>
-            <label htmlFor="w1">Too Narrow<br/></label>
-            <input id="w2" type="radio" name="width" value="2"/>
-            <label htmlFor="w2">Slightly Narrow<br/></label>
-            <input id="w3" type="radio" name="width" value="3"/>
-            <label htmlFor="w3">Perfect<br/></label>
-            <input id="w4" type="radio" name="width" value="4"/>
-            <label htmlFor="w4">Slightly Wide<br/></label>
-            <input id="w5" type="radio" name="width" value="5"/>
-            <label htmlFor="w5">Too Wide<br/></label>
-            </formfield>
-          </tr>
-          <tr>
-            <td>COMFORT</td>
-            <formfield onChange={(e)=>{
-              setComfort(parseInt(e.target.value));
-            }}>
-            <input id="c1" type="radio" name="comfort" value="1"/>
-            <label htmlFor="c1">Uncomfortable<br/></label>
-            <input id="c2" type="radio" name="comfort" value="2"/>
-            <label htmlFor="c2">Slightly Comfortable<br/></label>
-            <input id="c3" type="radio" name="comfort" value="3"/>
-            <label htmlFor="c3">OK<br/></label>
-            <input id="c4" type="radio" name="comfort" value="4"/>
-            <label htmlFor="c4">Comfortable<br/></label>
-            <input id="c5" type="radio" name="comfort" value="5"/>
-            <label htmlFor="c5">Perfect<br/></label>
-            </formfield>
-          </tr>
-          <tr>
-            <td>QUALITY</td>
-            <formfield onChange={e=> {
-              setQuality(parseInt(e.target.value));
-            }}>
-            <input id="q1" type="radio" name="quality" value="1"/>
-            <label htmlFor="q1">Poor<br/></label>
-            <input id="q2" type="radio" name="quality" value="2"/>
-            <label htmlFor="q2">Below Average<br/></label>
-            <input id="q3" type="radio" name="quality" value="3"/>
-            <label htmlFor="q3">What I Expected<br/></label>
-            <input id="q4" type="radio" name="quality" value="4"/>
-            <label htmlFor="q4">Pretty Great<br/></label>
-            <input id="q5" type="radio" name="quality" value="5"/>
-            <label htmlFor="q5">Perfect<br/></label>
-            </formfield>
-          </tr>
-          <tr>
-            <td>FIT</td>
-            <formfield onChange={e=> {
-              setFit(parseInt(e.target.value));
-            }}>
-            <input id="f1" type="radio" name="fit" value="1"/>
-            <label htmlFor="f1">Runs Tight<br/></label>
-            <input id="f2" type="radio" name="fit" value="2"/>
-            <label htmlFor="f2">Runs Slightly Tight<br/></label><input id="f3" type="radio" name="fit" value="3"/>
-            <label htmlFor="f3">Perfect<br/></label>
-            <input id="f4" type="radio" name="fit" value="4"/>
-            <label htmlFor="f4">Runs Slightly Long<br/></label>
-            <input id="f5" type="radio" name="fit" value="5"/>
-            <label htmlFor="f5">Runs Long<br/></label>
-            </formfield>
-          </tr>
+          {characteristics.map((characteristic, i)=> {
+            switch(characteristic) {
+              case "Size":
+                return (<tr key={i}>
+                  <td>{characteristic}</td>
+                  <formfield onChange={(e)=>{
+                    setSize(parseInt(e.target.value));
+                  }}>
+                  <input id="s1" type="radio" name="size" value="1"/>
+                  <label htmlFor="s1">A size too small<br/></label>
+                  <input id="s2" type="radio" name="size" value="2"/>
+                  <label htmlFor="s2">1/2 size too small<br/></label>
+                  <input id="s3" type="radio" name="size" value="3"/>
+                  <label htmlFor="s3">Perfect<br/></label>
+                  <input id="s4" type="radio" name="size" value="4"/>
+                  <label htmlFor="s4">1/2 size too big<br/></label>
+                  <input id="s5" type="radio" name="size" value="5"/>
+                  <label htmlFor="s5">A size too wide<br/></label>
+                  </formfield>
+                </tr>)
+                break;
+                case "Width":
+                  return (<tr key={i}>
+                    <td>{characteristic}</td>
+                    <formfield onChange={(e)=> {
+                      setWidth(parseInt(e.target.value));
+                    }}>
+                    <input id="w1" type="radio" name="width" value="1"/>
+                    <label htmlFor="w1">Too Narrow<br/></label>
+                    <input id="w2" type="radio" name="width" value="2"/>
+                    <label htmlFor="w2">Slightly Narrow<br/></label>
+                    <input id="w3" type="radio" name="width" value="3"/>
+                    <label htmlFor="w3">Perfect<br/></label>
+                    <input id="w4" type="radio" name="width" value="4"/>
+                    <label htmlFor="w4">Slightly Wide<br/></label>
+                    <input id="w5" type="radio" name="width" value="5"/>
+                    <label htmlFor="w5">Too Wide<br/></label>
+                    </formfield>
+                  </tr>)
+                  break;
+                  case "Comfort":
+                    return (<tr key={i}>
+                      <td>{characteristic}</td>
+                      <formfield onChange={(e)=>{
+                        setComfort(parseInt(e.target.value));
+                      }}>
+                      <input id="c1" type="radio" name="comfort" value="1"/>
+                      <label htmlFor="c1">Uncomfortable<br/></label>
+                      <input id="c2" type="radio" name="comfort" value="2"/>
+                      <label htmlFor="c2">Slightly Comfortable<br/></label>
+                      <input id="c3" type="radio" name="comfort" value="3"/>
+                      <label htmlFor="c3">OK<br/></label>
+                      <input id="c4" type="radio" name="comfort" value="4"/>
+                      <label htmlFor="c4">Comfortable<br/></label>
+                      <input id="c5" type="radio" name="comfort" value="5"/>
+                      <label htmlFor="c5">Perfect<br/></label>
+                      </formfield>
+                    </tr>)
+                    case "Quality":
+                      return (<tr key={i}>
+                        <td>{characteristic}</td>
+                        <formfield onChange={e=> {
+                          setQuality(parseInt(e.target.value));
+                        }}>
+                        <input id="q1" type="radio" name="quality" value="1"/>
+                        <label htmlFor="q1">Poor<br/></label>
+                        <input id="q2" type="radio" name="quality" value="2"/>
+                        <label htmlFor="q2">Below Average<br/></label>
+                        <input id="q3" type="radio" name="quality" value="3"/>
+                        <label htmlFor="q3">What I Expected<br/></label>
+                        <input id="q4" type="radio" name="quality" value="4"/>
+                        <label htmlFor="q4">Pretty Great<br/></label>
+                        <input id="q5" type="radio" name="quality" value="5"/>
+                        <label htmlFor="q5">Perfect<br/></label>
+                        </formfield>
+                      </tr>)
+                      break;
+                    case "Fit":
+                      return (<tr key={i}>
+                        <td>{characteristic}</td>
+                        <formfield onChange={e=> {
+                          setFit(parseInt(e.target.value));
+                        }}>
+                        <input id="f1" type="radio" name="fit" value="1"/>
+                        <label htmlFor="f1">Runs Tight<br/></label>
+                        <input id="f2" type="radio" name="fit" value="2"/>
+                        <label htmlFor="f2">Runs Slightly Tight<br/></label><input id="f3" type="radio" name="fit" value="3"/>
+                        <label htmlFor="f3">Perfect<br/></label>
+                        <input id="f4" type="radio" name="fit" value="4"/>
+                        <label htmlFor="f4">Runs Slightly Long<br/></label>
+                        <input id="f5" type="radio" name="fit" value="5"/>
+                        <label htmlFor="f5">Runs Long<br/></label>
+                        </formfield>
+                      </tr>)
+                      break;
+                      default:
+                        break;
+            }
+           })}
         </table>
         <label>NAME</label>
         <br/>
