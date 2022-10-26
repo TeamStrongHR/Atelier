@@ -7,7 +7,7 @@ jest.mock('axios');
 
 describe('Overall Question Component and Functionality', () => {
   beforeAll(() => {
-      // axios.mockResolvedValue({ data: null });
+      axios.mockResolvedValue({ data: null });
     });
     afterEach(() => {
       cleanup()
