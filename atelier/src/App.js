@@ -29,12 +29,12 @@ function App() {
     <div className="App" data-testid="App">
       {currentData && <Overview setCurrentProduct={setCurrentProduct} currentData={currentData} />}
       {currentData && currentProduct && <RelatedAndComparison currentData={currentData} currentProduct={currentProduct} setCurrentProduct={setCurrentProduct}/>}
-      {currentProduct && <RatingsAndReviews product_id={currentProduct} />}
+      {currentData && currentProduct && <RatingsAndReviews product_id={currentProduct} />}
       <section></section>
       <aside></aside>
       <section></section>
       <aside></aside>
-      <QuestionsAndAnswers />
+      {currentData && currentProduct && <QuestionsAndAnswers />}
     </div>
   );
 }

@@ -6,6 +6,8 @@ import StarRating from '../shared/StarRating.js';
 //In props
 //related product id
 //current product name, features
+
+
 export default function RelatedCard(props) {
     const [isLoading, setLoading] = useState(true);
     const [relatedProduct, setRelatedProduct] = useState(null);
@@ -32,12 +34,11 @@ export default function RelatedCard(props) {
             url: `http://localhost:3000/api/related/${props.relatedProduct}`,
             method: 'get',
         }
-        axios(options)
+        axios.get(options.url)
         .then((data) => {
                 setRelatedProduct(data.data);
                 // setStarRating(calStar(data.data.ratings));
                 setLoading(false);
-                // console.log(data);
 
         })
         .catch(err => { console.log('RELATED CARD JS ', err) });
@@ -60,11 +61,11 @@ export default function RelatedCard(props) {
     }
 
     if (isLoading) {
-        return (<div className='related-card'>Loading Production Information</div>)
+        return (<div className='related-card' data-testid='related-card-loading'>Loading Production Information</div>)
     }
 
     return (
-        <div className='related-card' >
+        <div className='related-card'  data-testid='related-card'>
             <div className='card-modal'>
                 <i class="fa-regular fa-star" onClick={handleModal}></i>
                 <RelatedModal showModal={showModal} onClose={handleModal} currentData={props.currentData} relatedProduct={relatedProduct} />

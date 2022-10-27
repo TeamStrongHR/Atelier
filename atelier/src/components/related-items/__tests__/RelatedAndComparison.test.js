@@ -1,13 +1,28 @@
-// import {render, screen, cleanup} from '@testing-library/react';
+import { render, screen, fireEvent, cleanup } from '@testing-library/react';
+import React from 'react';
 // import RelatedAndComparison from '../RelatedAndComparison.js';
-// import renderer from 'react-test-renderer';
+// import axios from 'axios';
+import RelatedAndComparison from '../RelatedAndComparison.js';
+import {outfitTestData, outfitTestDataId} from './TestData.js';
+import axios from 'axios';
 
-// afterEach(() => {
-//   cleanup();
-// })
+jest.mock('axios', () => ({
+  get: () => Promise.resolve({ data: 'data' }),
+}));
 
-// it('SHOULD HAVE OUTFIT COMPONENT', ()=> {
-//   render(<RelatedAndComparison />);
-//   const outfit = screen.getByTestid('YourOutfit')
-//   expect(screen.find('YourOutfit').exists()).toBeTruthy()
-// })
+describe('RELATED AND COMPARISON RELATED LIST FUNCTIONALITY TEST', () => {
+  beforeAll(() => {
+
+    });
+    afterEach(() => {
+      cleanup()
+    });
+
+    it("Should render Related List and YourOutfit ", async () => {
+      render(<RelatedAndComparison  />);
+      const relatedlist = screen.getByTestId('related-comparison')
+      expect(relatedlist).toBeTruthy()
+    });
+
+
+  });
