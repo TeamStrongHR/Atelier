@@ -16,13 +16,13 @@ export default function ProductSummary ({data, setData}) {
     <ShoppingCart data={data}/>
     <div className="share-buttons">
       <h4>share on social media!</h4>
-      <a href="https://www.facebook.com/sharer.php?u=[post-url]">
+      <a href="https://www.facebook.com/sharer.php">
         <i className="fab fa-facebook"></i>
       </a>
-      <a href="https://twitter.com/share?url=[post-url]&text=[post-title]&via=[via]&hashtags=[hashtags]">
+      <a href={`https://twitter.com/share?text='wow'`}>
         <i className="fab fa-twitter"></i>
       </a>
-      <a href="https://pinterest.com/pin/create/bookmarklet/?media=[post-img]&url=[post-url]&is_video=[is_video]&description=[post-title]">
+      <a href="https://pinterest.com/pin/create/bookmarklet/?media=[post-img]&url=[post-url&description=[post-title]">
         <i className="fab fa-pinterest"></i>
       </a>
     </div>
