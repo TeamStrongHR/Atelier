@@ -24,7 +24,7 @@ export default function Ratings ({breakdown}) {
 
 
   return (
-    <div className="ratings">
+    <div data-testid="ratings-comp" className="ratings">
       <h5>RATINGS & REVIEWS</h5>
 
       {/*RATING STARS*/}
@@ -37,7 +37,7 @@ export default function Ratings ({breakdown}) {
       {/*RATING BARS*/}
       {ratingsKeys.map((key, i) => {
         return (
-        <div className="progress-bar">
+        <div key={i} className="progress-bar">
         <div><u>{key} stars</u></div>
         <div className="whole-bar">
           <div className="partial-bar" style={{width:`${Math.round((parseInt(ratingsValues[i])/parseFloat(totalNumOfRatings))*100)}%`}}></div>
@@ -47,11 +47,10 @@ export default function Ratings ({breakdown}) {
 
     {/*RANGES*/}
     <div className="range">
-      {Object.keys(breakdown.characteristics).map(key => {
-        console.log(breakdown.characteristics, key, ((breakdown.characteristics[key].value)/parseFloat(5))*100);
-        return (<div className="characteristics">
+      {Object.keys(breakdown.characteristics).map((key, i) => {
+        return (<div key={i} className="characteristics">
           <h6>{key}</h6>
-          <input type="range" min="0" max="100" value={((breakdown.characteristics[key].value)/parseFloat(5))*100} list="ticks-size"/>
+          <input readOnly type="range" min="0" max="100" value={((breakdown.characteristics[key].value)/parseFloat(5))*100} list="ticks-size"/>
           <datalist id="ticks-size">
             <option value="33"></option>
             <option value="66"></option>

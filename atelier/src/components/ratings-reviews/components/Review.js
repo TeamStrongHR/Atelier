@@ -4,7 +4,6 @@ import {format, parseISO} from 'date-fns'
 
 export default function Review ({handleHelpful, review}) {
   var date = format(parseISO(review.date), "MMMM dd, yyyy")
-  console.log(date)
 
 
   const [imgOpen, setImgOpen] = useState("none");
@@ -21,7 +20,7 @@ export default function Review ({handleHelpful, review}) {
 
 
   return (
-    <div className="review">
+    <div data-testid="review-comp" className="review">
       <div className="star-user">
       <StarRating rating={review.rating}/>
       <span id="user-date"> {review.reviewer_name}, {date}</span>
@@ -31,6 +30,7 @@ export default function Review ({handleHelpful, review}) {
       <p>{review.body}
       <br/>
       {review.photos.map(photo=> {
+        console.log('RENDERING PHOTO', photo.thumbnail_url)
         return (<img className="thumbs" src={photo.url} onClick={(e)=>handleOpenImg(e)}></img>)
       })}
       <div className="img-modal" style={{display:`${imgOpen}`}}>
