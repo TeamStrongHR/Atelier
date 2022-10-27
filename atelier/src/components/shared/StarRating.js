@@ -6,8 +6,8 @@ export default function StarRating ({rating}) {
   var style = {width:`${percent}%`}
   return (
     <div className="star-rating">
-      <div class="empty-stars"></div>
-      <div class="full-stars" style={style}></div>
+      <div className="empty-stars"></div>
+      <div className="full-stars" style={style}></div>
     </div>
   )
 }

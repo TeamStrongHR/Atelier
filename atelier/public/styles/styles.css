@@ -432,6 +432,7 @@
 }
 .ratings-reviews .modal {
   position: fixed;
+<<<<<<< HEAD
   z-index: 1;
   left: 0;
   top: 0;
@@ -450,10 +451,61 @@
 }
 .ratings-reviews .modal-content table {
   padding: 10px;
+=======
+  z-index: 20;
+  left: 0;
+  top: 0;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+}
+.ratings-reviews .modal-content {
+  display: flex;
+  position: relative;
+  top: -3rem;
+  left: 25%;
+  margin-bottom: 4%;
+  justify-content: flex-start;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 4%;
+  background-color: #f4f4f4;
+  width: 50%;
+  height: 100vh;
+  overflow: auto;
+}
+.ratings-reviews .modal-content h4 {
+  color: gray;
+  font-size: 2rem;
+}
+.ratings-reviews .modal-content .recommendation {
+  margin: 0.5rem auto;
+  font-size: 0.8rem;
+}
+.ratings-reviews .modal-content .recommendation #recommend-yes, .ratings-reviews .modal-content .recommendation #recommend-no {
+  border: 0px;
+  height: 0.75rem;
+}
+.ratings-reviews .modal-content textarea {
+  width: 400px;
+  height: 100px;
+}
+.ratings-reviews .modal-content .image-upload img {
+  height: 200px;
+  width: 200px;
+  display: block;
+}
+
+table {
+  margin: 2rem auto;
+  align: center;
+>>>>>>> main
   display: flex;
   justify-content: flex-start;
   width: 100%;
 }
+<<<<<<< HEAD
 .ratings-reviews .modal-content table formfield {
   margin-right: 10px;
   display: inline-block;
@@ -471,11 +523,62 @@
   width: 200px;
   display: inline-block;
 }
+=======
+table div {
+  margin-right: 10px;
+  display: inline-block;
+}
+table div label {
+  font-size: small;
+}
+>>>>>>> main
 
 #recommend-product {
   font-size: 0.7rem;
 }
 
+<<<<<<< HEAD
+=======
+.rate {
+  height: 46px;
+  padding: 0 10px;
+  display: flex;
+  justify-content: right;
+  right: 420px;
+}
+
+.rate:not(:checked) > input {
+  position: absolute;
+  top: -9999px;
+}
+
+.rate:not(:checked) > label {
+  float: right;
+  width: 1em;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 30px;
+  color: #ccc;
+}
+
+.rate:not(:checked) > label:before {
+  content: "★ ";
+}
+
+.rate > input:checked ~ label {
+  color: #ffc700;
+}
+
+.rate:not(:checked) > label:hover, .rate:not(:checked) > label:hover ~ label {
+  color: #deb217;
+}
+
+.rate > input:checked + label:hover, .rate > input:checked + label:hover ~ label, .rate > input:checked ~ label:hover, .rate > input:checked ~ label:hover ~ label, .rate > label:hover ~ input:checked ~ label {
+  color: #c59b08;
+}
+
+>>>>>>> main
 .image-gallery {
   margin: 0;
   padding: 0;
@@ -615,6 +718,7 @@
   flex-wrap: wrap;
 }
 .style-selector .style-thumbnails .style-thumbnail {
+<<<<<<< HEAD
   width: 25%;
 }
 .style-selector .style-thumbnails .style-thumbnail .style-name {
@@ -632,11 +736,20 @@
   display: flex;
   width: 100%;
   aspect-ratio: 1/1;
+=======
+  display: flex;
+  width: 6.5vh;
+  height: 6.5vh;
+>>>>>>> main
   border-radius: 50%;
   overflow: hidden;
   justify-content: center;
 }
+<<<<<<< HEAD
 .style-selector .style-thumbnails .style-thumbnail .style-thumbnail-container img {
+=======
+.style-selector .style-thumbnails .style-thumbnail img {
+>>>>>>> main
   width: 10vh;
   height: auto;
 }
@@ -644,7 +757,11 @@
 .slogan {
   padding: 2vh;
   display: flex;
+<<<<<<< HEAD
   width: 114vh;
+=======
+  width: 110vh;
+>>>>>>> main
   margin: auto;
   text-align: center;
 }
@@ -657,12 +774,20 @@
 }
 .slogan .characteristics {
   float: right;
+<<<<<<< HEAD
   width: 34vh;
+=======
+  width: 30vh;
+>>>>>>> main
   padding: 5vh;
 }
 
 .product-summary {
+<<<<<<< HEAD
   width: 34vh;
+=======
+  width: 30vh;
+>>>>>>> main
   padding: 2vh;
 }
 .product-summary .card-price {
@@ -810,7 +935,11 @@ input:focus {
   margin: auto;
   justify-content: space-between;
   background-color: gray;
+<<<<<<< HEAD
   width: 114vh;
+=======
+  width: 110vh;
+>>>>>>> main
 }
 .navbar .logo {
   padding: 0.5vh;

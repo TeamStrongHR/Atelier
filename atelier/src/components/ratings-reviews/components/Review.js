@@ -2,9 +2,12 @@ import {useState, useEffect} from 'react';
 import StarRating from '../../shared/StarRating.js';
 import {format, parseISO} from 'date-fns'
 
-export default function Review ({review}) {
+export default function Review ({handleHelpful, review}) {
   var date = format(parseISO(review.date), "MMMM dd, yyyy")
+<<<<<<< HEAD
   // console.log(date)
+=======
+>>>>>>> main
 
 
   const [imgOpen, setImgOpen] = useState("none");
@@ -19,8 +22,9 @@ export default function Review ({review}) {
   }
 
 
+
   return (
-    <div className="review">
+    <div data-testid="review-comp" className="review">
       <div className="star-user">
       <StarRating rating={review.rating}/>
       <span id="user-date"> {review.reviewer_name}, {date}</span>
@@ -30,6 +34,7 @@ export default function Review ({review}) {
       <p>{review.body}
       <br/>
       {review.photos.map(photo=> {
+        console.log('RENDERING PHOTO', photo.thumbnail_url)
         return (<img className="thumbs" src={photo.url} onClick={(e)=>handleOpenImg(e)}></img>)
       })}
       <div className="img-modal" style={{display:`${imgOpen}`}}>
@@ -40,7 +45,9 @@ export default function Review ({review}) {
       </div>
       </p>
       <div>
-      <span id="helpful"> Helpful?  <a>Yes</a> ({review.helpfulness}) | <u>Report</u> </span>
+      <span id="helpful"> Helpful?  <a onClick={function() {
+        handleHelpful(review.review_id)}
+        }>Yes</a> ({review.helpfulness}) | <u>Report</u> </span>
       </div>
       {review.recommend ? (<span id="recommend-product">I recommend this product ✓</span>): null}
       <hr className="break"></hr>

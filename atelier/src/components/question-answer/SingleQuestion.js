@@ -14,6 +14,8 @@ export default function SingleQuestion({question}) {
   // event handler on clickk
     // slices by 2
 
+  // questions answers list sliced by 2  || []
+
 
 
 
@@ -29,6 +31,9 @@ export default function SingleQuestion({question}) {
       }
      </div>
      {/* <button className="show-answers" onClick={()=>setIsActive(true)}>+</button> */}
+
+
+
 
     </>
   )

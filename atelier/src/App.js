@@ -3,38 +3,33 @@ import RelatedAndComparison from './components/related-items/RelatedAndCompariso
 import RatingsAndReviews from './components/ratings-reviews/RatingsAndReviews.js'
 import QuestionsAndAnswersMain from './components/question-answer/questionsAnswersMain.js';
 import axios from 'axios'
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 
 
 
 function App() {
 
-  const [currentProduct, setCurrentProduct] = useState('37313');
-  const [currentData, setCurrentData] = useState([]);
+  const [currentProduct, setCurrentProduct] = useState('37320');
+  const [currentData, setCurrentData] = useState(null);
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
     let options = {
-        url: `http://localhost:3000/api/related/${currentProduct}`,
-        method: 'get'
+      url: `/api/related/${currentProduct}`,
+      method: 'get',
     }
-    axios(options)
-        .then((data) => {
-            setCurrentData(data.data);
-            setLoading(false);
-        })
-        .catch(err => { console.log('APP JS ', err) })
-}, [currentProduct]);
+    axios.get(options.url)
+      .then((data) => {
+        setCurrentData(data.data);
+      })
+      .catch(err => { console.log(err) })
+  }, [currentProduct]);
 
-
-if (isLoading) {
-  return <div>Retrieving Related Productzzzzz</div>
-}
   return (
-    <div className="App">
-      <Overview setCurrentProduct={setCurrentProduct} currentData={currentData}/>
-      <RelatedAndComparison currentData={currentData} currentProduct={currentProduct} setCurrentProduct={setCurrentProduct}/>
-      <RatingsAndReviews product_id={37317}/>
+    <div className="App" data-testid="App">
+      {currentData && <Overview setCurrentProduct={setCurrentProduct} currentData={currentData} />}
+      {currentData && currentProduct && <RelatedAndComparison currentData={currentData} currentProduct={currentProduct} setCurrentProduct={setCurrentProduct}/>}
+      {currentProduct && <RatingsAndReviews product_id={currentProduct} />}
       <section></section>
       <aside></aside>
       <section></section>

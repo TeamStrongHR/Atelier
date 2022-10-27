@@ -1,4 +1,5 @@
-require("dotenv").config();
+
+require('dotenv').config()
 const express = require('express');
 const path = require('path');
 const app = express();
@@ -7,6 +8,7 @@ const {fetchProductInfo, addToCart} = require('./controllers/overview.js');
 const {related} = require('./controllers/related.js');
 var { router } = require('./controllers/questions.js');
 // require file in server controllers q/a
+
 
 //middleware
 app.use(express.json());
@@ -22,6 +24,8 @@ app.get('/api/questions', router);
 app.all('/api/reviews/:endpoint', reviews);
 
 // overview
+app.get('/api/products/:product_id', fetchProductInfo);
+
 app.post('/api/cart/:sku_id', addToCart);
 
 app.all('/api/related/:endpoint', related);
