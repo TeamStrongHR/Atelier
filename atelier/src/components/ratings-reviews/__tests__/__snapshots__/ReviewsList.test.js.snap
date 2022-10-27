@@ -1,14 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`matches snapshot 1`] = `
+exports[`ReviewsList Component matches snapshot 1`] = `
 <div>
   <div
     className="reviews-list"
+    data-testid="reviewslist-comp"
   >
     <div
       className="sort-options"
     >
       <span>
+        5
          reviews, sorted by
         <select
           className="sort-dropdown"
@@ -25,7 +27,7 @@ exports[`matches snapshot 1`] = `
             Newest
           </option>
           <option
-            selected={true}
+            defaultValue={true}
             value="Relevant"
           >
             Relevant
@@ -46,6 +48,7 @@ exports[`matches snapshot 1`] = `
     <div>
       <div
         className="modal"
+        data-testid="write-review-comp"
         style={
           Object {
             "display": "none",
@@ -93,7 +96,7 @@ exports[`matches snapshot 1`] = `
               </label>
             </div>
             <div
-              class="write-rating"
+              className="write-rating"
               onChange={[Function]}
             >
               <input
@@ -103,7 +106,7 @@ exports[`matches snapshot 1`] = `
                 value="1"
               />
               <label
-                for="rating1"
+                htmlFor="rating1"
               >
                 1
               </label>
@@ -114,7 +117,7 @@ exports[`matches snapshot 1`] = `
                 value="2"
               />
               <label
-                for="rating2"
+                htmlFor="rating2"
               >
                 2
               </label>
@@ -125,7 +128,7 @@ exports[`matches snapshot 1`] = `
                 value="3"
               />
               <label
-                for="rating3"
+                htmlFor="rating3"
               >
                 3
               </label>
@@ -136,7 +139,7 @@ exports[`matches snapshot 1`] = `
                 value="4"
               />
               <label
-                for="rating4"
+                htmlFor="rating4"
               >
                 4
               </label>
@@ -147,7 +150,7 @@ exports[`matches snapshot 1`] = `
                 value="5"
               />
               <label
-                for="rating5"
+                htmlFor="rating5"
               >
                 5
               </label>
@@ -161,7 +164,7 @@ exports[`matches snapshot 1`] = `
             <br />
             <textarea
               id="review-summary"
-              maxlength="60"
+              maxLength="60"
               onChange={[Function]}
               placeholder="Example: Best purchase ever!"
               value=""
@@ -192,214 +195,218 @@ exports[`matches snapshot 1`] = `
                 Upload Images
               </button>
             </div>
-            <table>
-              <tr>
-                <td>
-                  Fit
-                </td>
-                <formfield
-                  onChange={[Function]}
-                >
-                  <input
-                    id="f1"
-                    name="fit"
-                    type="radio"
-                    value="1"
-                  />
-                  <label
-                    htmlFor="f1"
-                  >
-                    Runs Tight
-                    <br />
-                  </label>
-                  <input
-                    id="f2"
-                    name="fit"
-                    type="radio"
-                    value="2"
-                  />
-                  <label
-                    htmlFor="f2"
-                  >
-                    Runs Slightly Tight
-                    <br />
-                  </label>
-                  <input
-                    id="f3"
-                    name="fit"
-                    type="radio"
-                    value="3"
-                  />
-                  <label
-                    htmlFor="f3"
-                  >
-                    Perfect
-                    <br />
-                  </label>
-                  <input
-                    id="f4"
-                    name="fit"
-                    type="radio"
-                    value="4"
-                  />
-                  <label
-                    htmlFor="f4"
-                  >
-                    Runs Slightly Long
-                    <br />
-                  </label>
-                  <input
-                    id="f5"
-                    name="fit"
-                    type="radio"
-                    value="5"
-                  />
-                  <label
-                    htmlFor="f5"
-                  >
-                    Runs Long
-                    <br />
-                  </label>
-                </formfield>
-              </tr>
-              <tr>
-                <td>
-                  Comfort
-                </td>
-                <formfield
-                  onChange={[Function]}
-                >
-                  <input
-                    id="c1"
-                    name="comfort"
-                    type="radio"
-                    value="1"
-                  />
-                  <label
-                    htmlFor="c1"
-                  >
-                    Uncomfortable
-                    <br />
-                  </label>
-                  <input
-                    id="c2"
-                    name="comfort"
-                    type="radio"
-                    value="2"
-                  />
-                  <label
-                    htmlFor="c2"
-                  >
-                    Slightly Comfortable
-                    <br />
-                  </label>
-                  <input
-                    id="c3"
-                    name="comfort"
-                    type="radio"
-                    value="3"
-                  />
-                  <label
-                    htmlFor="c3"
-                  >
-                    OK
-                    <br />
-                  </label>
-                  <input
-                    id="c4"
-                    name="comfort"
-                    type="radio"
-                    value="4"
-                  />
-                  <label
-                    htmlFor="c4"
-                  >
-                    Comfortable
-                    <br />
-                  </label>
-                  <input
-                    id="c5"
-                    name="comfort"
-                    type="radio"
-                    value="5"
-                  />
-                  <label
-                    htmlFor="c5"
-                  >
-                    Perfect
-                    <br />
-                  </label>
-                </formfield>
-              </tr>
-              <tr>
-                <td>
-                  Quality
-                </td>
-                <formfield
-                  onChange={[Function]}
-                >
-                  <input
-                    id="q1"
-                    name="quality"
-                    type="radio"
-                    value="1"
-                  />
-                  <label
-                    htmlFor="q1"
-                  >
-                    Poor
-                    <br />
-                  </label>
-                  <input
-                    id="q2"
-                    name="quality"
-                    type="radio"
-                    value="2"
-                  />
-                  <label
-                    htmlFor="q2"
-                  >
-                    Below Average
-                    <br />
-                  </label>
-                  <input
-                    id="q3"
-                    name="quality"
-                    type="radio"
-                    value="3"
-                  />
-                  <label
-                    htmlFor="q3"
-                  >
-                    What I Expected
-                    <br />
-                  </label>
-                  <input
-                    id="q4"
-                    name="quality"
-                    type="radio"
-                    value="4"
-                  />
-                  <label
-                    htmlFor="q4"
-                  >
-                    Pretty Great
-                    <br />
-                  </label>
-                  <input
-                    id="q5"
-                    name="quality"
-                    type="radio"
-                    value="5"
-                  />
-                  <label
-                    htmlFor="q5"
-                  >
-                    Perfect
-                    <br />
-                  </label>
-                </formfield>
-              </tr>
+            <table
+              className="char"
+            >
+              <tbody>
+                <tr>
+                  <td>
+                    Fit
+                    <div
+                      onChange={[Function]}
+                    >
+                      <input
+                        id="f1"
+                        name="fit"
+                        type="radio"
+                        value="1"
+                      />
+                      <label
+                        htmlFor="f1"
+                      >
+                        Runs Tight
+                        <br />
+                      </label>
+                      <input
+                        id="f2"
+                        name="fit"
+                        type="radio"
+                        value="2"
+                      />
+                      <label
+                        htmlFor="f2"
+                      >
+                        Runs Slightly Tight
+                        <br />
+                      </label>
+                      <input
+                        id="f3"
+                        name="fit"
+                        type="radio"
+                        value="3"
+                      />
+                      <label
+                        htmlFor="f3"
+                      >
+                        Perfect
+                        <br />
+                      </label>
+                      <input
+                        id="f4"
+                        name="fit"
+                        type="radio"
+                        value="4"
+                      />
+                      <label
+                        htmlFor="f4"
+                      >
+                        Runs Slightly Long
+                        <br />
+                      </label>
+                      <input
+                        id="f5"
+                        name="fit"
+                        type="radio"
+                        value="5"
+                      />
+                      <label
+                        htmlFor="f5"
+                      >
+                        Runs Long
+                        <br />
+                      </label>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Comfort
+                    <div
+                      onChange={[Function]}
+                    >
+                      <input
+                        id="c1"
+                        name="comfort"
+                        type="radio"
+                        value="1"
+                      />
+                      <label
+                        htmlFor="c1"
+                      >
+                        Uncomfortable
+                        <br />
+                      </label>
+                      <input
+                        id="c2"
+                        name="comfort"
+                        type="radio"
+                        value="2"
+                      />
+                      <label
+                        htmlFor="c2"
+                      >
+                        Slightly Comfortable
+                        <br />
+                      </label>
+                      <input
+                        id="c3"
+                        name="comfort"
+                        type="radio"
+                        value="3"
+                      />
+                      <label
+                        htmlFor="c3"
+                      >
+                        OK
+                        <br />
+                      </label>
+                      <input
+                        id="c4"
+                        name="comfort"
+                        type="radio"
+                        value="4"
+                      />
+                      <label
+                        htmlFor="c4"
+                      >
+                        Comfortable
+                        <br />
+                      </label>
+                      <input
+                        id="c5"
+                        name="comfort"
+                        type="radio"
+                        value="5"
+                      />
+                      <label
+                        htmlFor="c5"
+                      >
+                        Perfect
+                        <br />
+                      </label>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Quality
+                    <div
+                      onChange={[Function]}
+                    >
+                      <input
+                        id="q1"
+                        name="quality"
+                        type="radio"
+                        value="1"
+                      />
+                      <label
+                        htmlFor="q1"
+                      >
+                        Poor
+                        <br />
+                      </label>
+                      <input
+                        id="q2"
+                        name="quality"
+                        type="radio"
+                        value="2"
+                      />
+                      <label
+                        htmlFor="q2"
+                      >
+                        Below Average
+                        <br />
+                      </label>
+                      <input
+                        id="q3"
+                        name="quality"
+                        type="radio"
+                        value="3"
+                      />
+                      <label
+                        htmlFor="q3"
+                      >
+                        What I Expected
+                        <br />
+                      </label>
+                      <input
+                        id="q4"
+                        name="quality"
+                        type="radio"
+                        value="4"
+                      />
+                      <label
+                        htmlFor="q4"
+                      >
+                        Pretty Great
+                        <br />
+                      </label>
+                      <input
+                        id="q5"
+                        name="quality"
+                        type="radio"
+                        value="5"
+                      />
+                      <label
+                        htmlFor="q5"
+                      >
+                        Perfect
+                        <br />
+                      </label>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
             </table>
             <label>
               NAME

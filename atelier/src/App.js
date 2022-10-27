@@ -9,13 +9,13 @@ import { useState, useEffect } from 'react';
 
 function App() {
 
-  const [currentProduct, setCurrentProduct] = useState('37313');
+  const [currentProduct, setCurrentProduct] = useState('37320');
   const [currentData, setCurrentData] = useState(null);
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
     let options = {
-      url: `http://localhost:3000/api/related/${currentProduct}`,
+      url: `/api/related/${currentProduct}`,
       method: 'get',
     }
     axios.get(options.url)

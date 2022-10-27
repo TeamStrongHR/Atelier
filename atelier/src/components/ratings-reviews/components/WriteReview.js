@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react';
 import {CloudinaryContext, Image} from 'cloudinary-react';
 import { fetchPhotos, openUploadWidget } from "../../../CloudinaryService.js";
+import isEmail from 'validator/lib/isEmail';
 import axios from 'axios';
 
 
@@ -19,12 +20,10 @@ export default function WriteReview ({rerender, breakdown, productName, modalOpe
 
     openUploadWidget(uploadOptions, (error, photos) => {
       if (!error) {
-        console.log(photos);
         if(photos.event === 'success'){
           setImages([...images, `https://res.cloudinary.com/dvijvlkad/image/upload/${photos.info.public_id}`])
         }
       } else {
-        console.log(error);
       }
     })
   }
@@ -59,8 +58,6 @@ export default function WriteReview ({rerender, breakdown, productName, modalOpe
     console.log(e.target.value)
     setRating(parseInt(e.target.value));
   }
-
-  console.log("REVIEW CHARACTERISTISCS", breakdown)
 
   var characteristics = Object.keys(breakdown.characteristics);
 
@@ -102,29 +99,47 @@ export default function WriteReview ({rerender, breakdown, productName, modalOpe
       characteristics: obj,
     }
     e.preventDefault();
-    axios.post('http://localhost:3000/api/reviews/post', data)
-    .then(result => {
-      console.log(result);
-      handleModalClose();
-      rerender();
-    })
-    console.log('SUBMITTED', data)
+    if(body.length < 60 || !isEmail(email) || !name || !summary || !rating) {
+
+      let message = '';
+      if(body.length<60) {
+        message+="Body is not long enough \n";
+      }
+      if(!isEmail(email)) {
+        message+="Email is in an incorrect format \n";
+      }
+      if(!name) {
+        message+="Name cannot be empty \n";
+      }
+      if(!summary) {
+        message+="Please write a summary \n";
+      }
+      if(!rating) {
+        message+="Please provide a rating \n";
+      }
+      alert(message)
+    } else {
+      axios.post('/api/reviews/post', data)
+      .then(result => {
+        handleModalClose();
+        rerender();
+      })
+    }
   }
 
   return (
   <CloudinaryContext cloudName="dvijvlkad">
-  <div className="modal" style={{display:`${modalOpen}`}}>
+  <div data-testid="write-review-comp" className="modal" style={{display:`${modalOpen}`}}>
     <div className="modal-content">
       <form>
         <h4>Write Your Review</h4>
-
         {/*About Product*/}
-        <h5>About the {productName}</h5>
-
+        <h5>(About {productName})</h5>
         {/*recommended yes or no*/}
+        <br></br>
         <span>Do you recommend this product?</span>
 
-        <div onChange={handleRecommend}><input type="radio" id="recommend-yes" name="recommend" value="true"></input>
+        <div className="recommendation" onChange={handleRecommend}><input type="radio" id="recommend-yes" name="recommend" value="true"></input>
         <label htmlFor="recommend-yes">Yes</label>
         <input type="radio" id="recommend-no" name="recommend" value="false"></input>
         <label htmlFor="recommend-no">No</label></div>
@@ -132,36 +147,37 @@ export default function WriteReview ({rerender, breakdown, productName, modalOpe
 
 
         {/*star rating*/}
-        <div onChange={handleRating} className="write-rating">
-          <input id="rating1" type="radio" name="rating" value="1"/>
-          <label htmlFor="rating1">1</label>
-          <input id="rating2" type="radio" name="rating" value="2"/>
-          <label htmlFor="rating2">2</label>
+        <div onChange={handleRating} className="rate">
+          <input id="rating5" type="radio" name="rating" value="5"/>
+          <label htmlFor="rating5"></label>
+          <input id="rating4" type="radio" name="rating" value="4"/>
+          <label htmlFor="rating4"></label>
           <input id="rating3" type="radio" name="rating" value="3"/>
           <label htmlFor="rating3">3</label>
-          <input id="rating4" type="radio" name="rating" value="4"/>
-          <label htmlFor="rating4">4</label>
-          <input id="rating5" type="radio" name="rating" value="5"/>
-          <label htmlFor="rating5">5</label>
+          <input id="rating2" type="radio" name="rating" value="2"/>
+          <label htmlFor="rating2"></label>
+          <input id="rating1" type="radio" name="rating" value="1"/>
+          <label htmlFor="rating1">1</label>
         </div>
 
-        <br></br>
         {/*Review Summary*/}
         <label htmlFor="review-summary">Review Summary</label>
-        <br/>
-        <textarea onChange={(e)=> {
+        <br></br>
+        <textarea maxLength='60' onChange={(e)=> {
           e.preventDefault();
           setSummary(e.target.value);
         }} value={summary} id="review-summary" placeholder="Example: Best purchase ever!" maxLength="60"></textarea>
-        <br></br>
 
+
+        <br></br>
         {/*Review Body*/}
         <label htmlFor="review-body">Review Body</label>
         <br/>
-        <textarea onChange={(e)=> {
+        <textarea minLength='50' maxLength='1000' required onChange={(e)=> {
           e.preventDefault();
           setBody(e.target.value);
-        }} value={body} id="review-body" placeholder="Why did you like the product or not?"></textarea><br/>
+        }} value={body} id="review-body" placeholder="Why did you like the product or not?"></textarea>
+        <p>{1000-body.length} characters remaining.</p><br/>
 
         {/*image upload*/}
         <label>Upload</label>
@@ -179,13 +195,17 @@ export default function WriteReview ({rerender, breakdown, productName, modalOpe
         </div>
 
         {/*Characteristics Table*/}
-        <table>
+        <table className="char">
+          <tbody>
+          <tr>
           {characteristics.map((characteristic, i)=> {
             switch(characteristic) {
               case "Size":
-                return (<tr key={i}>
-                  <td>{characteristic}</td>
-                  <formfield onChange={(e)=>{
+                return (<td key={i}>
+                  <tr><th>{characteristic}</th></tr>
+                  <tr>
+                  <td>
+                  <div onChange={(e)=>{
                     setSize(parseInt(e.target.value));
                   }}>
                   <input id="s1" type="radio" name="size" value="1"/>
@@ -198,13 +218,16 @@ export default function WriteReview ({rerender, breakdown, productName, modalOpe
                   <label htmlFor="s4">1/2 size too big<br/></label>
                   <input id="s5" type="radio" name="size" value="5"/>
                   <label htmlFor="s5">A size too wide<br/></label>
-                  </formfield>
-                </tr>)
+                  </div>
+                  </td>
+                </tr></td>)
                 break;
                 case "Width":
-                  return (<tr key={i}>
-                    <td>{characteristic}</td>
-                    <formfield onChange={(e)=> {
+                  return (<td key={i}>
+                    <tr><th>{characteristic}</th></tr>
+                    <tr>
+                      <td>
+                    <div onChange={(e)=> {
                       setWidth(parseInt(e.target.value));
                     }}>
                     <input id="w1" type="radio" name="width" value="1"/>
@@ -217,13 +240,15 @@ export default function WriteReview ({rerender, breakdown, productName, modalOpe
                     <label htmlFor="w4">Slightly Wide<br/></label>
                     <input id="w5" type="radio" name="width" value="5"/>
                     <label htmlFor="w5">Too Wide<br/></label>
-                    </formfield>
-                  </tr>)
+                    </div></td>
+                  </tr></td>)
                   break;
                   case "Comfort":
-                    return (<tr key={i}>
-                      <td>{characteristic}</td>
-                      <formfield onChange={(e)=>{
+                    return (<td key={i}>
+                    <tr><th>{characteristic}</th></tr>
+                    <tr>
+                      <td>
+                      <div onChange={(e)=>{
                         setComfort(parseInt(e.target.value));
                       }}>
                       <input id="c1" type="radio" name="comfort" value="1"/>
@@ -236,12 +261,14 @@ export default function WriteReview ({rerender, breakdown, productName, modalOpe
                       <label htmlFor="c4">Comfortable<br/></label>
                       <input id="c5" type="radio" name="comfort" value="5"/>
                       <label htmlFor="c5">Perfect<br/></label>
-                      </formfield>
-                    </tr>)
+                      </div></td>
+                    </tr></td>)
                     case "Quality":
-                      return (<tr key={i}>
-                        <td>{characteristic}</td>
-                        <formfield onChange={e=> {
+                      return (<td key={i}>
+                      <tr><th>{characteristic}</th></tr>
+                      <tr>
+                        <td>
+                        <div onChange={e=> {
                           setQuality(parseInt(e.target.value));
                         }}>
                         <input id="q1" type="radio" name="quality" value="1"/>
@@ -254,13 +281,15 @@ export default function WriteReview ({rerender, breakdown, productName, modalOpe
                         <label htmlFor="q4">Pretty Great<br/></label>
                         <input id="q5" type="radio" name="quality" value="5"/>
                         <label htmlFor="q5">Perfect<br/></label>
-                        </formfield>
-                      </tr>)
+                        </div></td>
+                      </tr></td>)
                       break;
                     case "Fit":
-                      return (<tr key={i}>
-                        <td>{characteristic}</td>
-                        <formfield onChange={e=> {
+                      return (<td key={i}>
+                        <tr><th>{characteristic}</th></tr>
+                        <tr>
+                        <td>
+                        <div onChange={e=> {
                           setFit(parseInt(e.target.value));
                         }}>
                         <input id="f1" type="radio" name="fit" value="1"/>
@@ -272,24 +301,27 @@ export default function WriteReview ({rerender, breakdown, productName, modalOpe
                         <label htmlFor="f4">Runs Slightly Long<br/></label>
                         <input id="f5" type="radio" name="fit" value="5"/>
                         <label htmlFor="f5">Runs Long<br/></label>
-                        </formfield>
-                      </tr>)
+                        </div></td>
+                      </tr></td>)
                       break;
                       default:
                         break;
             }
            })}
+           </tr>
+           </tbody>
         </table>
-        <label>NAME</label>
+        <label htmlFor="name-input">Name</label>
         <br/>
-        <input type="text" onChange={(e)=>{
+        <input id="name-input" type="text" onChange={(e)=>{
           e.preventDefault();
           setName(e.target.value);
           }} value={name}/>
         <br/>
-        <label>EMAIL</label>
+        <label htmlFor="email-input">Email</label>
+
         <br/>
-        <input type="text" onChange={(e)=> {
+        <input id='email-input' type="text" onChange={(e)=> {
           e.preventDefault();
           setEmail(e.target.value);
         }} value={email}/>

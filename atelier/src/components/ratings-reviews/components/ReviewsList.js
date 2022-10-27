@@ -41,16 +41,8 @@ export default function ReviewsList ({handleHelpful, rerender, productName, revi
     setSortedReviews(sortByRelevance);
   }, [reviews])
 
-
-
-  console.log('THIS IS RERENDERING')
-
-
-
-
   //handles sorting the reviews
   var selectedSort = (e) => {
-    console.log("FIRED!", e.target.value)
     switch (e.target.value) {
       case "Helpful":
         setSortedReviews((prev)=>
@@ -81,7 +73,7 @@ export default function ReviewsList ({handleHelpful, rerender, productName, revi
 
   return (
     <div>
-      <div data-testid="ratings-reviews-comp" className="reviews-list">
+      <div data-testid="reviewslist-comp" className="reviews-list">
         <div className="sort-options">
           <span>{reviews.length} reviews, sorted by
             <select onChange={function(e) {
