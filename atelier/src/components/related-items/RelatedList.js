@@ -53,7 +53,7 @@ export default function RelatedList (props) {
     }
   }
 
-  console.log(props.currentData.relatedProducts)
+  // console.log(props.currentData.relatedProducts)
 
   // const cardHandler = () => {
   //   console.log('card clicked');

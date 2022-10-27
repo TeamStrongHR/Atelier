@@ -1,16 +1,20 @@
-import React, { useState } from "react";
+// import { useState, useEffect } from 'react';
+import SingleQuestion from './SingleQuestion.js';
+export default function QuestionsList({filteredList, searchQuery}) {
 
-export default function QuestionsList ({question, answer}) {
-const [isActive , setIsActive] = useState(false);
+  // sliced questions array to account for default value
+  let slicedQuestions = filteredList.slice(0,4);
 
+  // pass mapped to single question component
+  // render individual single component there
+    // pass answer to answers component (maybe answers list --> single answer)
 
   return (
-    <li className="question-item">
-    <div className="question-toggle" onClick={() => setIsActive(!isActive)}>
-      <h5><b>Q:</b>  {question}</h5><span>{isActive ? "-" : "+"}</span>
+    <div className="testing">
+    {slicedQuestions.map((question)=> (
+  < SingleQuestion className="questions" question={question}/>
+  ))}
+
     </div>
-    {isActive && <div className="answer-item"><b>A:</b>  {answer}</div>}
-  </li>
   )
 }
-

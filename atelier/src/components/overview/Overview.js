@@ -40,7 +40,7 @@ export default function Overview ({setCurrentProduct, currentData}) {
       dataCopy.push(currentData.default_style);
       dataCopy.push(0);
       dataCopy.push(currentData.ratings);
-      console.log(dataCopy)
+      // console.log(dataCopy)
       setData(dataCopy);
     }
   },[currentData]);

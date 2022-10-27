@@ -38,7 +38,7 @@ export default function ReviewsList ({productName, reviews}) {
     return a.helpfulness - b.helpfulness
     })
 
-  console.log(sortByRelevance);
+  // console.log(sortByRelevance);
   const [sortedReviews, setSortedReviews] = useState(sortByRelevance)
 
 

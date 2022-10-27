@@ -32,7 +32,7 @@ function ImageGallery({data}) {
     // calculate percent index
     let distance = 80 * count
 
-    console.log(index[0]);
+    // console.log(index[0]);
     slides[0].style.transition = "transform 0.4s ease-in-out";
     slides[0].style.transform = `translateX(${-distance}vh)`;
 
@@ -103,7 +103,7 @@ function ImageGallery({data}) {
         <a className="thumbnail-next" onClick={() => { moveThumbnail(1) }}>&#8964;</a>
         <div className="slides">
           {typeof data[1][data[2]] === 'object' ? data[1][data[2]].photos.map((ele, i) => {
-            console.log(ele);
+            // console.log(ele);
             return <MainImage image={ele.thumbnail_url} id={i} key={i} />;
           }) : null}
         </div>

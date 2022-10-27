@@ -4,7 +4,7 @@ import {format, parseISO} from 'date-fns'
 
 export default function Review ({review}) {
   var date = format(parseISO(review.date), "MMMM dd, yyyy")
-  console.log(date)
+  // console.log(date)
 
 
   const [imgOpen, setImgOpen] = useState("none");

@@ -48,7 +48,7 @@ export default function Ratings ({breakdown}) {
     {/*RANGES*/}
     <div className="range">
       {Object.keys(breakdown.characteristics).map(key => {
-        console.log(breakdown.characteristics, key, ((breakdown.characteristics[key].value)/parseFloat(5))*100);
+        // console.log(breakdown.characteristics, key, ((breakdown.characteristics[key].value)/parseFloat(5))*100);
         return (<div className="characteristics">
           <h6>{key}</h6>
           <input type="range" min="0" max="100" value={((breakdown.characteristics[key].value)/parseFloat(5))*100} list="ticks-size"/>

@@ -132,7 +132,7 @@ export default function RatingsAndReviews ({productName, product_id}) {
     }
     axios(options1)
     .then(result => {
-      console.log(result.data.results)
+      // console.log(result.data.results)
       setReviews(result.data.results);
     })
     .catch(err => {

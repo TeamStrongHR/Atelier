@@ -1,7 +1,7 @@
 import Overview from './components/overview/Overview.js';
 import RelatedAndComparison from './components/related-items/RelatedAndComparison.js';
 import RatingsAndReviews from './components/ratings-reviews/RatingsAndReviews.js'
-import QuestionsAndAnswers from './components/question-answer/QuestionsAndAnswers.js';
+import QuestionsAndAnswersMain from './components/question-answer/questionsAnswersMain.js';
 import axios from 'axios'
 import {useState, useEffect} from 'react';
 
@@ -21,13 +21,14 @@ function App() {
     axios(options)
         .then((data) => {
             setCurrentData(data.data);
+            setLoading(false);
         })
         .catch(err => { console.log('APP JS ', err) })
 }, [currentProduct]);
 
 
 if (isLoading) {
-  return <div>Retrieving Related Products</div>
+  return <div>Retrieving Related Productzzzzz</div>
 }
   return (
     <div className="App">
@@ -38,7 +39,7 @@ if (isLoading) {
       <aside></aside>
       <section></section>
       <aside></aside>
-      <QuestionsAndAnswers/>
+      < QuestionsAndAnswersMain product_id={37313}/>
     </div>
   );
 }
