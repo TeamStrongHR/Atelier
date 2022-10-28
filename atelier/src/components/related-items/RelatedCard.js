@@ -40,24 +40,24 @@ export default function RelatedCard(props) {
         } else {
             console.log('NEED TO CALL API');
             let options = {
-                //url: `http://localhost:3000/api/related/${props.relatedProduct}`,
-                url: `/api/related/${props.relatedProduct}`,
+                url: `http://localhost:3000/api/related/${props.relatedProduct}`,
+                //url: `/api/related/${props.relatedProduct}`,
                 method: 'get',
             }
             axios.get(options.url)
-            .then((data) => {
-                setRelatedProduct(data.data);
-                // setStarRating(calStar(data.data.ratings));
-                let temp = props.viewedProduct;
-                temp[data.data.product_id] = data.data;
-                props.setViewedProduct(temp);
-                setLoading(false);
+                .then((data) => {
+                    setRelatedProduct(data.data);
+                    // setStarRating(calStar(data.data.ratings));
+                    let temp = props.viewedProduct;
+                    temp[data.data.product_id] = data.data;
+                    props.setViewedProduct(temp);
+                    setLoading(false);
 
-            })
-            .catch(err => { console.log('RELATED CARD JS ', err) });
+                })
+                .catch(err => { console.log('RELATED CARD JS ', err) });
         }
-     // return setLoading(true);
-    },[props.relatedProduct]);
+        // return setLoading(true);
+    }, [props.relatedProduct]);
 
     const handleModal = () => {
         if (showModal === true) {
@@ -78,11 +78,7 @@ export default function RelatedCard(props) {
     }
 
     return (
-        <div className='related-card'  data-testid='related-card'>
-            <div className='card-modal'>
-                <i class="fa-regular fa-star" onClick={handleModal} data-testid='modal-click'></i>
-                <RelatedModal showModal={showModal} onClose={handleModal} currentData={props.currentData} relatedProduct={relatedProduct} />
-            </div>
+        <div className='related-card' data-testid='related-card'>
             <div onClick={cardHandler} data-testid='card-click'>
                 <img className='card-image' src={relatedProduct.default_style[0].photos[0].url} alt={relatedProduct.name} ></img>
                 <div className='card-info'>
@@ -96,8 +92,12 @@ export default function RelatedCard(props) {
                     </small>
                 </div>
             </div>
-
-
+            <div className='card-modal'>
+                <i class="fa-regular fa-star" onClick={handleModal} data-testid='modal-click'></i>
+                <RelatedModal showModal={showModal} onClose={handleModal} currentData={props.currentData} relatedProduct={relatedProduct} />
+            </div>
         </div>
+
+
     )
 }

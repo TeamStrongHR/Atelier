@@ -1,43 +1,17 @@
 import RelatedCard from './RelatedCard.js';
 import {useState, useEffect} from 'react';
-import axios from 'axios';
-// const testCurrentProductInfo = {
-//   "id": 37317,
-//   "campus": "hr-rfe",
-//   "name": "Blues Suede Shoes",
-//   "slogan": "2019 Stanley Cup Limited Edition",
-//   "description": "Touch down in the land of the Delta Blues in the middle of the pouring rain",
-//   "category": "Dress Shoes",
-//   "default_price": "120.00",
-//   "created_at": "2021-08-13T14:37:33.145Z",
-//   "updated_at": "2021-08-13T14:37:33.145Z",
-//   "features": [
-//       {
-//           "feature": "Sole",
-//           "value": "Rubber"
-//       },
-//       {
-//           "feature": "Material",
-//           "value": "FullControlSkin"
-//       },
-//       {
-//           "feature": "Stitching",
-//           "value": "Double Stitch"
-//       }
-//   ]
-// }
-//In props
-//current product id and features / related product arr
+
 export default function RelatedList (props) {
   const [showLeftArrow, setLeftArrow] = useState(false);
   const [showRightArrow, setRightArrow] = useState(true);
-  console.log('TESTING PROPS IN RELATED LIST ', props)
+  //console.log('TESTING PROPS IN RELATED LIST ', props)
   //slide value in px
   const slideWindow = 280;
 
   const prevHandler = () => {
     let prevSlide = document.getElementById('slider');
     prevSlide.scrollLeft -= slideWindow;
+    console.log(prevSlide.scrollLeft)
     if (prevSlide.scrollLeft === 0) {
       setLeftArrow(false);
     }
@@ -47,10 +21,26 @@ export default function RelatedList (props) {
   const nextHandler = () => {
     let nextSlide = document.getElementById('slider');
     nextSlide.scrollLeft += slideWindow;
+    console.log(nextSlide.scrollLeft);
+    console.log(nextSlide.scrollWidth, nextSlide.clientWidth)
     setLeftArrow(true);
-    if (nextSlide.scrollLeft === (nextSlide.scrollWidth - nextSlide.clientWidth)) {
+    if (nextSlide.scrollLeft >= (nextSlide.scrollWidth - nextSlide.clientWidth)) {
       setRightArrow(false);
     }
+  }
+  useEffect(() => {
+    document.getElementById('slider').scrollLeft = 0;
+    setLeftArrow(false);
+    setRightArrow(true);
+  },[props]);
+
+  if (props.currentData.relatedProducts.length === 0) {
+    return (
+      <div className='related-list' data-testid='related-list'>
+        <h1 className='related-title'> Related Products</h1>
+        <h4 className='related-title'>THERE IS NO OTHER PRODUCTS LIKE THIS</h4>
+      </div>
+    )
   }
 
   return (

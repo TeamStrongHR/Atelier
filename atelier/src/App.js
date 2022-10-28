@@ -1,14 +1,14 @@
 import Overview from './components/overview/Overview.js';
 import RelatedAndComparison from './components/related-items/RelatedAndComparison.js';
 import RatingsAndReviews from './components/ratings-reviews/RatingsAndReviews.js'
-import QuestionsAndAnswers from './components/question-answer/QuestionsAndAnswers.js';
+import QuestionsAndAnswers from './components/question-answer/questionsAnswersMain.js';
 import axios from 'axios'
 import { useState, useEffect, createContext } from 'react';
 export const WebsiteContext = createContext(null);
 
 function App() {
 
-  const [currentProduct, setCurrentProduct] = useState('37320');
+  const [currentProduct, setCurrentProduct] = useState('37311');
   const [currentData, setCurrentData] = useState(null);
   const [viewedProduct, setViewedProduct] = useState({}); //{product_id: product-data-retrieved-from-server}
 
@@ -19,8 +19,8 @@ function App() {
       console.log('APP JS NO AXIOS USED', currentProduct, currentData);
     } else {
       let options = {
-        //url: `http://localhost:3000/api/related/${currentProduct}`,
-        url: `/api/related/${currentProduct}`,
+        url: `http://localhost:3000/api/related/${currentProduct}`,
+        //url: `/api/related/${currentProduct}`,
         method: 'get',
       };
       axios.get(options.url)
@@ -33,7 +33,9 @@ function App() {
         .catch(err => { console.log(err) })
     }
   }, [currentProduct, currentData]);
+
   console.log('INSIDE APP JS', viewedProduct);
+
 
   const [log, setLog] = useState([]);
   console.log('user log', log);
@@ -47,7 +49,7 @@ function App() {
       viewedProduct={viewedProduct}
       setViewedProduct={setViewedProduct}/>}
       {currentProduct && currentData && <RatingsAndReviews productName={currentData.name} product_id={currentProduct} />}
-      {<QuestionsAndAnswers />}
+      { currentProduct && <QuestionsAndAnswers product_id={currentProduct} />}
     </div>
     </WebsiteContext.Provider>
   );
