@@ -626,12 +626,11 @@ table div label {
   justify-content: center;
   width: 80vh;
   transition: 2s;
-  height: 100%;
+  aspect-ratio: 8/5;
   overflow: hidden;
 }
 .image-gallery .slider .main-image img {
   width: auto;
-  max-height: 50vh;
   -o-object-fit: cover;
      object-fit: cover;
   height: 100%;
@@ -805,14 +804,14 @@ table div label {
   justify-content: center;
   align-items: center;
   background: gray;
-  width: 200vh;
-  aspect-ratio: 8/5;
+  width: 100vw;
+  aspect-ratio: 8/3.5;
   position: relative;
 }
 .expanded-image-gallery .expanded-expand-button {
   position: absolute;
-  top: 1vh;
-  right: 1vh;
+  top: 1vw;
+  right: 1vw;
   z-index: 10;
 }
 .expanded-image-gallery .expanded-slider {
@@ -822,52 +821,56 @@ table div label {
 }
 .expanded-image-gallery .expanded-slider .expanded-thumbnail-previous {
   position: absolute;
-  top: 1vh;
-  left: 5vh;
-  height: 3vh;
+  top: 4vw;
+  left: 2.15vw;
+  height: 3vw;
+  font-size: 2vw;
   z-index: 9;
 }
 .expanded-image-gallery .expanded-slider .expanded-thumbnail-next {
   position: absolute;
-  height: 3vh;
-  left: 5vh;
-  bottom: 1vh;
+  height: 3vw;
+  left: 2.15vw;
+  bottom: 4vw;
+  font-size: 2vw;
   z-index: 9;
 }
 .expanded-image-gallery .expanded-slider .expanded-thumbnails {
   align-items: center;
   display: flex;
-  top: 4vh;
+  top: 6.25vw;
   flex-direction: column;
   overflow: hidden;
   position: absolute;
-  left: 1vh;
+  left: 1vw;
   z-index: 9;
-  width: 9vh;
-  height: 42vh;
+  width: 9vw;
+  height: 31.5vw;
 }
 .expanded-image-gallery .expanded-slider .expanded-thumbnails .expanded-thumbnails-container {
-  width: 9vh;
+  width: 9vw;
 }
 .expanded-image-gallery .expanded-slider .expanded-thumbnails .expanded-thumbnail {
-  margin-bottom: 0.5vh;
+  margin-bottom: 1vw;
   display: flex;
-  width: 100%;
-  height: 5.5vh;
+  width: 3.5vw;
+  height: 3.5vw;
+  border-radius: 50%;
   z-index: 9;
+  background-color: white;
   overflow: hidden;
   justify-content: center;
 }
 .expanded-image-gallery .expanded-slider .expanded-thumbnails .expanded-thumbnail img {
-  display: flex;
-  height: 10vh;
+  display: none;
+  height: 10vw;
   width: auto;
 }
 .expanded-image-gallery .expanded-slider .expanded-main-previous {
   color: blanchedalmond;
   position: absolute;
   top: 50%;
-  left: 17%;
+  left: 8vw;
   z-index: 9;
 }
 .expanded-image-gallery .expanded-slider .expanded-main-next {
@@ -885,19 +888,22 @@ table div label {
 .expanded-image-gallery .expanded-slider .expanded-main-image {
   display: flex;
   justify-content: center;
-  width: 80vh;
+  width: 100vw;
   transition: 2s;
   height: 100%;
   overflow: hidden;
 }
 .expanded-image-gallery .expanded-slider .expanded-main-image img {
+  background-position: center;
+  transition: opacity 0.5s;
   width: auto;
-  max-height: 50vh;
+  max-height: 43.75vw;
   -o-object-fit: cover;
      object-fit: cover;
   height: 100%;
   z-index: 8;
-  cursor: zoom-in;
+  cursor: cell;
+  overflow: hidden;
 }
 
 .image-gallery {

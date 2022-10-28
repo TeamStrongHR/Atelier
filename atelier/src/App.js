@@ -3,9 +3,8 @@ import RelatedAndComparison from './components/related-items/RelatedAndCompariso
 import RatingsAndReviews from './components/ratings-reviews/RatingsAndReviews.js'
 import QuestionsAndAnswers from './components/question-answer/QuestionsAndAnswers.js';
 import axios from 'axios'
-import { useState, useEffect } from 'react';
-
-
+import { useState, useEffect, createContext } from 'react';
+export const WebsiteContext = createContext(null);
 
 function App() {
 
@@ -35,7 +34,11 @@ function App() {
     }
   }, [currentProduct, currentData]);
   console.log('INSIDE APP JS', viewedProduct);
+
+  const [log, setLog] = useState([]);
+  console.log('user log', log);
   return (
+    <WebsiteContext.Provider value={{log, setLog}}>
     <div className="App" data-testid="App">
       {currentData && <Overview setCurrentProduct={setCurrentProduct} currentData={currentData} />}
       {currentData && currentProduct && viewedProduct &&<RelatedAndComparison currentData={currentData}
@@ -44,12 +47,9 @@ function App() {
       viewedProduct={viewedProduct}
       setViewedProduct={setViewedProduct}/>}
       {currentProduct && <RatingsAndReviews product_id={currentProduct} />}
-      <section></section>
-      <aside></aside>
-      <section></section>
-      <aside></aside>
-      {<QuestionsAndAnswers />}
+      <QuestionsAndAnswers />
     </div>
+    </WebsiteContext.Provider>
   );
 }
 

@@ -95,13 +95,12 @@
       justify-content: center;
       width: 80vh;
       transition: 2s;
-      height: 100%;
+      aspect-ratio: 8/ 5;
       overflow: hidden;
 
 
       img {
         width: auto;
-        max-height: 50vh;
         object-fit: cover;
         height: 100%;
         z-index: 8;
@@ -109,7 +108,4 @@
       }
     }
   }
-
-
-
 }
