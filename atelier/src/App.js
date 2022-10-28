@@ -9,7 +9,7 @@ import { useState, useEffect } from 'react';
 
 function App() {
 
-  const [currentProduct, setCurrentProduct] = useState('37320');
+  const [currentProduct, setCurrentProduct] = useState('37311');
   const [currentData, setCurrentData] = useState(null);
   const [viewedProduct, setViewedProduct] = useState({}); //{product_id: product-data-retrieved-from-server}
 
@@ -20,8 +20,8 @@ function App() {
       console.log('APP JS NO AXIOS USED', currentProduct, currentData);
     } else {
       let options = {
-        //url: `http://localhost:3000/api/related/${currentProduct}`,
-        url: `/api/related/${currentProduct}`,
+        url: `http://localhost:3000/api/related/${currentProduct}`,
+        //url: `/api/related/${currentProduct}`,
         method: 'get',
       };
       axios.get(options.url)
