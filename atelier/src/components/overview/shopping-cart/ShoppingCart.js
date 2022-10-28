@@ -1,10 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import SizeSelector from './SizeSelector.js'
 import axios from 'axios';
+import {WebsiteContext} from '../../../App.js';
 
 const ShoppingCart = ({ data }) => {
   const [cartDetail, setCartDetail] = useState(['OUT OF STOCK', "-", false]);
-
+  const {log, setLog} = useContext(WebsiteContext);
   // useEffect to reset stock
   useEffect(() => {
     setCartDetail(['OUT OF STOCK', "-", false])
@@ -32,15 +33,17 @@ const ShoppingCart = ({ data }) => {
     }
     selectedOnClick();
     setCartDetail(cartDetailCopy);
+    setLog(oldLog => [...oldLog].concat(`clicked ${e.target.className} size`));
   }
   // quantity onChange helper function
   const quantityOnChange = (e) => {
     let cartDetailCopy = cartDetail.slice();
     cartDetailCopy[1] = e.target.value;
     setCartDetail(cartDetailCopy);
+    setLog(oldLog => [...oldLog].concat(`clicked ${e.target.className} quantity option`));
   }
   // display selected onClick helper function
-  const selectedOnClick = ()=>{
+  const selectedOnClick = (e)=>{
     let container = document.getElementsByClassName('size')[0];
     if (!cartDetail[2]) {
       return;
@@ -50,7 +53,7 @@ const ShoppingCart = ({ data }) => {
     } else {
       container.style.overflow = '';
     }
-
+    setLog(oldLog => [...oldLog].concat(`clicked ${e.target.className} selected size`));
   }
   // request handler
   const addToCart = (e) => {
@@ -72,6 +75,7 @@ const ShoppingCart = ({ data }) => {
       .catch((err) => {
         console.log('failed to add to cart');
       })
+      setLog(oldLog => [...oldLog].concat(`clicked add to cart button`));
   }
   return (
     <div className="shopping-cart">
