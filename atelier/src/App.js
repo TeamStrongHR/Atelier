@@ -3,8 +3,8 @@ import RelatedAndComparison from './components/related-items/RelatedAndCompariso
 import RatingsAndReviews from './components/ratings-reviews/RatingsAndReviews.js'
 import QuestionsAndAnswers from './components/question-answer/QuestionsAndAnswers.js';
 import axios from 'axios'
-import { useState, useEffect } from 'react';
-
+import { useState, useEffect, createContext } from 'react';
+export const WebsiteContext = createContext(null);
 
 
 function App() {
@@ -36,7 +36,10 @@ function App() {
      }, [currentProduct, currentData]);
 
 
+     const [log, setLog] = useState(["Site Online"])
+     console.log('THIS IS THE EVENT LOG', log)
   return (
+    <WebsiteContext.Provider value={{log, setLog}}>
     <div className="App" data-testid="App">
       {currentData && <Overview setCurrentProduct={setCurrentProduct} currentData={currentData} />}
       {currentData && currentProduct && viewedProduct &&<RelatedAndComparison currentData={currentData}
@@ -47,6 +50,7 @@ function App() {
       {currentProduct && currentData && <RatingsAndReviews productName={currentData.name} product_id={currentProduct} />}
       {<QuestionsAndAnswers />}
     </div>
+    </WebsiteContext.Provider>
   );
 }
 

@@ -1,11 +1,13 @@
 import ReviewsList from './components/ReviewsList.js';
 import Ratings from './components/Ratings.js';
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useContext} from 'react';
 import axios from 'axios';
+import {WebsiteContext} from '../../App.js';
 
 //this component should render based on the product_id provided
 export default function RatingsAndReviews ({productName, product_id}) {
 
+  const {log, setLog} = useContext(WebsiteContext);
   const [breakdown, setBreakdown] = useState(null);
 
   //used to trigger re-render on submit
@@ -52,6 +54,7 @@ export default function RatingsAndReviews ({productName, product_id}) {
 
 
   var handleHelpful = (id) => {
+    setLog(oldLog => [...oldLog].concat(`The review with id of ${id} was clicked as helpful`));
     axios.put(`/api/reviews/helpful?review_id=${id}`)
     .then((result)=> {
       var options3 = {
@@ -79,7 +82,8 @@ export default function RatingsAndReviews ({productName, product_id}) {
   const [sortedReviews, setSortedReviews] = useState(null);
 
   //handles sorting the reviews
-  var selectedSort = (sort) => {
+  var selectedSort = (sort="Relevant") => {
+    setLog(oldLog => [...oldLog].concat(`The reviews list was sorted by ${sort}`));
     if(!reviewsParent) return;
     switch (sort) {
       case "Helpful":
@@ -114,6 +118,7 @@ export default function RatingsAndReviews ({productName, product_id}) {
 
     //filter by rating number
   var filterByRating = (num) => {
+    setLog(oldLog => [...oldLog].concat(`The reviews list was filtered by ${num} stars`));
     var newArr=reviewsParent.filter(review=> {
       return num===review.rating
     })

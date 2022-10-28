@@ -31,7 +31,7 @@ import axios from 'axios';
 export default function RelatedList (props) {
   const [showLeftArrow, setLeftArrow] = useState(false);
   const [showRightArrow, setRightArrow] = useState(true);
-  console.log('TESTING PROPS IN RELATED LIST ', props)
+
   //slide value in px
   const slideWindow = 280;
 

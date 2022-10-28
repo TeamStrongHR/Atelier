@@ -30,7 +30,6 @@ export default function Review ({handleHelpful, review}) {
       <p>{review.body}
       <br/>
       {review.photos.map(photo=> {
-        console.log('RENDERING PHOTO', photo.thumbnail_url)
         return (<img className="thumbs" src={photo.url} onClick={(e)=>handleOpenImg(e)}></img>)
       })}
       <div className="img-modal" style={{display:`${imgOpen}`}}>

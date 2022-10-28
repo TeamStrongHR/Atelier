@@ -1,12 +1,12 @@
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useContext} from 'react';
 import {CloudinaryContext, Image} from 'cloudinary-react';
 import { fetchPhotos, openUploadWidget } from "../../../CloudinaryService.js";
 import isEmail from 'validator/lib/isEmail';
 import axios from 'axios';
-
+import {WebsiteContext} from '../../../App.js';
 
 export default function WriteReview ({rerender, breakdown, productName, modalOpen, handleModalClose}) {
-
+  const {log, setLog} = useContext(WebsiteContext);
   var product_id = parseInt(breakdown.product_id);
   //for collecting uploaded images
   const [images, setImages] = useState([]);
@@ -19,6 +19,7 @@ export default function WriteReview ({rerender, breakdown, productName, modalOpe
     };
 
     openUploadWidget(uploadOptions, (error, photos) => {
+      setLog(oldLog => [...oldLog].concat(`The user wants upload pictures to their ${productName} review.`));
       if (!error) {
         if(photos.event === 'success'){
           setImages([...images, `https://res.cloudinary.com/dvijvlkad/image/upload/${photos.info.public_id}`])
@@ -48,6 +49,7 @@ export default function WriteReview ({rerender, breakdown, productName, modalOpe
 
   var handleRecommend =(e)=>{
     if(e.target.value === "true") {
+      setLog(oldLog => [...oldLog].concat(`The recommends the ${productName} product`));
       setRecommend(true);
     } else{
       setRecommend(false);
@@ -55,6 +57,7 @@ export default function WriteReview ({rerender, breakdown, productName, modalOpe
   }
 
   var handleRating = (e) => {
+    setLog(oldLog => [...oldLog].concat(`The user rates the ${productName} product as ${e.target.value} stars`));
     setRating(parseInt(e.target.value));
   }
 
@@ -62,6 +65,7 @@ export default function WriteReview ({rerender, breakdown, productName, modalOpe
 
 
   var handleSubmit = (e) => {
+
     var obj = {}
     for(var characteristic of characteristics) {
       var id = breakdown.characteristics[characteristic]["id"];
@@ -97,6 +101,7 @@ export default function WriteReview ({rerender, breakdown, productName, modalOpe
       photos: images,
       characteristics: obj,
     }
+    setLog(oldLog => [...oldLog].concat(`The user is submitting the following review ${JSON.stringify(data)}`));
     e.preventDefault();
     if(body.length < 60 || !isEmail(email) || !name || !summary || !rating) {
 

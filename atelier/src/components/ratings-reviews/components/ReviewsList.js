@@ -1,8 +1,9 @@
 import Review from './Review.js';
 import WriteReview from './WriteReview.js';
-import {useState, useEffect} from 'react';
-
+import {useState, useEffect, useContext} from 'react';
+import {WebsiteContext} from '../../../App.js';
 export default function ReviewsList ({handleHelpful, sortReviews, rerender, productName, reviews, breakdown}) {
+  const {log, setLog} = useContext(WebsiteContext);
   //show 2 initially
   const [showAmount, setShowAmount] = useState(2);
   //edge case, if less than 2 reviews
@@ -14,6 +15,7 @@ export default function ReviewsList ({handleHelpful, sortReviews, rerender, prod
   }, [reviews.length])
 
   var handleClick = (e) => {
+    setLog(oldLog => [...oldLog].concat(`The user wants to see more reviews`));
     //adds 2 to the previous show amount, caps at the length of reviews.
     e.preventDefault();
     if(showAmount < reviews.length-1) {
@@ -26,6 +28,7 @@ export default function ReviewsList ({handleHelpful, sortReviews, rerender, prod
   //write reviews modal
   const [modalOpen, setModalOpen] = useState("none");
   var handleModalOpen = () => {
+    setLog(oldLog => [...oldLog].concat(`The user wants to write a review`));
     setModalOpen("block");
   }
   var handleModalClose = ()=> {
@@ -46,7 +49,7 @@ export default function ReviewsList ({handleHelpful, sortReviews, rerender, prod
             }} className="sort-dropdown">
               <option value="Helpful">Helpful</option>
               <option value="Newest">Newest</option>
-              <option value="Relevant" defaultValue>Relevant</option>
+              <option value="Relevant" selected>Relevant</option>
             </select>
           </span>
         </div>
