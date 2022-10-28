@@ -62,14 +62,14 @@ const addToCart = (req, res) => {
   var option = {
     url: "https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/cart/",
     headers: {"Authorization": process.env.AUTH},
-    params: {
+    data: {
       sku_id: skuID
     },
     method: 'post'
   }
   axios(option)
   .then((response)=>{
-    res.status(201).end(response);
+    res.status(201).end(response.data);
   })
   .catch((err)=>{
     res.status(err.response.status).send(err);

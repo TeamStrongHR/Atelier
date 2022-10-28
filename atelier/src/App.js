@@ -32,9 +32,10 @@ function App() {
           setViewedProduct(temp);
         })
         .catch(err => { console.log(err) })
-    }
-  }, [currentProduct, currentData]);
-  console.log('INSIDE APP JS', viewedProduct);
+      }
+     }, [currentProduct, currentData]);
+
+
   return (
     <div className="App" data-testid="App">
       {currentData && <Overview setCurrentProduct={setCurrentProduct} currentData={currentData} />}
@@ -43,11 +44,7 @@ function App() {
       setCurrentProduct={setCurrentProduct}
       viewedProduct={viewedProduct}
       setViewedProduct={setViewedProduct}/>}
-      {currentProduct && <RatingsAndReviews product_id={currentProduct} />}
-      <section></section>
-      <aside></aside>
-      <section></section>
-      <aside></aside>
+      {currentProduct && currentData && <RatingsAndReviews productName={currentData.name} product_id={currentProduct} />}
       {<QuestionsAndAnswers />}
     </div>
   );

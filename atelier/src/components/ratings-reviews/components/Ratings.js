@@ -1,7 +1,5 @@
-import {useState, useEffect} from 'react';
 import StarRating from '../../shared/StarRating.js';
-import axios from 'axios';
-export default function Ratings ({breakdown}) {
+export default function Ratings ({breakdown, filterByRating}) {
 
   //math to determine average rating...
   var totalNumOfRatings = 0;
@@ -22,6 +20,12 @@ export default function Ratings ({breakdown}) {
   var ratingsValues = Object.values(breakdown.ratings).reverse();
   var recommended = Math.round(parseInt(breakdown.recommended.true)/parseFloat((parseInt(breakdown.recommended.true)+ parseInt(breakdown.recommended.false)))*100);
 
+  var filterBar = (e) => {
+    e.preventDefault();
+    var currentBarNo = e.currentTarget.dataset.barno;
+    filterByRating(parseInt(currentBarNo));
+  }
+
 
   return (
     <div data-testid="ratings-comp" className="ratings">
@@ -37,7 +41,7 @@ export default function Ratings ({breakdown}) {
       {/*RATING BARS*/}
       {ratingsKeys.map((key, i) => {
         return (
-        <div key={i} className="progress-bar">
+        <div onClick={filterBar} data-barno={key} key={i} className="progress-bar">
         <div><u>{key} stars</u></div>
         <div className="whole-bar">
           <div className="partial-bar" style={{width:`${Math.round((parseInt(ratingsValues[i])/parseFloat(totalNumOfRatings))*100)}%`}}></div>

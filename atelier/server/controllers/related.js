@@ -57,6 +57,8 @@ const related = (req, res) => {
           result['category'] = data[1].data.category;
           result['features'] = data[1].data.features;
           result['qna'] = data[3].data;
+          result.slogan = data[1].data.slogan;
+          result.description = data[1].data.description;
           let default_style = data[2].data.results;
           console.log('PRINT HERE API REQUEST REMAINING',data[2].headers['x-ratelimit-remaining']);
           for (let i = 0; i < default_style.length; i++) {
@@ -101,6 +103,6 @@ const related = (req, res) => {
   }
 }
 
-module.exports ={
-  related : related
+module.exports = {
+  related: related
 }
