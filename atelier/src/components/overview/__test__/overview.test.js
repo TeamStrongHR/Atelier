@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { render, screen, waitFor, cleanup, fireEvent } from '@testing-library/react';
 import axios from 'axios';
 import React from 'react';
@@ -19,10 +18,6 @@ import StyleSelector from '../style-selector/StyleSelector.js';
 import StyleThumbnail from '../style-selector/StyleThumbnail.js'
 import {DummyCurrentData, DummyCurrentProduct, DummyData} from './dummyData';
 jest.mock('axios');
-=======
-// import {render, screen, cleanup} from '@testing-library/react';
-// import Overview from '../Overview.js';
->>>>>>> fae0c2c52352aec0f3a9dc499f4dfac4a22f2335
 
 
 describe('comprehensive overview widget test', () => {
@@ -31,7 +26,6 @@ describe('comprehensive overview widget test', () => {
     });
 
 
-<<<<<<< HEAD
     it("Should render all the components in Overview widget", async () => {
       render(<Overview currentData={DummyCurrentData}/>);
       const navbar = screen.getByTestId('navbar');
@@ -139,17 +133,4 @@ describe('comprehensive overview widget test', () => {
 
   });
 
-=======
-// test('Inside overview, there should be image gallery, product summary and slogan element', ()=> {
-//   render(<Overview/>)
-//   const overview = screen.getByTestId('overview');
-//   const imageGallery = screen.getByTestId('image-gallery');
-//   const productSummary = screen.getByTestId('product-summary');
-//   const slogan = screen.getByTestId('slogan');
-//   expect(overview).toBeInTheDocument();
-//   expect(imageGallery).toBeInTheDocument();
-//   expect(productSummary).toBeInTheDocument();
-//   expect(slogan).toBeInTheDocument();
-// })
->>>>>>> fae0c2c52352aec0f3a9dc499f4dfac4a22f2335
 

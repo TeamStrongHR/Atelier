@@ -1,27 +1,3 @@
-<<<<<<< HEAD
-// import { render, screen, waitFor, cleanup } from '@testing-library/react';
-// import React from 'react';
-// import App from '../App.js';
-// import axios from 'axios';
-// jest.mock('axios');
-
-
-// describe('Overall Question Component and Functionality', () => {
-//   beforeAll(() => {
-//       axios.mockResolvedValue({ data: null });
-//     });
-//     afterEach(() => {
-//       cleanup()
-//     });
-
-
-//     it("Should render all the component in App", async () => {
-//       render(<App />);
-//       const app = screen.getByTestId('App')
-//       expect(app).toBeTruthy()
-//     });
-//   });
-=======
 import { render, screen, fireEvent, cleanup } from '@testing-library/react';
 import React from 'react';
 import App from '../App.js';
@@ -48,4 +24,3 @@ describe('APP JS FUNCTIONALITY TEST', () => {
 
 
   });
->>>>>>> fae0c2c52352aec0f3a9dc499f4dfac4a22f2335

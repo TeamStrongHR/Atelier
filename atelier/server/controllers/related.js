@@ -75,22 +75,6 @@ const related = (req, res) => {
             sum += parseInt(data[3].data.ratings[num]) * parseInt(num);
           }
           result['ratings'] = (sum / parseFloat(count)).toFixed(1);
-
-          // console.log(result);
-          // send response
-          // if (data[2].headers['x-ratelimit-remaining'] < 60) {
-
-          //   let seconds = 10 * 60 * 120/data[2].headers['x-ratelimit-remaining'];
-          //   console.log('SLOWING DOWN THE REQUEST', seconds);
-          //   // seconds = seconds.toString();
-          //   setTimeout(() => {
-
-          //     res.json(result)
-          //   }, seconds)
-          // } else {
-          //   res.json(result);
-          // }
-          console.log(result);
           res.json(result);
         })
         .catch((err) => {
