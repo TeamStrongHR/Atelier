@@ -12,7 +12,7 @@ export default function RelatedCard(props) {
     // const [url, setUrl] = useState('../images/no_url.jpg');
     const [showModal, setShowModal] = useState(false);
     // const [starRating, setStarRating] = useState(0);
-
+    console.log('RELATED CARD PROPS', props)
     // const calStar = (ratings) => {
     //     let totalNumOfRatings = 0;
     //     let total = 0;
@@ -28,21 +28,39 @@ export default function RelatedCard(props) {
 
     //Make sure to show sales price
     useEffect(() => {
-        let options = {
-            url: `http://localhost:3000/api/related/${props.relatedProduct}`,
-            method: 'get',
-        }
-        axios(options)
-        .then((data) => {
+        // if (props.viewedProduct.hasOwnProperty(currentProduct)) {
+        //     console.log('BEFORE ', viewedProduct, currentData);
+        //     setCurrentData(viewedProduct[currentProduct]);
+        //     console.log('APP JS NO AXIOS USED', currentProduct, currentData);
+        //   }
+        if (props.viewedProduct.hasOwnProperty(props.relatedProduct)) {
+            console.log('SAVED API CALL')
+            setRelatedProduct(props.viewedProduct[props.relatedProduct]);
+            setLoading(false);
+        } else {
+            console.log('NEED TO CALL API');
+            let options = {
+                //url: `http://localhost:3000/api/related/${props.relatedProduct}`,
+                url: `/api/related/${props.relatedProduct}`,
+                method: 'get',
+            }
+            axios.get(options.url)
+            .then((data) => {
                 setRelatedProduct(data.data);
                 // setStarRating(calStar(data.data.ratings));
+                let temp = props.viewedProduct;
+                temp[data.data.product_id] = data.data;
+                props.setViewedProduct(temp);
                 setLoading(false);
+<<<<<<< HEAD
                 // console.log(data);
+=======
+>>>>>>> main
 
-        })
-        .catch(err => { console.log('RELATED CARD JS ', err) });
-
-        // return setLoading(true);
+            })
+            .catch(err => { console.log('RELATED CARD JS ', err) });
+        }
+     // return setLoading(true);
     },[props.relatedProduct]);
 
     const handleModal = () => {
@@ -60,16 +78,16 @@ export default function RelatedCard(props) {
     }
 
     if (isLoading) {
-        return (<div className='related-card'>Loading Production Information</div>)
+        return (<div className='related-card' data-testid='related-card-loading'>Loading Production Information</div>)
     }
 
     return (
-        <div className='related-card' >
+        <div className='related-card'  data-testid='related-card'>
             <div className='card-modal'>
-                <i class="fa-regular fa-star" onClick={handleModal}></i>
+                <i class="fa-regular fa-star" onClick={handleModal} data-testid='modal-click'></i>
                 <RelatedModal showModal={showModal} onClose={handleModal} currentData={props.currentData} relatedProduct={relatedProduct} />
             </div>
-            <div onClick={cardHandler}>
+            <div onClick={cardHandler} data-testid='card-click'>
                 <img className='card-image' src={relatedProduct.default_style[0].photos[0].url} alt={relatedProduct.name} ></img>
                 <div className='card-info'>
                     <i className='card-category'>{relatedProduct.category}</i>

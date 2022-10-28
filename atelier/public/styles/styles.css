@@ -133,6 +133,8 @@
 
 .related-modal {
   position: fixed;
+  width: 100%;
+  height: 100%;
   left: 0;
   top: 0;
   right: 0;
@@ -346,6 +348,7 @@
 }
 .ratings-reviews .ratings {
   /*make the parent container relative so children can use absolute positioning*/
+  min-width: auto;
   position: relative;
   width: 35%;
   /*100% of reviews recommend this product*/
@@ -444,16 +447,25 @@
 .ratings-reviews .modal-content {
   display: flex;
   position: relative;
+<<<<<<< HEAD
   top: -3rem;
   left: 25%;
   margin-bottom: 4%;
   justify-content: flex-start;
   font-family: Arial, Helvetica, sans-serif;
   padding: 4%;
+=======
+  left: 25%;
+  top: 3rem;
+  padding: 4%;
+  justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
+>>>>>>> fe4181cf52113aa800af67452edabe75c0c67561
   background-color: #f4f4f4;
   width: 50%;
   height: 100vh;
   overflow: auto;
+<<<<<<< HEAD
 }
 .ratings-reviews .modal-content h4 {
   color: gray;
@@ -476,6 +488,30 @@
   width: 200px;
   display: block;
 }
+=======
+}
+.ratings-reviews .modal-content h4 {
+  color: gray;
+  font-size: 2rem;
+}
+.ratings-reviews .modal-content .recommendation {
+  margin: 0.5rem auto;
+  font-size: 0.8rem;
+}
+.ratings-reviews .modal-content .recommendation #recommend-yes, .ratings-reviews .modal-content .recommendation #recommend-no {
+  border: 0px;
+  height: 0.75rem;
+}
+.ratings-reviews .modal-content textarea {
+  width: 400px;
+  height: 100px;
+}
+.ratings-reviews .modal-content .image-upload img {
+  height: 200px;
+  width: 200px;
+  display: block;
+}
+>>>>>>> fe4181cf52113aa800af67452edabe75c0c67561
 
 table {
   margin: 2rem auto;
@@ -497,11 +533,18 @@ table div label {
 }
 
 .rate {
+<<<<<<< HEAD
   height: 46px;
   padding: 0 10px;
   display: flex;
   justify-content: right;
   right: 420px;
+=======
+  height: 50px;
+  width: 200px;
+  position: relative;
+  right: 50px;
+>>>>>>> fe4181cf52113aa800af67452edabe75c0c67561
 }
 
 .rate:not(:checked) > input {
@@ -543,40 +586,14 @@ table div label {
   align-items: center;
   background: gray;
   width: 80vh;
-  height: 50vh;
+  aspect-ratio: 8/5;
   position: relative;
 }
-.image-gallery .checkmark {
-  display: inline-block;
-  width: 22vh;
-  height: 22vh; /* IE 9 */ /* Chrome, Safari, Opera */
-  transform: rotate(45deg);
-  z-index: 9;
-}
-.image-gallery .checkmark_circle {
+.image-gallery .expand-button {
   position: absolute;
-  width: 22vh;
-  height: 22vh;
-  background-color: white;
-  border-radius: 5vh;
-  border: solid 4vh red;
-  z-index: 9;
-}
-.image-gallery .checkmark_stem {
-  position: absolute;
-  width: 5vh;
-  height: 28vh;
-  background-color: red;
-  left: 11vh;
-  bottom: 5vh;
-}
-.image-gallery .checkmark_kick {
-  position: absolute;
-  width: 14vh;
-  height: 5vh;
-  background-color: red;
-  left: 0vh;
-  top: 12vh;
+  top: 1vh;
+  right: 1vh;
+  z-index: 10;
 }
 .image-gallery .slider {
   width: 100%;
@@ -650,16 +667,79 @@ table div label {
   justify-content: center;
   width: 80vh;
   transition: 2s;
-  height: 100%;
+  aspect-ratio: 8/5;
   overflow: hidden;
 }
 .image-gallery .slider .main-image img {
   width: auto;
-  max-height: 50vh;
   -o-object-fit: cover;
      object-fit: cover;
   height: 100%;
   z-index: 8;
+  cursor: zoom-in;
+}
+
+.shopping-cart {
+  height: 11vh;
+}
+.shopping-cart .size-quantity {
+  position: relative;
+}
+.shopping-cart .size-quantity .size {
+  position: absolute;
+  width: 50%;
+  height: 3.2vh;
+  background: white;
+  z-index: 9;
+}
+.shopping-cart .size-quantity .size .display-selected {
+  font-size: 1.5vh;
+  height: 3vh;
+  padding: 0.5vh;
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  border: solid 0.1vh;
+  background: white;
+  border-left: solid;
+  border-right: solid;
+  border-top: solid;
+}
+.shopping-cart .size-quantity .size .size-option {
+  font-size: 1.5vh;
+  padding: 0.5vh;
+  height: 3vh;
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  border: solid 0.1vh;
+  background: white;
+  border-left: solid;
+  border-right: solid;
+  border-bottom: solid;
+}
+.shopping-cart .size-quantity .quantity {
+  position: absolute;
+  left: 55%;
+  width: 20%;
+  height: 3.2vh;
+}
+.shopping-cart .add-to-cart {
+  position: relative;
+  top: 4vh;
+  height: 3.2vh;
+  width: 100%;
+}
+.shopping-cart .add-to-cart .add-to-bag-button {
+  position: absolute;
+  height: 3.2vh;
+  width: 50%;
+}
+.shopping-cart .add-to-cart .favorite {
+  position: absolute;
+  width: 20%;
+  height: 3.2vh;
+  left: 55%;
 }
 
 .style-selector {
@@ -674,14 +754,28 @@ table div label {
   flex-wrap: wrap;
 }
 .style-selector .style-thumbnails .style-thumbnail {
+  width: 25%;
+}
+.style-selector .style-thumbnails .style-thumbnail .style-name {
+  font-size: 0.1vh;
+  width: 100%;
+}
+.style-selector .style-thumbnails .style-thumbnail .style-check-box {
+  position: absolute;
+  background: white;
+  width: 1.5vh;
+  color: rgb(177, 150, 108);
+  display: none;
+}
+.style-selector .style-thumbnails .style-thumbnail .style-thumbnail-container {
   display: flex;
-  width: 6.5vh;
-  height: 6.5vh;
+  width: 100%;
+  aspect-ratio: 1/1;
   border-radius: 50%;
   overflow: hidden;
   justify-content: center;
 }
-.style-selector .style-thumbnails .style-thumbnail img {
+.style-selector .style-thumbnails .style-thumbnail .style-thumbnail-container img {
   width: 10vh;
   height: auto;
 }
@@ -705,10 +799,23 @@ table div label {
   width: 30vh;
   padding: 5vh;
 }
+.slogan .characteristics .features {
+  padding-left: 1vh;
+  list-style: none;
+}
+.slogan .characteristics .features li {
+  margin-bottom: 1vh;
+}
+.slogan .characteristics .features li:before {
+  content: "\f00c";
+  font-family: FontAwesome;
+  margin: 0 0.5vh 0 -0.3vh;
+}
 
 .product-summary {
   width: 30vh;
   padding: 2vh;
+  position: relative;
 }
 .product-summary .card-price {
   font-size: medium;
@@ -730,6 +837,114 @@ table div label {
 }
 .product-summary h1 {
   margin-bottom: 1vh;
+}
+.expanded-image-gallery {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: gray;
+  width: 100vw;
+  aspect-ratio: 8/3.5;
+  position: relative;
+}
+.expanded-image-gallery .expanded-expand-button {
+  position: absolute;
+  top: 1vw;
+  right: 1vw;
+  z-index: 10;
+}
+.expanded-image-gallery .expanded-slider {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.expanded-image-gallery .expanded-slider .expanded-thumbnail-previous {
+  position: absolute;
+  top: 4vw;
+  left: 2.15vw;
+  height: 3vw;
+  font-size: 2vw;
+  z-index: 9;
+}
+.expanded-image-gallery .expanded-slider .expanded-thumbnail-next {
+  position: absolute;
+  height: 3vw;
+  left: 2.15vw;
+  bottom: 4vw;
+  font-size: 2vw;
+  z-index: 9;
+}
+.expanded-image-gallery .expanded-slider .expanded-thumbnails {
+  align-items: center;
+  display: flex;
+  top: 6.25vw;
+  flex-direction: column;
+  overflow: hidden;
+  position: absolute;
+  left: 1vw;
+  z-index: 9;
+  width: 9vw;
+  height: 31.5vw;
+}
+.expanded-image-gallery .expanded-slider .expanded-thumbnails .expanded-thumbnails-container {
+  width: 9vw;
+}
+.expanded-image-gallery .expanded-slider .expanded-thumbnails .expanded-thumbnail {
+  margin-bottom: 1vw;
+  display: flex;
+  width: 3.5vw;
+  height: 3.5vw;
+  border-radius: 50%;
+  z-index: 9;
+  background-color: white;
+  overflow: hidden;
+  justify-content: center;
+}
+.expanded-image-gallery .expanded-slider .expanded-thumbnails .expanded-thumbnail img {
+  display: none;
+  height: 10vw;
+  width: auto;
+}
+.expanded-image-gallery .expanded-slider .expanded-main-previous {
+  color: blanchedalmond;
+  position: absolute;
+  top: 50%;
+  left: 8vw;
+  z-index: 9;
+}
+.expanded-image-gallery .expanded-slider .expanded-main-next {
+  color: blanchedalmond;
+  position: absolute;
+  top: 50%;
+  right: 7%;
+  z-index: 9;
+}
+.expanded-image-gallery .expanded-slider .expanded-slides {
+  width: 3000%;
+  height: 100%;
+  display: flex;
+}
+.expanded-image-gallery .expanded-slider .expanded-main-image {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  transition: 2s;
+  height: 100%;
+  overflow: hidden;
+}
+.expanded-image-gallery .expanded-slider .expanded-main-image img {
+  background-position: center;
+  transition: opacity 0.5s;
+  width: auto;
+  max-height: 43.75vw;
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 100%;
+  z-index: 8;
+  cursor: cell;
+  overflow: hidden;
 }
 
 .image-gallery {

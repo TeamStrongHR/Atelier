@@ -1,6 +1,8 @@
+import {useContext} from 'react';
+import {WebsiteContext} from '../../../App.js';
 
 const StyleThumbnail = ({ thumbnailURL, setData, id, data, name}) => {
-
+  const {log, setLog} = useContext(WebsiteContext);
   let imageContainerStyle, checkboxStyle;
   if(id === data[2]){
     imageContainerStyle ={
@@ -29,13 +31,14 @@ const StyleThumbnail = ({ thumbnailURL, setData, id, data, name}) => {
         checkbox[i].style.display = "none";
       }
     }
+    setLog(oldLog => [...oldLog].concat(`selected ${name}`))
   }
   return (<div className="style-thumbnail">
     <div className="style-name">
       {name}
     </div>
     <div className="style-check-box" style={checkboxStyle}>
-      <i class="fa-regular fa-square-check"></i>
+      <i className="fa-regular fa-square-check"></i>
     </div>
     <div className="style-thumbnail-container" onClick={styleOnClick} style={imageContainerStyle}>
       <img src={thumbnailURL} ></img>

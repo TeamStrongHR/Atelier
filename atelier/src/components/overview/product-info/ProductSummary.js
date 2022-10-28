@@ -2,10 +2,15 @@ import StarRating from '../../shared/StarRating.js';
 import StyleSelector from '../style-selector/StyleSelector.js';
 import ShoppingCart from '../shopping-cart/ShoppingCart.js';
 import Price from '../../related-items/Price.js';
-
+import {useContext} from 'react';
+import {WebsiteContext} from '../../../App.js';
 
 export default function ProductSummary ({data, setData}) {
-
+  const {log, setLog} = useContext(WebsiteContext);
+  // counter on click
+  const counterOnClick = (e)=>{
+    setLog(oldLog => [...oldLog].concat(`clicked ${e.target.className} share button`));
+  }
   return (
     <aside className="product-summary" data-testid="product-summary">
     <StarRating rating={data[3]}/>
@@ -15,13 +20,14 @@ export default function ProductSummary ({data, setData}) {
     <StyleSelector data={data} setData={setData}/>
     <ShoppingCart data={data}/>
     <div className="share-buttons">
-      <a href="https://www.facebook.com/sharer.php?u=[post-url]"> share on
+      <h4>share on social media!</h4>
+      <a className="facebook" href="https://www.facebook.com/sharer.php" onClick={counterOnClick}>
         <i className="fab fa-facebook"></i>
       </a>
-      <a href="https://twitter.com/share?url=[post-url]&text=[post-title]&via=[via]&hashtags=[hashtags]">
+      <a className="twitter" href={`https://twitter.com/share?text='wow'`} onClick={counterOnClick}>
         <i className="fab fa-twitter"></i>
       </a>
-      <a href="https://pinterest.com/pin/create/bookmarklet/?media=[post-img]&url=[post-url]&is_video=[is_video]&description=[post-title]">
+      <a className="pinterest" href="https://pinterest.com/pin/create/bookmarklet/?media=[post-img]&url=[post-url&description=[post-title]" onClick={counterOnClick}>
         <i className="fab fa-pinterest"></i>
       </a>
     </div>

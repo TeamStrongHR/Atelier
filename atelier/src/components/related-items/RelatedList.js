@@ -1,6 +1,6 @@
 import RelatedCard from './RelatedCard.js';
 import {useState, useEffect} from 'react';
-
+import axios from 'axios';
 // const testCurrentProductInfo = {
 //   "id": 37317,
 //   "campus": "hr-rfe",
@@ -31,7 +31,7 @@ import {useState, useEffect} from 'react';
 export default function RelatedList (props) {
   const [showLeftArrow, setLeftArrow] = useState(false);
   const [showRightArrow, setRightArrow] = useState(true);
-
+  console.log('TESTING PROPS IN RELATED LIST ', props)
   //slide value in px
   const slideWindow = 280;
 
@@ -53,6 +53,7 @@ export default function RelatedList (props) {
     }
   }
 
+<<<<<<< HEAD
   // console.log(props.currentData.relatedProducts)
 
   // const cardHandler = () => {
@@ -62,20 +63,29 @@ export default function RelatedList (props) {
   //   console.log('RELATED LIST CURRENT PRODUCT ', props.currentProduct)
   // }, [props.currentProduct]);
 
+=======
+>>>>>>> main
   return (
-    <div className='related-list' >
+    <div className='related-list' data-testid='related-list'>
       <h1 className='related-title'> Related Products</h1>
       {showLeftArrow ? <i className='left-arrow' onClick={prevHandler}>
-        <i className="fa-solid fa-chevron-left"></i>
+        <i className="fa-solid fa-chevron-left" data-testid='left-arrow'></i>
       </i> : null}
       {showRightArrow ? <i className='right-arrow' >
-        <i className="fa-solid fa-chevron-right" onClick={nextHandler}></i>
+        <i className="fa-solid fa-chevron-right" onClick={nextHandler} data-testid='right-arrow'></i>
       </i> : null}
       <div className='related-carousel' id='slider'>
         {//relatedProduct is product_id
           props.currentData.relatedProducts.map((relatedProduct, index) => {
-            return <RelatedCard currentData={props.currentData} relatedProduct={relatedProduct} currentProduct={props.currentProduct} setCurrentProduct={props.setCurrentProduct}/>
-          })}
+            return <RelatedCard
+            currentData={props.currentData}
+            relatedProduct={relatedProduct}
+            currentProduct={props.currentProduct} setCurrentProduct={props.setCurrentProduct}
+            viewedProduct={props.viewedProduct}
+            setViewedProduct={props.setViewedProduct}
+            data-testid='related-card'/>
+          })
+        }
       </div>
     </div>
   )

@@ -7,7 +7,7 @@ import {useEffect, useState} from 'react';
 export default function RelatedModal (props) {
   let comparison = {};
   let x_mark = 'x';
-
+  useEffect(() => {}, [])
   props.currentData.features.forEach((feature) => {
     comparison[feature.feature] = [feature.value, x_mark];
   });
@@ -31,7 +31,7 @@ export default function RelatedModal (props) {
   }
 
   return (
-    <div className='related-modal' onClick={props.onClose}>
+    <div className='related-modal' onClick={props.onClose} data-testid='related-modal'>
       <div className='related-model-overlay'></div>
       <div className='related-modal-content'>
         <div className='related-modal-title'>
