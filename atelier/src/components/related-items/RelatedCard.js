@@ -40,7 +40,7 @@ export default function RelatedCard(props) {
         } else {
             console.log('NEED TO CALL API');
             let options = {
-                url: `http://localhost:3000/api/related/${props.relatedProduct}`,
+                url: `/related/${props.relatedProduct}`,
                 //url: `/api/related/${props.relatedProduct}`,
                 method: 'get',
             }
