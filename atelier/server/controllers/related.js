@@ -47,8 +47,14 @@ const related = (req, res) => {
           result['name'] = data[1].data.name;
           result['category'] = data[1].data.category;
           result['features'] = data[1].data.features;
+          result.slogan = data[1].data.slogan;
+          result.description = data[1].data.description;
           let default_style = data[2].data.results;
+<<<<<<< HEAD
+          console.log('PRINT HERE ', data[2].headers['x-ratelimit-remaining']);
+=======
           console.log('PRINT HERE API REQUEST REMAINING',data[2].headers['x-ratelimit-remaining']);
+>>>>>>> fae0c2c52352aec0f3a9dc499f4dfac4a22f2335
           for (let i = 0; i < default_style.length; i++) {
             if (default_style[i]['default?'] === true) {
               default_style.unshift(default_style.splice(i, 1)[0]);
@@ -82,8 +88,13 @@ const related = (req, res) => {
           res.json(result);
         })
         .catch((err) => {
+<<<<<<< HEAD
+          console.log('err', err.response);
+          res.status(424).end();
+=======
           console.log('err', err.response.status);
           res.status(err.response.status).end();
+>>>>>>> fae0c2c52352aec0f3a9dc499f4dfac4a22f2335
         })
       break
 
@@ -91,6 +102,6 @@ const related = (req, res) => {
   }
 }
 
-module.exports ={
-  related : related
+module.exports = {
+  related: related
 }

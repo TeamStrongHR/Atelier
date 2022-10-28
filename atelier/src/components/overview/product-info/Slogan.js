@@ -1,7 +1,7 @@
 
 
 export default function Slogan ({slogan, description, features}) {
-  console.log('here',slogan, description)
+  // console.log('here',slogan, description)
   return (
     <div className="slogan" data-testid="slogan">
       <section className="description">
@@ -9,8 +9,8 @@ export default function Slogan ({slogan, description, features}) {
       <p key={description}>{description}</p>
       </section>
       <section className="characteristics">
-        <ul>
-          {Array.isArray(features) ? features.map((feature)=>{return <li>{feature.value} {feature.feature}</li>}): null}
+        <ul className="features">
+          {Array.isArray(features) ? features.map((feature, i)=>{return <li  key={i}>{feature.value} {feature.feature}</li>}): null}
         </ul>
       </section>
     </div>

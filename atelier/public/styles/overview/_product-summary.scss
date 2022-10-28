@@ -1,6 +1,7 @@
 .product-summary {
   width: 30vh;
   padding: 2vh;
+  position: relative;
   .card-price{
     font-size: medium;
     display: flex;
@@ -21,5 +22,7 @@
   }
   h1 {
     margin-bottom: 1vh;
+  }
+  .share-buttons {
   }
 }
