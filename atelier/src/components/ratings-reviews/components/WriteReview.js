@@ -55,7 +55,6 @@ export default function WriteReview ({rerender, breakdown, productName, modalOpe
   }
 
   var handleRating = (e) => {
-    console.log(e.target.value)
     setRating(parseInt(e.target.value));
   }
 
@@ -163,7 +162,7 @@ export default function WriteReview ({rerender, breakdown, productName, modalOpe
         {/*Review Summary*/}
         <label htmlFor="review-summary">Review Summary</label>
         <br></br>
-        <textarea maxLength='60' onChange={(e)=> {
+        <textarea onChange={(e)=> {
           e.preventDefault();
           setSummary(e.target.value);
         }} value={summary} id="review-summary" placeholder="Example: Best purchase ever!" maxLength="60"></textarea>
@@ -221,7 +220,7 @@ export default function WriteReview ({rerender, breakdown, productName, modalOpe
                   </div>
                   </td>
                 </tr></td>)
-                break;
+
                 case "Width":
                   return (<td key={i}>
                     <tr><th>{characteristic}</th></tr>
@@ -242,7 +241,7 @@ export default function WriteReview ({rerender, breakdown, productName, modalOpe
                     <label htmlFor="w5">Too Wide<br/></label>
                     </div></td>
                   </tr></td>)
-                  break;
+
                   case "Comfort":
                     return (<td key={i}>
                     <tr><th>{characteristic}</th></tr>
@@ -283,7 +282,7 @@ export default function WriteReview ({rerender, breakdown, productName, modalOpe
                         <label htmlFor="q5">Perfect<br/></label>
                         </div></td>
                       </tr></td>)
-                      break;
+
                     case "Fit":
                       return (<td key={i}>
                         <tr><th>{characteristic}</th></tr>
@@ -303,7 +302,7 @@ export default function WriteReview ({rerender, breakdown, productName, modalOpe
                         <label htmlFor="f5">Runs Long<br/></label>
                         </div></td>
                       </tr></td>)
-                      break;
+
                       default:
                         break;
             }
