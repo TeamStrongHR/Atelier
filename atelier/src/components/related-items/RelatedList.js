@@ -1,6 +1,6 @@
 import RelatedCard from './RelatedCard.js';
 import {useState, useEffect} from 'react';
-
+import axios from 'axios';
 // const testCurrentProductInfo = {
 //   "id": 37317,
 //   "campus": "hr-rfe",
@@ -53,15 +53,6 @@ export default function RelatedList (props) {
     }
   }
 
-  // console.log(props.currentData.relatedProducts)
-
-  // const cardHandler = () => {
-  //   console.log('card clicked');
-  // }
-  // useEffect(() => {
-  //   console.log('RELATED LIST CURRENT PRODUCT ', props.currentProduct)
-  // }, [props.currentProduct]);
-
   return (
     <div className='related-list' data-testid='related-list'>
       <h1 className='related-title'> Related Products</h1>
@@ -74,7 +65,13 @@ export default function RelatedList (props) {
       <div className='related-carousel' id='slider'>
         {//relatedProduct is product_id
           props.currentData.relatedProducts.map((relatedProduct, index) => {
-            return <RelatedCard currentData={props.currentData} relatedProduct={relatedProduct} currentProduct={props.currentProduct} setCurrentProduct={props.setCurrentProduct} data-testid='related-card'/>
+            return <RelatedCard
+            currentData={props.currentData}
+            relatedProduct={relatedProduct}
+            currentProduct={props.currentProduct} setCurrentProduct={props.setCurrentProduct}
+            viewedProduct={props.viewedProduct}
+            setViewedProduct={props.setViewedProduct}
+            data-testid='related-card'/>
           })
         }
       </div>
