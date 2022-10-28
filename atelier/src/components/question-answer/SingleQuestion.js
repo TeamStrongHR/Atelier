@@ -1,40 +1,42 @@
 import { useState } from 'react';
+import { formatDistanceToNow, parseISO } from "date-fns";
 
 export default function SingleQuestion({question}) {
+  const [answers, setAnswers] = useState()
+  const [displayAnswers, setDisplayAnswers] = useState([]);
+  const [answerIndex, setAnswerIndex] = useState(0)
+  // const [isActive, setIsActive] = useState(false)
 
-  const [isActive, setIsActive] = useState(false)
-  // what data do i need here
-    //answers list --
-  // where is it coming from
-
-
-  // account for the default req of 2 questions -- slice
-
-  // slice by zero
-  // event handler on clickk
-    // slices by 2
-
-  // questions answers list sliced by 2  || []
+  // for date change
+  // <small>{new Date([datedata]createdAt).toString()}</small>
 
 
+    const handleAnswers = ()=> {
+     let answers = Object.values(question.answers)
+     setAnswerIndex(answerIndex+2)
+     let slicedAnswer= answers.slice(0, answerIndex)
+     setDisplayAnswers(slicedAnswer)
 
+    }
 
+    // this component passes to helphul comp --
+      // pass
+        // question body
+        // product id
+        // helpful ness
+        // question id
+
+              // onClick={()=>setIsActive(true)}
   return (
     <>
-     <div className="questions" key={question.question_id}>{question.question_body}</div>
-
+     <div onClick={()=>{handleAnswers()}} className="questions" key={question.question_id}>Q:&nbsp;&nbsp;{question.question_body} </div>
      <div className="answers-container">
       {
-        Object.values(question.answers).map((answer)=>(
-      <div className="single-answer">{answer.body}</div>
+            displayAnswers.map((answer)=>(
+      <div className="single-answer">A:&nbsp;&nbsp;{answer.body}</div>
         ))
       }
      </div>
-     {/* <button className="show-answers" onClick={()=>setIsActive(true)}>+</button> */}
-
-
-
-
     </>
   )
 }

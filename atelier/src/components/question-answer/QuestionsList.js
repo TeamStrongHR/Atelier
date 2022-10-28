@@ -9,10 +9,12 @@ export default function QuestionsList({filteredList, searchQuery}) {
   // render individual single component there
     // pass answer to answers component (maybe answers list --> single answer)
 
+
+
   return (
     <div className="testing">
-    {slicedQuestions.map((question)=> (
-  < SingleQuestion className="questions" question={question}/>
+    {slicedQuestions.map((question, index )=> (
+  < SingleQuestion key={question.question_id}  className="questions" question={question}/>
   ))}
 
     </div>

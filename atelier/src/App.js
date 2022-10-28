@@ -9,9 +9,10 @@ import { useState, useEffect } from 'react';
 
 function App() {
 
-  const [currentProduct, setCurrentProduct] = useState('37320');
+  const [currentProduct, setCurrentProduct] = useState('37314');
   const [currentData, setCurrentData] = useState(null);
   const [isLoading, setLoading] = useState(true);
+
 
   useEffect(() => {
     let options = {
@@ -34,9 +35,10 @@ function App() {
       <aside></aside>
       <section></section>
       <aside></aside>
-      < QuestionsAndAnswersMain product_id={37313}/>
+      {currentProduct && <QuestionsAndAnswersMain product_id={parseInt(currentProduct)}/>}
     </div>
   );
 }
 
 export default App;
+

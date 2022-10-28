@@ -1,5 +1,3 @@
-import { useState, useEffect } from 'react';
-
 
 export default function SearchBar({questionsData, setSearchQuery, setFilteredList , handleFilter}){
 
@@ -14,10 +12,10 @@ export default function SearchBar({questionsData, setSearchQuery, setFilteredLis
 
   return (
     <>
-    <h3><b> Questions And Answers </b></h3>
+    <h3 className="q-a-title"><b> Questions And Answer</b></h3>
     <form className="searchForm">
-    <input defaultValue="default" type='text'placeholder ="HAVE A QUESTION? SEARCH FOR ANSWERS..." onChange={handleSearchQuery}></input>
-    <button>Seach</button>
+    <input type='text'placeholder ="HAVE A QUESTION? SEARCH FOR ANSWERS..." onChange={handleSearchQuery}></input>
+    <button><i class='fas fa-magnifying-glass'></i></button>
   </form>
 
     </>

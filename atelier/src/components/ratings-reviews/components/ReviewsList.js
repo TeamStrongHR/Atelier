@@ -28,19 +28,6 @@ export default function ReviewsList ({handleHelpful, rerender, productName, revi
   var handleModalClose = ()=> {
     setModalOpen("none");
   }
-<<<<<<< HEAD
-  var sortByRelevance = reviews.sort((a, b) => {
-    var dateA=new Date(a.date);
-    var dateB=new Date(b.date);
-    return dateB-dateA;
-  }).sort((a, b) => {
-    return a.helpfulness - b.helpfulness
-    })
-
-  // console.log(sortByRelevance);
-  const [sortedReviews, setSortedReviews] = useState(sortByRelevance)
-=======
->>>>>>> main
 
   const [sortedReviews, setSortedReviews] = useState(null);
   useEffect(()=> {

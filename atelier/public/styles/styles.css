@@ -432,26 +432,6 @@
 }
 .ratings-reviews .modal {
   position: fixed;
-<<<<<<< HEAD
-  z-index: 1;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-.ratings-reviews .modal-content {
-  overflow: auto;
-  padding: 10%;
-  background-color: #f4f4f4;
-  margin: 30% auto;
-  height: 80%;
-  width: 90%;
-}
-.ratings-reviews .modal-content table {
-  padding: 10px;
-=======
   z-index: 20;
   left: 0;
   top: 0;
@@ -500,30 +480,10 @@
 table {
   margin: 2rem auto;
   align: center;
->>>>>>> main
   display: flex;
   justify-content: flex-start;
   width: 100%;
 }
-<<<<<<< HEAD
-.ratings-reviews .modal-content table formfield {
-  margin-right: 10px;
-  display: inline-block;
-}
-.ratings-reviews .modal-content table formfield label {
-  font-size: small;
-}
-.ratings-reviews .modal-content textarea {
-  width: 90%;
-  height: 80%;
-}
-
-.image-upload img {
-  height: 200px;
-  width: 200px;
-  display: inline-block;
-}
-=======
 table div {
   margin-right: 10px;
   display: inline-block;
@@ -531,14 +491,11 @@ table div {
 table div label {
   font-size: small;
 }
->>>>>>> main
 
 #recommend-product {
   font-size: 0.7rem;
 }
 
-<<<<<<< HEAD
-=======
 .rate {
   height: 46px;
   padding: 0 10px;
@@ -578,7 +535,6 @@ table div label {
   color: #c59b08;
 }
 
->>>>>>> main
 .image-gallery {
   margin: 0;
   padding: 0;
@@ -718,38 +674,14 @@ table div label {
   flex-wrap: wrap;
 }
 .style-selector .style-thumbnails .style-thumbnail {
-<<<<<<< HEAD
-  width: 25%;
-}
-.style-selector .style-thumbnails .style-thumbnail .style-name {
-  font-size: 0.1vh;
-  width: 100%;
-}
-.style-selector .style-thumbnails .style-thumbnail .style-check-box {
-  position: absolute;
-  background: white;
-  width: 1.5vh;
-  color: rgb(177, 150, 108);
-  display: none;
-}
-.style-selector .style-thumbnails .style-thumbnail .style-thumbnail-container {
-  display: flex;
-  width: 100%;
-  aspect-ratio: 1/1;
-=======
   display: flex;
   width: 6.5vh;
   height: 6.5vh;
->>>>>>> main
   border-radius: 50%;
   overflow: hidden;
   justify-content: center;
 }
-<<<<<<< HEAD
-.style-selector .style-thumbnails .style-thumbnail .style-thumbnail-container img {
-=======
 .style-selector .style-thumbnails .style-thumbnail img {
->>>>>>> main
   width: 10vh;
   height: auto;
 }
@@ -757,11 +689,7 @@ table div label {
 .slogan {
   padding: 2vh;
   display: flex;
-<<<<<<< HEAD
-  width: 114vh;
-=======
   width: 110vh;
->>>>>>> main
   margin: auto;
   text-align: center;
 }
@@ -774,20 +702,12 @@ table div label {
 }
 .slogan .characteristics {
   float: right;
-<<<<<<< HEAD
-  width: 34vh;
-=======
   width: 30vh;
->>>>>>> main
   padding: 5vh;
 }
 
 .product-summary {
-<<<<<<< HEAD
-  width: 34vh;
-=======
   width: 30vh;
->>>>>>> main
   padding: 2vh;
 }
 .product-summary .card-price {
@@ -831,7 +751,7 @@ table div label {
   flex-direction: row;
   border: 1px solid grey;
   padding: 2px;
-  width: 90%;
+  width: 70%;
 }
 
 .searchForm input {
@@ -841,18 +761,6 @@ table div label {
 
 input:focus {
   outline: none;
-}
-
-.searchForm button {
-  border: 1px solid red;
-  color: white;
-}
-
-#questionsAnswers {
-  display: flex;
-  flex-direction: column;
-  margin: 10px auto;
-  width: 800px;
 }
 
 .qa-title {
@@ -935,11 +843,7 @@ input:focus {
   margin: auto;
   justify-content: space-between;
   background-color: gray;
-<<<<<<< HEAD
-  width: 114vh;
-=======
   width: 110vh;
->>>>>>> main
 }
 .navbar .logo {
   padding: 0.5vh;

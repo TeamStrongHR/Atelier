@@ -4,10 +4,6 @@ import {format, parseISO} from 'date-fns'
 
 export default function Review ({handleHelpful, review}) {
   var date = format(parseISO(review.date), "MMMM dd, yyyy")
-<<<<<<< HEAD
-  // console.log(date)
-=======
->>>>>>> main
 
 
   const [imgOpen, setImgOpen] = useState("none");

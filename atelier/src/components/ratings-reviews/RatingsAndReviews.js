@@ -29,10 +29,6 @@ export default function RatingsAndReviews ({productName, product_id}) {
     }
     axios(options1)
     .then(result => {
-<<<<<<< HEAD
-      // console.log(result.data.results)
-=======
->>>>>>> main
       setReviews(result.data.results);
     })
     .catch(err => {
