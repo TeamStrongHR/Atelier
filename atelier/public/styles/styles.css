@@ -346,6 +346,7 @@
 }
 .ratings-reviews .ratings {
   /*make the parent container relative so children can use absolute positioning*/
+  min-width: auto;
   position: relative;
   width: 35%;
   /*100% of reviews recommend this product*/
@@ -444,12 +445,11 @@
 .ratings-reviews .modal-content {
   display: flex;
   position: relative;
-  top: -3rem;
   left: 25%;
-  margin-bottom: 4%;
-  justify-content: flex-start;
-  font-family: Arial, Helvetica, sans-serif;
+  top: 3rem;
   padding: 4%;
+  justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
   background-color: #f4f4f4;
   width: 50%;
   height: 100vh;
@@ -497,11 +497,10 @@ table div label {
 }
 
 .rate {
-  height: 46px;
-  padding: 0 10px;
-  display: flex;
-  justify-content: right;
-  right: 420px;
+  height: 50px;
+  width: 200px;
+  position: relative;
+  right: 50px;
 }
 
 .rate:not(:checked) > input {

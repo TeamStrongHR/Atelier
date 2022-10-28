@@ -43,7 +43,7 @@ export default function Review ({handleHelpful, review}) {
       <div>
       <span id="helpful"> Helpful?  <a onClick={function() {
         handleHelpful(review.review_id)}
-        }>Yes</a> ({review.helpfulness}) | <u>Report</u> </span>
+        }>Yes</a> ({review.helpfulness}) </span>
       </div>
       {review.recommend ? (<span id="recommend-product">I recommend this product ✓</span>): null}
       <hr className="break"></hr>
