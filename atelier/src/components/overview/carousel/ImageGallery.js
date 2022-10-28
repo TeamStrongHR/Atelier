@@ -13,7 +13,7 @@ function ImageGallery({data}) {
     let imageArr = document.getElementsByClassName('main-image');
     let slides = document.getElementsByClassName('slides');
     let thumbArr = document.getElementsByClassName('thumbnail');
-    let indexCopy = index
+    let indexCopy = index;
 
     // set index according to num input
     if (num > imageArr.length - 1) {
@@ -47,6 +47,12 @@ function ImageGallery({data}) {
   };
   // expand on click
   const expandOnClick =()=>{
+    let productSummary = document.getElementsByClassName('product-summary')[0];
+    if (productSummary.style.display === 'none') {
+      productSummary.style.display = 'flex';
+    } else {
+      productSummary.style.display = 'none';
+    }
     setExpanded(!expanded);
   }
 

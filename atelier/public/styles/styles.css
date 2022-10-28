@@ -133,6 +133,8 @@
 
 .related-modal {
   position: fixed;
+  width: 100%;
+  height: 100%;
   left: 0;
   top: 0;
   right: 0;
@@ -432,48 +434,107 @@
 }
 .ratings-reviews .modal {
   position: fixed;
-  z-index: 1;
+  z-index: 20;
   left: 0;
   top: 0;
-  height: 100%;
   width: 100%;
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
 }
 .ratings-reviews .modal-content {
-  overflow: auto;
-  padding: 10%;
+  display: flex;
+  position: relative;
+  top: -3rem;
+  left: 25%;
+  margin-bottom: 4%;
+  justify-content: flex-start;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 4%;
   background-color: #f4f4f4;
-  margin: 30% auto;
-  height: 80%;
-  width: 90%;
+  width: 50%;
+  height: 100vh;
+  overflow: auto;
 }
-.ratings-reviews .modal-content table {
-  padding: 10px;
+.ratings-reviews .modal-content h4 {
+  color: gray;
+  font-size: 2rem;
+}
+.ratings-reviews .modal-content .recommendation {
+  margin: 0.5rem auto;
+  font-size: 0.8rem;
+}
+.ratings-reviews .modal-content .recommendation #recommend-yes, .ratings-reviews .modal-content .recommendation #recommend-no {
+  border: 0px;
+  height: 0.75rem;
+}
+.ratings-reviews .modal-content textarea {
+  width: 400px;
+  height: 100px;
+}
+.ratings-reviews .modal-content .image-upload img {
+  height: 200px;
+  width: 200px;
+  display: block;
+}
+
+table {
+  margin: 2rem auto;
+  align: center;
   display: flex;
   justify-content: flex-start;
   width: 100%;
 }
-.ratings-reviews .modal-content table formfield {
+table div {
   margin-right: 10px;
   display: inline-block;
 }
-.ratings-reviews .modal-content table formfield label {
+table div label {
   font-size: small;
-}
-.ratings-reviews .modal-content textarea {
-  width: 90%;
-  height: 80%;
-}
-
-.image-upload img {
-  height: 200px;
-  width: 200px;
-  display: inline-block;
 }
 
 #recommend-product {
   font-size: 0.7rem;
+}
+
+.rate {
+  height: 46px;
+  padding: 0 10px;
+  display: flex;
+  justify-content: right;
+  right: 420px;
+}
+
+.rate:not(:checked) > input {
+  position: absolute;
+  top: -9999px;
+}
+
+.rate:not(:checked) > label {
+  float: right;
+  width: 1em;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 30px;
+  color: #ccc;
+}
+
+.rate:not(:checked) > label:before {
+  content: "★ ";
+}
+
+.rate > input:checked ~ label {
+  color: #ffc700;
+}
+
+.rate:not(:checked) > label:hover, .rate:not(:checked) > label:hover ~ label {
+  color: #deb217;
+}
+
+.rate > input:checked + label:hover, .rate > input:checked + label:hover ~ label, .rate > input:checked ~ label:hover, .rate > input:checked ~ label:hover ~ label, .rate > label:hover ~ input:checked ~ label {
+  color: #c59b08;
 }
 
 .image-gallery {
