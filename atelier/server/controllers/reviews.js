@@ -66,7 +66,7 @@ module.exports.reviews = (req, res) => {
         }
         axios(options)
         .then(result => {
-          res.send(result.data)
+          res.send('ok')
         })
       }
   }

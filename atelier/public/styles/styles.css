@@ -346,6 +346,7 @@
 }
 .ratings-reviews .ratings {
   /*make the parent container relative so children can use absolute positioning*/
+  min-width: auto;
   position: relative;
   width: 35%;
   /*100% of reviews recommend this product*/
@@ -441,12 +442,17 @@
   background-color: rgba(0, 0, 0, 0.5);
 }
 .ratings-reviews .modal-content {
-  overflow: auto;
-  padding: 10%;
+  display: flex;
+  position: relative;
+  left: 25%;
+  top: 3rem;
+  padding: 4%;
+  justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
   background-color: #f4f4f4;
-  margin: 30% auto;
-  height: 80%;
-  width: 90%;
+  width: 50%;
+  height: 100vh;
+  overflow: auto;
 }
 .ratings-reviews .modal-content table {
   padding: 10px;
@@ -461,9 +467,44 @@
 .ratings-reviews .modal-content table formfield label {
   font-size: small;
 }
+
+#recommend-product {
+  font-size: 0.7rem;
+}
+
+.rate {
+  height: 50px;
+  width: 200px;
+  position: relative;
+  right: 50px;
+}
+
+.rate:not(:checked) > input {
+  position: absolute;
+  top: -9999px;
+}
+
+.rate:not(:checked) > label {
+  float: right;
+  width: 1em;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 30px;
+  color: #ccc;
+}
+
+.rate:not(:checked) > label:before {
+  content: "★ ";
+}
+
+.rate > input:checked ~ label {
+  color: #ffc700;
+  
 .ratings-reviews .modal-content textarea {
   width: 90%;
   height: 80%;
+
 }
 
 .image-upload img {

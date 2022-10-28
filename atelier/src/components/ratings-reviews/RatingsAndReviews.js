@@ -14,7 +14,7 @@ export default function RatingsAndReviews ({productName, product_id}) {
     setRender(prev=> !prev);
   }
 
-  const [reviews, setReviews] = useState(null);
+  const [reviewsParent, setReviewsParent] = useState(null);
   //get reviews and ratings from server
   useEffect(()=> {
     var options1 = {
@@ -29,7 +29,7 @@ export default function RatingsAndReviews ({productName, product_id}) {
     }
     axios(options1)
     .then(result => {
-      setReviews(result.data.results);
+      setReviewsParent(result.data.results);
     })
     .catch(err => {
       console.log(err);
@@ -43,7 +43,6 @@ export default function RatingsAndReviews ({productName, product_id}) {
     }
     axios(options2)
     .then(result => {
-
       setBreakdown(result.data)
     })
     .catch(err => {
@@ -52,18 +51,89 @@ export default function RatingsAndReviews ({productName, product_id}) {
   }, [render, product_id])
 
 
-  const [addHelpful, setAddHelpful] = useState(true);
   var handleHelpful = (id) => {
     axios.put(`/api/reviews/helpful?review_id=${id}`)
-    .then(result => {
-      setRender(prev => !prev);
+    .then((result)=> {
+      var options3 = {
+        url: "/api/reviews/base",
+        params: {
+          page: 1,
+          count: 100,
+          sort: "newest",
+          product_id: product_id
+        },
+        method: "get",
+      }
+      axios(options3)
+      .then(result => {
+        var newArr=result.data.results.slice();
+        setReviewsParent(newArr);
+      })
+      .catch(err => {
+        console.log(err);
+      })
     })
   }
 
+  //sorting reviews
+  const [sortedReviews, setSortedReviews] = useState(null);
+
+  //handles sorting the reviews
+  var selectedSort = (sort) => {
+    if(!reviewsParent) return;
+    switch (sort) {
+      case "Helpful":
+        setSortedReviews((prev)=>
+          [...reviewsParent.sort((b, a) => {
+          return a.helpfulness - b.helpfulness
+          })])
+        break;
+      case "Newest":
+        setSortedReviews((prev)=>
+          [...reviewsParent.sort((a, b) => {
+          var dateA=new Date(a.date);
+          var dateB=new Date(b.date);
+          return dateB-dateA;
+        })])
+        break;
+      default:
+        setSortedReviews(prev=>
+          [...reviewsParent.sort((a, b) => {
+            var dateA=new Date(a.date);
+            var dateB=new Date(b.date);
+            return dateB-dateA;
+          }).sort((a, b) => {
+            return a.helpfulness - b.helpfulness
+            })]);
+          break;
+    }
+  }
+  var sortReviews=(e)=> {
+    selectedSort(e.target.value);
+  }
+
+    //filter by rating number
+  var filterByRating = (num) => {
+    var newArr=reviewsParent.filter(review=> {
+      return num===review.rating
+    })
+
+    if(newArr.length===0) {
+      return;
+    } else{
+      setSortedReviews(newArr);
+    }
+
+  }
+  //watch for reviews changes
+  useEffect(()=> {
+    selectedSort();
+  },[reviewsParent])
+
   return (
     <div data-testid="ratings-reviews-comp" className="ratings-reviews">
-      {breakdown && <Ratings breakdown={breakdown}/>}
-      {breakdown && reviews && <ReviewsList rerender={rerender} handleHelpful={handleHelpful} productName={"NICE"} reviews={reviews} breakdown={breakdown}/>}
+      {breakdown && <Ratings breakdown={breakdown} filterByRating={filterByRating}/>}
+      {sortedReviews && breakdown && <ReviewsList rerender={rerender} handleHelpful={handleHelpful} productName={productName} sortReviews={sortReviews} reviews={sortedReviews} breakdown={breakdown}/>}
     </div>
   )
 }

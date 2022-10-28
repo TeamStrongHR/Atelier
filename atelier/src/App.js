@@ -14,11 +14,6 @@ function App() {
   const [viewedProduct, setViewedProduct] = useState({}); //{product_id: product-data-retrieved-from-server}
 
   useEffect(() => {
-<<<<<<< HEAD
-    let options = {
-      url: `/api/related/${currentProduct}`,
-      method: 'get',
-=======
     if (viewedProduct.hasOwnProperty(currentProduct)) {
       console.log('BEFORE ', viewedProduct, currentData);
       setCurrentData(viewedProduct[currentProduct]);
@@ -37,10 +32,10 @@ function App() {
           setViewedProduct(temp);
         })
         .catch(err => { console.log(err) })
->>>>>>> fae0c2c52352aec0f3a9dc499f4dfac4a22f2335
-    }
-  }, [currentProduct, currentData]);
-  console.log('INSIDE APP JS', viewedProduct);
+      }
+     }, [currentProduct, currentData]);
+
+
   return (
     <div className="App" data-testid="App">
       {currentData && <Overview setCurrentProduct={setCurrentProduct} currentData={currentData} />}
@@ -49,11 +44,7 @@ function App() {
       setCurrentProduct={setCurrentProduct}
       viewedProduct={viewedProduct}
       setViewedProduct={setViewedProduct}/>}
-      {currentProduct && <RatingsAndReviews product_id={currentProduct} />}
-      <section></section>
-      <aside></aside>
-      <section></section>
-      <aside></aside>
+      {currentProduct && currentData && <RatingsAndReviews productName={currentData.name} product_id={currentProduct} />}
       {<QuestionsAndAnswers />}
     </div>
   );
