@@ -65,7 +65,7 @@ const ShoppingCart = ({ data }) => {
       return;
     }
     let option = {
-      url: `http://localhost:3000/api/cart/${parseInt(cartDetail[0].split(',')[1])}`,3
+      url: `http://localhost:3000/api/cart/${parseInt(cartDetail[0].split(',')[1])}`,
       method: "post",
     }
     axios(option)
