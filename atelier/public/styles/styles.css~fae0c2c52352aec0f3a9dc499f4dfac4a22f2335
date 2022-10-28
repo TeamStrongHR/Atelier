@@ -346,7 +346,6 @@
 }
 .ratings-reviews .ratings {
   /*make the parent container relative so children can use absolute positioning*/
-  min-width: auto;
   position: relative;
   width: 35%;
   /*100% of reviews recommend this product*/
@@ -433,38 +432,63 @@
 }
 .ratings-reviews .modal {
   position: fixed;
-  z-index: 1;
+  z-index: 20;
   left: 0;
   top: 0;
-  height: 100%;
   width: 100%;
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
 }
 .ratings-reviews .modal-content {
   display: flex;
   position: relative;
+  top: -3rem;
   left: 25%;
-  top: 3rem;
-  padding: 4%;
-  justify-content: center;
+  margin-bottom: 4%;
+  justify-content: flex-start;
   font-family: Arial, Helvetica, sans-serif;
+  padding: 4%;
   background-color: #f4f4f4;
   width: 50%;
   height: 100vh;
   overflow: auto;
 }
-.ratings-reviews .modal-content table {
-  padding: 10px;
+.ratings-reviews .modal-content h4 {
+  color: gray;
+  font-size: 2rem;
+}
+.ratings-reviews .modal-content .recommendation {
+  margin: 0.5rem auto;
+  font-size: 0.8rem;
+}
+.ratings-reviews .modal-content .recommendation #recommend-yes, .ratings-reviews .modal-content .recommendation #recommend-no {
+  border: 0px;
+  height: 0.75rem;
+}
+.ratings-reviews .modal-content textarea {
+  width: 400px;
+  height: 100px;
+}
+.ratings-reviews .modal-content .image-upload img {
+  height: 200px;
+  width: 200px;
+  display: block;
+}
+
+table {
+  margin: 2rem auto;
+  align: center;
   display: flex;
   justify-content: flex-start;
   width: 100%;
 }
-.ratings-reviews .modal-content table formfield {
+table div {
   margin-right: 10px;
   display: inline-block;
 }
-.ratings-reviews .modal-content table formfield label {
+table div label {
   font-size: small;
 }
 
@@ -473,10 +497,11 @@
 }
 
 .rate {
-  height: 50px;
-  width: 200px;
-  position: relative;
-  right: 50px;
+  height: 46px;
+  padding: 0 10px;
+  display: flex;
+  justify-content: right;
+  right: 420px;
 }
 
 .rate:not(:checked) > input {
@@ -500,21 +525,14 @@
 
 .rate > input:checked ~ label {
   color: #ffc700;
-  
-.ratings-reviews .modal-content textarea {
-  width: 90%;
-  height: 80%;
-
 }
 
-.image-upload img {
-  height: 200px;
-  width: 200px;
-  display: inline-block;
+.rate:not(:checked) > label:hover, .rate:not(:checked) > label:hover ~ label {
+  color: #deb217;
 }
 
-#recommend-product {
-  font-size: 0.7rem;
+.rate > input:checked + label:hover, .rate > input:checked + label:hover ~ label, .rate > input:checked ~ label:hover, .rate > input:checked ~ label:hover ~ label, .rate > label:hover ~ input:checked ~ label {
+  color: #c59b08;
 }
 
 .image-gallery {
@@ -525,14 +543,40 @@
   align-items: center;
   background: gray;
   width: 80vh;
-  aspect-ratio: 8/5;
+  height: 50vh;
   position: relative;
 }
-.image-gallery .expand-button {
+.image-gallery .checkmark {
+  display: inline-block;
+  width: 22vh;
+  height: 22vh; /* IE 9 */ /* Chrome, Safari, Opera */
+  transform: rotate(45deg);
+  z-index: 9;
+}
+.image-gallery .checkmark_circle {
   position: absolute;
-  top: 1vh;
-  right: 1vh;
-  z-index: 10;
+  width: 22vh;
+  height: 22vh;
+  background-color: white;
+  border-radius: 5vh;
+  border: solid 4vh red;
+  z-index: 9;
+}
+.image-gallery .checkmark_stem {
+  position: absolute;
+  width: 5vh;
+  height: 28vh;
+  background-color: red;
+  left: 11vh;
+  bottom: 5vh;
+}
+.image-gallery .checkmark_kick {
+  position: absolute;
+  width: 14vh;
+  height: 5vh;
+  background-color: red;
+  left: 0vh;
+  top: 12vh;
 }
 .image-gallery .slider {
   width: 100%;
@@ -616,70 +660,6 @@
      object-fit: cover;
   height: 100%;
   z-index: 8;
-  cursor: zoom-in;
-}
-
-.shopping-cart {
-  height: 11vh;
-}
-.shopping-cart .size-quantity {
-  position: relative;
-}
-.shopping-cart .size-quantity .size {
-  position: absolute;
-  width: 50%;
-  height: 3.2vh;
-  background: white;
-  z-index: 9;
-}
-.shopping-cart .size-quantity .size .display-selected {
-  font-size: 1.5vh;
-  height: 3vh;
-  padding: 0.5vh;
-  width: 100%;
-  justify-content: center;
-  display: flex;
-  border: solid 0.1vh;
-  background: white;
-  border-left: solid;
-  border-right: solid;
-  border-top: solid;
-}
-.shopping-cart .size-quantity .size .size-option {
-  font-size: 1.5vh;
-  padding: 0.5vh;
-  height: 3vh;
-  width: 100%;
-  justify-content: center;
-  display: flex;
-  border: solid 0.1vh;
-  background: white;
-  border-left: solid;
-  border-right: solid;
-  border-bottom: solid;
-}
-.shopping-cart .size-quantity .quantity {
-  position: absolute;
-  left: 55%;
-  width: 20%;
-  height: 3.2vh;
-}
-.shopping-cart .add-to-cart {
-  position: relative;
-  top: 4vh;
-  height: 3.2vh;
-  width: 100%;
-}
-.shopping-cart .add-to-cart .add-to-bag-button {
-  position: absolute;
-  height: 3.2vh;
-  width: 50%;
-}
-.shopping-cart .add-to-cart .favorite {
-  position: absolute;
-  width: 20%;
-  height: 3.2vh;
-  left: 55%;
 }
 
 .style-selector {
@@ -694,28 +674,14 @@
   flex-wrap: wrap;
 }
 .style-selector .style-thumbnails .style-thumbnail {
-  width: 25%;
-}
-.style-selector .style-thumbnails .style-thumbnail .style-name {
-  font-size: 0.1vh;
-  width: 100%;
-}
-.style-selector .style-thumbnails .style-thumbnail .style-check-box {
-  position: absolute;
-  background: white;
-  width: 1.5vh;
-  color: rgb(177, 150, 108);
-  display: none;
-}
-.style-selector .style-thumbnails .style-thumbnail .style-thumbnail-container {
   display: flex;
-  width: 100%;
-  aspect-ratio: 1/1;
+  width: 6.5vh;
+  height: 6.5vh;
   border-radius: 50%;
   overflow: hidden;
   justify-content: center;
 }
-.style-selector .style-thumbnails .style-thumbnail .style-thumbnail-container img {
+.style-selector .style-thumbnails .style-thumbnail img {
   width: 10vh;
   height: auto;
 }
@@ -739,23 +705,10 @@
   width: 30vh;
   padding: 5vh;
 }
-.slogan .characteristics .features {
-  padding-left: 1vh;
-  list-style: none;
-}
-.slogan .characteristics .features li {
-  margin-bottom: 1vh;
-}
-.slogan .characteristics .features li:before {
-  content: "\f00c";
-  font-family: FontAwesome;
-  margin: 0 0.5vh 0 -0.3vh;
-}
 
 .product-summary {
   width: 30vh;
   padding: 2vh;
-  position: relative;
 }
 .product-summary .card-price {
   font-size: medium;
@@ -777,107 +730,6 @@
 }
 .product-summary h1 {
   margin-bottom: 1vh;
-}
-.expanded-image-gallery {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: gray;
-  width: 200vh;
-  aspect-ratio: 8/5;
-  position: relative;
-}
-.expanded-image-gallery .expanded-expand-button {
-  position: absolute;
-  top: 1vh;
-  right: 1vh;
-  z-index: 10;
-}
-.expanded-image-gallery .expanded-slider {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-.expanded-image-gallery .expanded-slider .expanded-thumbnail-previous {
-  position: absolute;
-  top: 1vh;
-  left: 5vh;
-  height: 3vh;
-  z-index: 9;
-}
-.expanded-image-gallery .expanded-slider .expanded-thumbnail-next {
-  position: absolute;
-  height: 3vh;
-  left: 5vh;
-  bottom: 1vh;
-  z-index: 9;
-}
-.expanded-image-gallery .expanded-slider .expanded-thumbnails {
-  align-items: center;
-  display: flex;
-  top: 4vh;
-  flex-direction: column;
-  overflow: hidden;
-  position: absolute;
-  left: 1vh;
-  z-index: 9;
-  width: 9vh;
-  height: 42vh;
-}
-.expanded-image-gallery .expanded-slider .expanded-thumbnails .expanded-thumbnails-container {
-  width: 9vh;
-}
-.expanded-image-gallery .expanded-slider .expanded-thumbnails .expanded-thumbnail {
-  margin-bottom: 0.5vh;
-  display: flex;
-  width: 100%;
-  height: 5.5vh;
-  z-index: 9;
-  overflow: hidden;
-  justify-content: center;
-}
-.expanded-image-gallery .expanded-slider .expanded-thumbnails .expanded-thumbnail img {
-  display: flex;
-  height: 10vh;
-  width: auto;
-}
-.expanded-image-gallery .expanded-slider .expanded-main-previous {
-  color: blanchedalmond;
-  position: absolute;
-  top: 50%;
-  left: 17%;
-  z-index: 9;
-}
-.expanded-image-gallery .expanded-slider .expanded-main-next {
-  color: blanchedalmond;
-  position: absolute;
-  top: 50%;
-  right: 7%;
-  z-index: 9;
-}
-.expanded-image-gallery .expanded-slider .expanded-slides {
-  width: 3000%;
-  height: 100%;
-  display: flex;
-}
-.expanded-image-gallery .expanded-slider .expanded-main-image {
-  display: flex;
-  justify-content: center;
-  width: 80vh;
-  transition: 2s;
-  height: 100%;
-  overflow: hidden;
-}
-.expanded-image-gallery .expanded-slider .expanded-main-image img {
-  width: auto;
-  max-height: 50vh;
-  -o-object-fit: cover;
-     object-fit: cover;
-  height: 100%;
-  z-index: 8;
-  cursor: zoom-in;
 }
 
 .image-gallery {

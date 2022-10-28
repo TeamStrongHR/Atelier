@@ -1,6 +1,6 @@
-const SizeSelector = ({size, sku, maxQuantity, setCartDetail})=>{
+const SizeSelector = ({size, sku, maxQuantity, sizeOnClick})=>{
   return (
-    <option value={sku+','+maxQuantity}>{size}</option>
+    <div className={size+','+sku+','+maxQuantity+' size-option'} onClick={sizeOnClick}>{size}</div>
   )
 }
 
