@@ -2,11 +2,11 @@ const axios = require('axios');
 // import axios from 'axios';
 
 const related = (req, res) => {
-  console.log('RECEVIED', typeof parseInt(req.params.endpoint));
+  //console.log('RECEVIED', typeof parseInt(req.params.endpoint));
 
   switch (req.method) {
     case 'GET':
-      console.log('GET REQ MADE TO 4 API ENDPOINTS');
+      //console.log('GET REQ MADE TO 4 API ENDPOINTS');
       let relatedProductsGet = {
         url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${req.params.endpoint}/related`,
         method: 'get',
@@ -48,7 +48,7 @@ const related = (req, res) => {
           result['category'] = data[1].data.category;
           result['features'] = data[1].data.features;
           let default_style = data[2].data.results;
-          console.log('PRINT HERE ',data[2].headers['x-ratelimit-remaining']);
+          console.log('PRINT HERE API REQUEST REMAINING',data[2].headers['x-ratelimit-remaining']);
           for (let i = 0; i < default_style.length; i++) {
             if (default_style[i]['default?'] === true) {
               default_style.unshift(default_style.splice(i, 1)[0]);
@@ -78,7 +78,12 @@ const related = (req, res) => {
           // } else {
           //   res.json(result);
           // }
+          //console.log(result);
           res.json(result);
+        })
+        .catch((err) => {
+          console.log('err', err.response.status);
+          res.status(err.response.status).end();
         })
       break
 

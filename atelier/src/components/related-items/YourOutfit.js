@@ -5,6 +5,7 @@ import React from 'react';
 //props should contain current product infos
 //category, name, price(sale or not), star reviews
 export default function YourOutfit(props) {
+  // console.log(props);
   const [outfitList, setOutfitList] = useState([]);
   const [showLeftArrow, setLeftArrow] = useState(false);
   const [showRightArrow, setRightArrow] = useState(true);
@@ -33,34 +34,35 @@ export default function YourOutfit(props) {
   const handleAddOutfit = () => {
     if (!outfitList.includes(props.currentProduct)){
       setOutfitList(existing => [...existing, props.currentProduct])
+      // console.log(outfitList);
     }
   }
 
   useEffect(() => {
-    //console.log('rendered', outfitList);
+    // console.log('rendered', outfitList);
   }, [outfitList])
 
   return (
-    <div className='outfit-list'>
+    <div className='outfit-list' data-testid='outfit-list'>
       <h1 className='related-title'>Your Outfit</h1>
 
       <div className='outfit'>
       {showLeftArrow ? <i className='outfit-left-arrow' onClick={prevHandler}>
-        <i className="fa-solid fa-chevron-left"></i>
+        <i className="fa-solid fa-chevron-left" data-testid='left-arrow'></i>
       </i> : null}
       {showRightArrow ? <i className='outfit-right-arrow' >
-        <i className="fa-solid fa-chevron-right" onClick={nextHandler}></i>
+        <i className="fa-solid fa-chevron-right" data-testid='right-arrow' onClick={nextHandler}></i>
       </i> : null}
-      <button type='button' className='outfit-add' onClick={handleAddOutfit}>
+      <button type='button' className='outfit-add' onClick={handleAddOutfit} data-testid='outfit-add'>
           <div className='outfit-add-icon' >
             <i class='fa fa-plus' aria-hidden='true'></i>
             <h2 className='outfit-add-text'> Add This Outfit</h2>
           </div>
         </button>
       <div className='outfit-carousel' id='sliderOutfit'>
-        {outfitList.map((outfit) => {
+        {outfitList && outfitList.map((outfit) => {
           return (
-            <OutfitCard outfit={outfit} outfitList={outfitList} setOutfitList={setOutfitList}/>
+            <OutfitCard outfit={outfit} outfitList={outfitList} setOutfitList={setOutfitList} />
             )
         })
         }
