@@ -3,7 +3,7 @@
   flex-direction: row;
   border: 1px solid grey;
   padding: 2px;
-  width: 90%;
+  width: 70%;
 }
 
 .searchForm  input {
@@ -16,18 +16,14 @@ input:focus {
   outline: none;
 }
 
-.searchForm button {
-  border:1px solid red;
-  color:white;
-}
 
-#questionsAnswers{
-  display: flex;
-  flex-direction: column;
-  margin: 10px auto;
-  width: 800px
+// #questionsAnswers{
+//   display: flex;
+//   flex-direction: column;
+//   margin: 10px auto;
+//   width: 800px
 
-}
+// }
 .qa-title {
   display: flex;
   margin: 2px;
@@ -69,3 +65,9 @@ input:focus {
   margin: 20px;
   width: 100px;
 }
+
+// .answers-container {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// }
