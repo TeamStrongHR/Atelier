@@ -8,7 +8,7 @@ export default function YourOutfit(props) {
   // console.log(props);
   const [outfitList, setOutfitList] = useState([]);
   const [showLeftArrow, setLeftArrow] = useState(false);
-  const [showRightArrow, setRightArrow] = useState(true);
+  const [showRightArrow, setRightArrow] = useState(false);
 
   //slide value in px
   const slideWindow = 280;
@@ -26,7 +26,7 @@ export default function YourOutfit(props) {
     let nextSlide = document.getElementById('sliderOutfit');
     nextSlide.scrollLeft += slideWindow;
     setLeftArrow(true);
-    if (nextSlide.scrollLeft === (nextSlide.scrollWidth - nextSlide.clientWidth)) {
+    if (nextSlide.scrollLeft >= (nextSlide.scrollWidth - nextSlide.clientWidth)) {
       setRightArrow(false);
     }
   }
@@ -40,6 +40,9 @@ export default function YourOutfit(props) {
 
   useEffect(() => {
     // console.log('rendered', outfitList);
+    if (outfitList.length > 0) {
+      setRightArrow(true)
+    }
   }, [outfitList])
 
   return (

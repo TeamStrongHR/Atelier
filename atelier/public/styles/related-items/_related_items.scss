@@ -1,5 +1,8 @@
 .related-comparison{
-  display:block;
+  display: block;
+  width: 110vh;
+  justify-content: center;
+  margin: auto;
 }
 
 //related list component holds related title and related carosuel
@@ -8,13 +11,15 @@
   display:block;
   position: relative;
   justify-content: center;
+  margin: auto;
+  width: 110vh;
   align-items: center;
 }
 
 //related list title 'Related Product'
 .related-title{
   text-align: left;
-  margin-left: 20px;
+  // margin-left: 20px;
 }
 
 //left and right arrow
@@ -46,10 +51,11 @@
 
 //flex container
 .related-carousel{
-  display: block;
-  width: 100vw;
+  display: -webkit-box;
+  width: 110vh;
   position: relative;
   overflow-x: scroll;
+  overflow: hidden;
   white-space: nowrap;
   //hide scrollbar in IE, Edge and Firefox
   -ms-overflow-style: none;
@@ -69,9 +75,7 @@
   height: 420px;
   border: 1px solid gray;
   border-radius: 2px;
-  margin: 20px;
-  z-index: 1;
-
+  margin-right: 20px;
 }
 
 //star icon on top right of card
@@ -81,7 +85,7 @@
     position: absolute;
     right: 10px;
     top: 10px;
-    z-index: 100;
+    z-index: 1;
   }
   &.fa-star:hover{
     font-size: 150%;
@@ -94,7 +98,7 @@
   height: 300px;
   width: 250px;
   top: 0px;
-  z-index: 1;
+  z-index: -1;
   overflow: hidden;
   border-radius: 2px 2px 0px 0px;
 }
@@ -108,6 +112,7 @@
   padding-left: 10px;
   padding-top: 20px;
   align-items: flex-end;
+  z-index: -1;
 
   .card-category{
     display: flex;
@@ -151,7 +156,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 10000;
 }
 
 .related-modal-content{
@@ -159,7 +164,8 @@
   height: fit-content;
   background-color: white;
   display: flex;
-  z-index: 10000;
+  position: relative;
+  z-index: 100000;
   border: 1px solid gray;
   border-radius: 2px;
   align-items: center;
@@ -169,18 +175,20 @@
     position: relative;
     margin: 10px;
   }
+
+  .related-modal-content:after{
+    display: table;
+    clear: both;
+  }
+
+  .modal-column {
+    float: left;
+    padding: 20px;
+    text-align: center;
+  }
 }
 
-.related-modal-content:after{
-  display: table;
-  clear: both;
-}
 
-.modal-column {
-  float: left;
-  padding: 20px;
-  text-align: center;
-}
 
 //===============================================================
 //Your outfit list CSS below
@@ -202,7 +210,7 @@
   height: 420px;
   border: 1px solid white;
   border-radius: 2px;
-  margin: 20px;
+  margin-right: 20px;
   color: gray;
 
   .outfit-add-icon{
@@ -243,11 +251,13 @@
 }
 //flex container
 .outfit-carousel{
-  display: block;
+  display: -webkit-box;
   position: relative;
   overflow-x: scroll;
+  overflow: hidden;
   white-space: nowrap;
-  width:80vw;
+  width:80vh;
+  margin: auto;
   //hide scrollbar in IE, Edge and Firefox
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -265,7 +275,7 @@
   height: 420px;
   border: 1px solid gray;
   border-radius: 2px;
-  margin: 20px;
+  margin-right: 20px;
 
   .fa{
     &.fa-times-circle-o{

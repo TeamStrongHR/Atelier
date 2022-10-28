@@ -34,9 +34,18 @@ const related = (req, res) => {
         headers: { "Authorization": process.env.AUTH }
       };
 
+        let qnaGet = {
+          url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions`,
+          params: {
+            product_id: parseInt(req.params.endpoint)
+          },
+          method: "get",
+          headers: { "Authorization": process.env.AUTH }
+      };
+
       let result = {};
 
-      Promise.all([axios(relatedProductsGet), axios(productInfoGet), axios(productStylesGet), axios(productReviewGet)])
+      Promise.all([axios(relatedProductsGet), axios(productInfoGet), axios(productStylesGet), axios(productReviewGet), axios(qnaGet)])
         .then((data) => {
           //only res.json() data needed in client components
           // let relatedProducts= data[0].data;
@@ -47,6 +56,7 @@ const related = (req, res) => {
           result['name'] = data[1].data.name;
           result['category'] = data[1].data.category;
           result['features'] = data[1].data.features;
+          result['qna'] = data[3].data;
           result.slogan = data[1].data.slogan;
           result.description = data[1].data.description;
           let default_style = data[2].data.results;

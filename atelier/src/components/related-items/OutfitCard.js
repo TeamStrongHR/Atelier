@@ -1,5 +1,5 @@
 import Price from './Price.js';
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 import StarRating from '../shared/StarRating.js';
 
 export default function OutfitCard ({outfit, outfitList, setOutfitList}) {
@@ -10,23 +10,6 @@ export default function OutfitCard ({outfit, outfitList, setOutfitList}) {
     tempList.splice(indx,1);
     setOutfitList(tempList);
   };
-
-  // const calStar = (ratings) => {
-  //   let totalNumOfRatings = 0;
-  //   let total = 0;
-  //   for (const num in ratings) {
-  //     var val = parseInt(num);
-  //     var count = parseInt(ratings[num]);
-  //     totalNumOfRatings += count;
-  //     total += (val * count);
-  //   }
-  //   let averageRating = ((total / parseFloat(totalNumOfRatings)) * 100) / 100;
-  //   return averageRating.toFixed(1);
-  // };
-  // console.log(props.outfit.ratings);
-  // useEffect(() => {
-  //   setStarRating(calStar(props.outfit.ratings));
-  // }, [])
 
   return (
     <div className='outfit-card' data-testid='outfit-card'>
