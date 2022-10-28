@@ -53,7 +53,7 @@ const ShoppingCart = ({ data }) => {
     } else {
       container.style.overflow = '';
     }
-    setLog(oldLog => [...oldLog].concat(`clicked ${e.target.dataset.selected} selected size`));
+    // setLog(oldLog => [...oldLog].concat(`clicked ${e.target.dataset.selected} selected size`));
   }
   // request handler
   const addToCart = (e) => {
