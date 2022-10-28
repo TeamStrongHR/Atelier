@@ -18,7 +18,7 @@ export default function RatingsAndReviews ({productName, product_id}) {
   //get reviews and ratings from server
   useEffect(()=> {
     var options1 = {
-      url: "http://localhost:3000/api/reviews/base",
+      url: "/api/reviews/base",
       params: {
         page: 1,
         count: 100,
@@ -29,14 +29,13 @@ export default function RatingsAndReviews ({productName, product_id}) {
     }
     axios(options1)
     .then(result => {
-      console.log(result.data.results)
       setReviews(result.data.results);
     })
     .catch(err => {
       console.log(err);
     })
     var options2 = {
-      url: "http://localhost:3000/api/reviews/meta",
+      url: "/api/reviews/meta",
       params: {
         product_id: product_id
       },
@@ -50,16 +49,14 @@ export default function RatingsAndReviews ({productName, product_id}) {
     .catch(err => {
       console.log(err);
     })
-  }, [render])
+  }, [render, product_id])
 
 
   const [addHelpful, setAddHelpful] = useState(true);
   var handleHelpful = (id) => {
-    console.log('REVIEW ID', id)
-    axios.put(`http://localhost:3000/api/reviews/helpful?review_id=${id}`)
+    axios.put(`/api/reviews/helpful?review_id=${id}`)
     .then(result => {
       setRender(prev => !prev);
-      console.log('SUCCESS');
     })
   }
 

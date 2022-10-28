@@ -9,7 +9,7 @@ import { useState, useEffect } from 'react';
 
 function App() {
 
-  const [currentProduct, setCurrentProduct] = useState('37313');
+  const [currentProduct, setCurrentProduct] = useState('37320');
   const [currentData, setCurrentData] = useState(null);
   const [viewedProduct, setViewedProduct] = useState({}); //{product_id: product-data-retrieved-from-server}
 
