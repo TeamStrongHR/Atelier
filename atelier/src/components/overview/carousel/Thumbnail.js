@@ -1,6 +1,6 @@
 import no_url from '../../../images/no_url.jpg'
 
-const Thumbnail= ({thumbnail, showImage, id, index})=>{
+const Thumbnail= ({thumbnail, showImage, id, index, expanded})=>{
   let thumbnailStyle;
   if (id === index) {
     thumbnailStyle = {
@@ -12,7 +12,7 @@ const Thumbnail= ({thumbnail, showImage, id, index})=>{
     }
   }
   return (
-    <div className="thumbnail" onClick={()=>{showImage(id)}} style={thumbnailStyle} data-testid="thumbnail">
+    <div className={expanded ? "expanded-thumbnail": "thumbnail"} onClick={()=>{showImage(id)}} style={thumbnailStyle} data-testid="thumbnail">
       <img  src={thumbnail} alt={no_url}></img>
     </div>
   )

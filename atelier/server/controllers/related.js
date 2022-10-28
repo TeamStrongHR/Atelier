@@ -83,8 +83,8 @@ const related = (req, res) => {
           res.json(result);
         })
         .catch((err) => {
-          console.log('err', err.response.status);
-          res.status(err.response.status).end();
+          console.log('err', err.response);
+          res.status(424).end();
         })
       break
 

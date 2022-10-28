@@ -1,40 +1,42 @@
-.image-gallery {
+.expanded-image-gallery {
   margin: 0;
   padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   background: gray;
-  width: 80vh;
+  width: 200vh;
   aspect-ratio: 8 / 5;
   position: relative;
-  .expand-button {
+
+  .expanded-expand-button {
     position: absolute;
     top:1vh;
     right:1vh;
     z-index: 10;
   }
+
   // main image slider
-  .slider {
+  .expanded-slider {
     width: 100%;
     height: 100%;
     overflow: hidden;
     // Thumbnails
-    .thumbnail-previous {
+    .expanded-thumbnail-previous {
       position: absolute;
       top: 1vh;
       left: 5vh;
       height: 3vh;
       z-index: 9;
     }
-    .thumbnail-next{
+    .expanded-thumbnail-next{
       position: absolute;
       height: 3vh;
       left: 5vh;
       bottom: 1vh;
       z-index: 9;
     }
-    .thumbnails {
+    .expanded-thumbnails {
       align-items: center;
       display: flex;
       top: 4vh;
@@ -45,10 +47,10 @@
       z-index: 9;
       width: 9vh;
       height: 42vh;
-      .thumbnails-container {
+      .expanded-thumbnails-container {
         width: 9vh;
       }
-      .thumbnail {
+      .expanded-thumbnail {
         margin-bottom: 0.5vh;
         display: flex;
         width: 100%;
@@ -66,7 +68,7 @@
 
 
     // main image navigation arrows
-    .main-previous {
+    .expanded-main-previous {
       color: blanchedalmond;
       position: absolute;
       top: 50%;
@@ -74,7 +76,7 @@
       z-index: 9;
     }
 
-    .main-next {
+    .expanded-main-next {
       color:blanchedalmond;
       position: absolute;
       top: 50%;
@@ -84,13 +86,13 @@
 
 
     // main image slides
-    .slides {
+    .expanded-slides {
       width: 3000%;
       height: 100%;
       display: flex;
     }
 
-    .main-image {
+    .expanded-main-image {
       display: flex;
       justify-content: center;
       width: 80vh;
@@ -109,7 +111,4 @@
       }
     }
   }
-
-
-
 }

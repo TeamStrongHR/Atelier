@@ -59,7 +59,6 @@ const fetchProductInfo = (req, res)=>{
 const addToCart = (req, res) => {
   let skuID = parseInt(req.params.sku_id);
   console.log(`adding ${skuID} to cart`);
-  console.log(skuID);
   var option = {
     url: "https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/cart/",
     headers: {"Authorization": process.env.AUTH},
@@ -70,7 +69,6 @@ const addToCart = (req, res) => {
   }
   axios(option)
   .then((response)=>{
-    console.log(response)
     res.status(201).end(response.data);
   })
   .catch((err)=>{
