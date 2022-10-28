@@ -8,6 +8,9 @@ const MainImage = ({ id, image, expanded, expandOnClick }) => {
   const {log, setLog} = useContext(WebsiteContext);
 
   const imgOnClick = (e)=>{
+    if(viewOn !== false) {
+      turnOffViewMode(e)
+    }
     setViewOn(!viewOn);
     setLog(oldLog => [...oldLog].concat(`clicked ${e.target.className} magnified view ${viewOn}`));
   }

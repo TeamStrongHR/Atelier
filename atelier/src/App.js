@@ -31,19 +31,12 @@ function App() {
           setViewedProduct(temp);
         })
         .catch(err => { console.log(err) })
-<<<<<<< HEAD
     }
   }, [currentProduct, currentData]);
   console.log('INSIDE APP JS', viewedProduct);
 
   const [log, setLog] = useState([]);
   console.log('user log', log);
-=======
-      }
-     }, [currentProduct, currentData]);
-
-
->>>>>>> fe4181cf52113aa800af67452edabe75c0c67561
   return (
     <WebsiteContext.Provider value={{log, setLog}}>
     <div className="App" data-testid="App">
@@ -53,13 +46,8 @@ function App() {
       setCurrentProduct={setCurrentProduct}
       viewedProduct={viewedProduct}
       setViewedProduct={setViewedProduct}/>}
-<<<<<<< HEAD
-      {currentProduct && <RatingsAndReviews product_id={currentProduct} />}
-      <QuestionsAndAnswers />
-=======
       {currentProduct && currentData && <RatingsAndReviews productName={currentData.name} product_id={currentProduct} />}
       {<QuestionsAndAnswers />}
->>>>>>> fe4181cf52113aa800af67452edabe75c0c67561
     </div>
     </WebsiteContext.Provider>
   );
