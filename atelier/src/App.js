@@ -19,7 +19,7 @@ function App() {
       console.log('APP JS NO AXIOS USED', currentProduct, currentData);
     } else {
       let options = {
-        url: `http://localhost:3000/api/related/${currentProduct}`,
+        url: `/api/related/${currentProduct}`,
         //url: `/api/related/${currentProduct}`,
         method: 'get',
       };
