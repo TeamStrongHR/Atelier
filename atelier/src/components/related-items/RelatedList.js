@@ -53,18 +53,6 @@ export default function RelatedList (props) {
     }
   }
 
-<<<<<<< HEAD
-  // console.log(props.currentData.relatedProducts)
-
-  // const cardHandler = () => {
-  //   console.log('card clicked');
-  // }
-  // useEffect(() => {
-  //   console.log('RELATED LIST CURRENT PRODUCT ', props.currentProduct)
-  // }, [props.currentProduct]);
-
-=======
->>>>>>> main
   return (
     <div className='related-list' data-testid='related-list'>
       <h1 className='related-title'> Related Products</h1>

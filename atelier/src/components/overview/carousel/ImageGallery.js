@@ -220,11 +220,7 @@ function ImageGallery({data}) {
         <div className={expanded ? "expanded-slides": "slides"} data-testid="slides">
           {typeof data[1][data[2]] === 'object' ? data[1][data[2]].photos.map((ele, i) => {
             // console.log(ele);
-<<<<<<< HEAD
-            return <MainImage image={ele.thumbnail_url} id={i} key={i} />;
-=======
             return <MainImage image={ele.url} id={i} key={i} expanded={expanded} expandOnClick={expandOnClick}/>;
->>>>>>> main
           }) : null}
         </div>
         <a className={expanded ? "expanded-main-previous": "main-previous"} data-testid="main-previous" onClick={(e) => { moveImage(-1);

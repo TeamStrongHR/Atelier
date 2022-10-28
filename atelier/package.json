@@ -21,12 +21,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-<<<<<<< HEAD
-    "start": "FAST_REFRESH=false react-scripts start",
-=======
     "test:debug": "react-scripts --inspect-brk test --runInBand --no-cache",
     "start": "react-scripts start",
->>>>>>> main
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",

@@ -52,10 +52,6 @@ export default function RelatedCard(props) {
                 temp[data.data.product_id] = data.data;
                 props.setViewedProduct(temp);
                 setLoading(false);
-<<<<<<< HEAD
-                // console.log(data);
-=======
->>>>>>> main
 
             })
             .catch(err => { console.log('RELATED CARD JS ', err) });
