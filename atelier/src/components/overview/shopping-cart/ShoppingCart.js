@@ -53,7 +53,7 @@ const ShoppingCart = ({ data }) => {
     } else {
       container.style.overflow = '';
     }
-    setLog(oldLog => [...oldLog].concat(`clicked ${e.target.className} selected size`));
+    setLog(oldLog => [...oldLog].concat(`clicked ${e.target.dataset.selected} selected size`));
   }
   // request handler
   const addToCart = (e) => {
@@ -82,7 +82,7 @@ const ShoppingCart = ({ data }) => {
       <div className="please-select" style={{opacity: "0"}}>Please select size</div>
       <div className="size-quantity">
         <div className="size" style={{overflow: "hidden"}}>
-          <div className="display-selected"  onClick={selectedOnClick}>{cartDetail[0].split(",")[0]}</div>
+          <div className="display-selected"  onClick={selectedOnClick} data-selected="display-selected">{cartDetail[0].split(",")[0]}</div>
           <div className="select-size size-option" onClick={sizeOnClick}>SELECT SIZE</div>
           {typeof data[1][data[2]] === 'object' ? Object.entries(data[1][data[2]].skus).map((sku, i) => {
             if (sku[1].quantity === 0 || !sku[1].quantity) {
