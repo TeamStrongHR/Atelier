@@ -8,7 +8,7 @@
 
 ## About
 
-Atelier is an e-commerce website serving customer with millions of fashion products. Following the business requirement, our team of four organized our workflow with ticketing system with Trello. Each member was assigned to a subcomponent.
+Atelier is an e-commerce website serving customers with millions of fashion products. Following the business requirement, our team of four organized our workflow with ticketing system with Trello. Each member was assigned to a subcomponent.
 We followed agile methodology to maintain steady pace for our development process using Trello board as our ticketing system. We held daily stand up meetings and stand downs every two days to track each member's progress to make sure we are keeping up with deadlines and requirements.
 
 Our challenge was to get familiar with new technologies such as SASS. We achieved this by not using other external libraries and using its vanila features to implement each components.
@@ -41,6 +41,10 @@ npm run server
 Overview shows the details and its pictures to the customers.
 ![chrome_waIP3dIfkX](https://github.com/TeamStrongHR/Atelier/assets/109112742/868f82ed-15f7-4993-a4e8-9eebbc6338a4)
 Customers can browse different photos on by clicking the thumbnail on the left or clicking the arrow button on the photos. Each styles are displayed as thumbnails on the right side and can be selected by simply clicking on it.
+
+![chrome_bCK4FdGIob](https://github.com/TeamStrongHR/Atelier/assets/109112742/057db420-e27b-42ba-bfb3-62d2505e34a0)
+
+
 If the customer wants to view the photos in detail, they can do so by clicking the expand button and moving their mouse cursor around the picture as displayed above.
 
 ### Related Items
