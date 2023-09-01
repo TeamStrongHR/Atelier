@@ -3,8 +3,8 @@
 
 ## Table of Contents
 - [About](#about)
-- [Pantry](#pantry)
-- [Search](#search)
+- [Installation](#installation)
+- [Features](#features)
 
 ## About
 
