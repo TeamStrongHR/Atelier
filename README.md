@@ -58,6 +58,6 @@ Ratings and Review shows other customers' reviews and also lets them post their 
 ![chrome_93uKMd95kB](https://github.com/TeamStrongHR/Atelier/assets/109112742/011d244d-b5b1-474b-bed2-513e4b2cc377)
 You can browse more reviews by clicking more reviews button and scroll down.
 ![chrome_kXc0MhUJ7A](https://github.com/TeamStrongHR/Atelier/assets/109112742/5d834b3c-11b7-419c-bc05-6532e1923982)
-To post a review, click write review button. A modal will pop up where you can write your own reviews and give it its own categories.
+To post a review, click write review button. A modal will pop up where you can write your own reviews and select the product score you would like to give.
 You can also upload pictures to your reviews which will show up as a thumbnail in the Ratings and Review section.
 
